@@ -25,9 +25,10 @@
 @media screen and (min-width: 768px) {
   .content {
     padding-top: 0;
-    margin-left: size.$collapse-content-left-spacing;
+    padding-left: size.$space-16;
+    margin-inline: auto;
     &.expanded {
-      margin-left: size.$content-left-spacing;
+      padding-left: size.$content-left-spacing;
     }
   }
 }
