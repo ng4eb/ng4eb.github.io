@@ -65,6 +65,14 @@
   }
 }
 
+.site-title a {
+  color: var(--white);
+  font-size: function.rem(36px);
+  @include mixin.adventPro;
+  text-decoration: none;
+}
+
+
 .search-bar-container {
   display: flex;
   align-items: center;

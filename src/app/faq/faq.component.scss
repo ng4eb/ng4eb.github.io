@@ -1,0 +1,33 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+.faq {
+  width: 100%;
+  max-width: size.$page-max-width;
+  padding-top: size.$space-32;
+  padding-inline: size.$space-16;
+  margin-inline: auto;
+  &__content {
+    h1 {
+      margin-bottom: size.$space-12;
+    }
+    p:not(:last-child) {
+      margin-bottom: size.$space-8;
+    }
+  }
+}
+
+.go-back {
+  margin-bottom: size.$space-8;
+  a {
+    color: var(--grey-66-cc);
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .faq {
+    padding-top: size.$space-64;
+    font-size: function.rem(20px);
+  }
+}

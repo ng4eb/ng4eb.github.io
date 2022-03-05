@@ -24,9 +24,9 @@
 
 @media screen and (min-width: 768px) {
   .content {
+    width: 100%;
     padding-top: 0;
-    padding-left: size.$space-16;
-    margin-inline: auto;
+    padding-left: size.$space-26;
     &.expanded {
       padding-left: size.$content-left-spacing;
     }
