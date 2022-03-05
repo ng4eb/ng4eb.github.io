@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/reset';
+@use 'styles/size';
+@use 'styles/variable';
+@use 'styles/mixin';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @include mixin.roboto;
+  background: var(--white-black);
+  color: var(--black-white);
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+/* Global Classes */
+a.text-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.desktop-only {
+  display: none !important;
+  @media screen and (min-width: 768px) {
+    display: block !important;
+  }
+}
+
+.mobile-only {
+  @media screen and (min-width: 768px) {
+    display: none !important;
+  }
+}

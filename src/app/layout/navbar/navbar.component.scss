@@ -1,0 +1,101 @@
+@use '/src/styles/function';
+@use '/src/styles/size';
+@use '/src/styles/mixin';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: size.$navbar-height;
+  padding-inline: size.$space-26;
+  font-size: function.rem(36px);
+  @include mixin.adventPro;
+  background: var(--grey-44);
+  color: var(--white);
+
+  &__menu {
+    position: fixed;
+    inset: size.$navbar-height 0 0;
+    background: var(--grey-ee-33);
+  }
+}
+
+.menu-icon-container {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: function.rem(30px);
+  height: function.rem(22px);
+}
+
+@mixin menu-icon {
+  width: 100%;
+  height: function.rem(2px);
+  background: var(--white);
+}
+
+.menu-icon {
+  @include menu-icon;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    @include menu-icon;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &.open {
+    transform: rotateZ(45deg);
+    &::before {
+      transform: rotateZ(90deg);
+    }
+  }
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  width: function.rem(242px);
+  height: function.rem(48px);
+  margin-top: size.$space-26;
+  margin-inline: auto;
+  padding: size.$space-8;
+  font-size: function.rem(18px);
+  @include mixin.roboto;
+  background: var(--grey-aa);
+  color: var(--white);
+
+  fa-icon {
+    margin-right: size.$space-8;
+  }
+
+  input {
+    flex-grow: 1;
+    min-width: 0;
+    background: var(--grey-aa);
+    color: var(--white);
+    border-radius: 2px;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: var(--white);
+      opacity: 1; /* Firefox */
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: var(--white);
+    }
+  }
+}

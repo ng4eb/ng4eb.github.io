@@ -1,0 +1,13 @@
+<div class="desktop-only">
+    <div class="options-widget" (click)="toggleOptionsOpen()">
+        <fa-icon [icon]="faEllipsisH"></fa-icon>
+    </div>
+</div>
+<div class="options" *ngIf="isOptionsOpen">
+    <div class="options__button" (click)="scrollToTop()">
+        <fa-icon [icon]="faAngleDoubleUp"></fa-icon>
+    </div>
+    <div class="options__button" (click)="printThisPage()">
+        <fa-icon [icon]="faPrint"></fa-icon>
+    </div>
+</div>

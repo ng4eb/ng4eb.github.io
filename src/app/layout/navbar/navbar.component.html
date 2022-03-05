@@ -1,0 +1,16 @@
+<nav class="navbar mobile-only">
+    <div class="menu-icon-container" (click)="toggleMenuOpen()">
+        <div class="menu-icon" [class.open]="isMenuOpen$ | async"></div>
+    </div>
+    <span class="site-title">ng4eb</span>
+    <app-theme-switch></app-theme-switch>
+    <div class="navbar__menu" *ngIf="isMenuOpen$ | async">
+        <div class="search-bar-container">
+            <fa-icon [icon]="faSearch"></fa-icon>
+            <input
+                    placeholder="search title"
+                    type="text"
+            />
+        </div>
+    </div>
+</nav>

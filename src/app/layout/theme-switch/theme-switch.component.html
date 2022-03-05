@@ -1,0 +1,7 @@
+<div class="theme-switch" (click)="toggleTheme()">
+    <fa-icon [icon]="faMoon"
+             *ngIf="isDarkTheme | async; else lightTheme"></fa-icon>
+    <ng-template #lightTheme>
+        <fa-icon [icon]="faSun"></fa-icon>
+    </ng-template>
+</div>

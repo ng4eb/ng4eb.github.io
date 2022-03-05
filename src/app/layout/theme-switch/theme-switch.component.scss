@@ -1,0 +1,29 @@
+@use '/src/styles/function';
+
+.theme-switch {
+  font-size: 0.7em;
+}
+
+@media screen and (min-width: 768px) {
+  .theme-switch {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: function.rem(147px);
+    height: function.rem(147px);
+    font-size: 1em;
+    border-radius: 100vh;
+    background: var(--grey-44);
+    color: var(--white);
+    transform: translate(60%, -60%);
+    cursor: pointer;
+
+    fa-icon {
+      margin-top: 50%;
+      margin-right: 50%;
+      font-size: 1.4em;
+    }
+  }
+}

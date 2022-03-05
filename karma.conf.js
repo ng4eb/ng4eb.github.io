@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/hg4eb-revamp'),
+      dir: require('path').join(__dirname, './coverage/ng4eb-revamp'),
       subdir: '.',
       reporters: [
         { type: 'html' },

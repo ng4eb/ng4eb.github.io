@@ -1,0 +1,27 @@
+:root {
+  /* color */
+  --white: #FFFFFF;
+  --white-black: #FFFFFF;
+  --black-white: #000000;
+  --grey-ee-33: #EEEEEE;
+  --grey-22: #222222;
+  --grey-44: #444444;
+  --grey-66: #666666;
+  --grey-aa: #AAAAAA;
+  --grey-66-cc: #666666;
+  --overlay: rgba(204, 204, 204, 0.5);
+
+
+  /* z index */
+  --z-1: 1;
+  --z-5: 5;
+  --z-10: 10;
+}
+
+[data-theme="dark"] {
+  --white-black: #000000;
+  --black-white: #FFFFFF;
+  --grey-ee-33: #333333;
+  --grey-66-cc: #CCCCCC;
+  --overlay: rgba(0, 0, 0, 0.5);
+}

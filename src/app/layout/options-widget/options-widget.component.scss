@@ -1,0 +1,50 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+.options-widget {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: function.rem(147px);
+  height: function.rem(147px);
+  border-radius: 100vh;
+  background: var(--grey-44);
+  color: var(--white);
+  transform: translate(60%, 60%);
+  cursor: pointer;
+
+  fa-icon {
+    margin-bottom: 50%;
+    margin-right: 50%;
+    font-size: 1.4em;
+  }
+}
+
+.options {
+  position: fixed;
+  right: function.rem(40px);
+  bottom: function.rem(55px);
+  display: flex;
+  flex-flow: column nowrap;
+  width: function.rem(61px);
+  padding-inline: size.$space-4;
+  padding-block: size.$space-8;
+  border-radius: 5px;
+  background: var(--grey-66);
+
+  &__button {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: function.rem(48px);
+    border-radius: 5px;
+    background: var(--grey-44);
+    color: var(--white);
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-bottom: size.$space-4;
+    }
+  }
+}

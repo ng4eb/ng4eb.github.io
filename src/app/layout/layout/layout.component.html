@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="overlay desktop-only" (click)="closeOverlay()" *ngIf="isOverlayOpen$ | async"></div>
+    <app-advanced-search-overlay *ngIf="isAdvancedSearchOpen$ | async"></app-advanced-search-overlay>
+    <app-navbar></app-navbar>
+    <app-theme-switch class="desktop-only"></app-theme-switch>
+    <app-options-widget></app-options-widget>
+    <div class="middle">
+        <app-sidebar></app-sidebar>
+        <div class="content" [class.expanded]="isSidebarOpen$ | async">
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,29 @@
+<aside class="sidebar desktop-only" [class.expanded]="isSidebarOpen$ | async">
+        <div class="sidebar__content">
+            <div class="sidebar__content__head">
+                <span class="site-title">ng4eb</span>
+                <div class="menu-icon-container" (click)="toggleSidebar()">
+                    <div class="menu-icon"></div>
+                </div>
+            </div>
+            <div class="sidebar__content__body">
+                <ng-container *ngIf="isSidebarOpen$ | async; else searchIcon">
+                    <div class="search-bar-container">
+                        <fa-icon [icon]="faSearch"></fa-icon>
+                        <input
+                                placeholder="search title"
+                                type="text"
+                        />
+                    </div>
+                    <div class="advanced-search" (click)="openAdvancedSearch()">
+                        advanced search
+                    </div>
+                </ng-container>
+                <ng-template #searchIcon>
+                    <div class="search-icon-container" (click)="openAdvancedSearch()">
+                        <fa-icon [icon]="faSearch"></fa-icon>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </aside>

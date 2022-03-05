@@ -3,11 +3,12 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hg4eb-revamp": {
+    "ng4eb-revamp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -20,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hg4eb-revamp",
+            "outputPath": "dist/ng4eb-revamp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hg4eb-revamp:build:production"
+              "browserTarget": "ng4eb-revamp:build:production"
             },
             "development": {
-              "browserTarget": "hg4eb-revamp:build:development"
+              "browserTarget": "ng4eb-revamp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hg4eb-revamp:build"
+            "browserTarget": "ng4eb-revamp:build"
           }
         },
         "test": {
@@ -107,5 +108,5 @@
       }
     }
   },
-  "defaultProject": "hg4eb-revamp"
+  "defaultProject": "ng4eb-revamp"
 }

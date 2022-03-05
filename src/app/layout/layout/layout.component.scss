@@ -1,0 +1,33 @@
+@use '/src/styles/size';
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.middle {
+  display: flex;
+  flex-grow: 1;
+}
+
+.content {
+  padding-top: size.$navbar-height;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  z-index: var(--z-5);
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    padding-top: 0;
+    margin-left: size.$collapse-content-left-spacing;
+    &.expanded {
+      margin-left: size.$content-left-spacing;
+    }
+  }
+}

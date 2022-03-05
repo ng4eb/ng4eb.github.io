@@ -1,0 +1,30 @@
+@use '/src/styles/function';
+@use '/src/styles/size';
+
+.advanced-search-overlay {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  width: function.rem(740px);
+  height: function.rem(100px);
+  padding-inline: size.$space-16;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--grey-66);
+  z-index: var(--z-10);
+  transform: translateX(-50%);
+
+  fa-icon {
+    font-size: function.rem(36px);
+    margin-right: size.$space-12;
+    cursor: pointer;
+  }
+
+  input {
+    flex-grow: 1;
+    min-width: 0;
+    font-size: function.rem(24px)
+  }
+}
