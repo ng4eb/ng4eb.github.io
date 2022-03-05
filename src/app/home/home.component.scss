@@ -10,7 +10,14 @@
   margin-inline: auto;
   max-width: size.$page-max-width;
   font-size: function.rem(18px);
+  &__angular-logo {
+    width: function.rem(36px);
+    height: auto;
+    margin-right: size.$space-8;
+  }
   &__title {
+    display: flex;
+    align-items: center;
     margin-bottom: size.$space-8;
     font-size: 1.8em;
   }
@@ -48,6 +55,9 @@
     font-size: function.rem(22px);
     &__container {
       max-width: function.rem(840px);
+    }
+    &__angular-logo {
+      width: function.rem(48px);
     }
   }
 }

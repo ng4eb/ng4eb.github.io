@@ -25,6 +25,13 @@
     }
   }
 
+  .icons {
+    display: flex;
+    & > *:not(:last-child) {
+      margin-right: size.$space-16;
+    }
+  }
+
   .icon-link {
     color: var(--white);
     &:hover {

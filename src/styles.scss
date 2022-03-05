@@ -14,16 +14,23 @@ body {
   color: var(--black-white);
 }
 
+h1, h2, h3, p, ul, ol {
+  line-height: 1.6;
+}
+
 input {
   border: none;
   outline: none;
 }
 
-/* Global Classes */
-a.text-link {
-  text-decoration: underline;
-  cursor: pointer;
+a {
+  color: var(--grey-66-cc);
+  &:hover {
+    color: var(--grey-44-aa);
+  }
 }
+
+/* Global Classes */
 
 .desktop-only {
   display: none !important;

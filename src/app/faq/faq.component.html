@@ -1,13 +1,16 @@
 <section class="faq">
     <div class="go-back">
         <a routerLink="/">
-            <fa-icon [icon]="faAngleLeft"></fa-icon> Go Back to Homepage
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+            Go Back to Homepage
         </a>
     </div>
     <div class="faq__content" *ngIf="path">
         <h1>{{faqContent[path].title}}</h1>
-        <p *ngFor="let p of faqContent[path].paragraphs">
-            {{p}}
+        <p
+                *ngFor="let p of faqContent[path].paragraphs"
+                [innerHTML]="p"
+        >
         </p>
     </div>
 </section>

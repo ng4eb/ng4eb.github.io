@@ -23,27 +23,27 @@ export class FaqComponent implements OnInit {
 			title: "I'm New to Angular",
 			paragraphs: [
 				"Welcome to the world of Angular!",
-				"If you are already familiar with the background of Angular, you can skip chapter 1. Otherwise, it is best to start reading from chapter 1.",
+				"If you are already familiar with the background of Angular, you can skip chapter one. Otherwise, it is best to start from chapter one.",
 				"Good luck!"
 			]
 		},
 		whyThisBook: {
 			title: "Why this book?",
 			paragraphs: [
-				"This book aims to introduce Angular to an audience who already know the basics of HTML, CSS and TypeScript. It is written in simple English. It does not attempt to cover everything, but it strives to explain the underlying concepts in Angular in a concise manner.",
-				"If you would like to master the basics of Angular with a short and easy-to-understand book, then this book is for you."
+				"This book aims to introduce Angular to an audience who already know the basics of HTML, CSS and TypeScript. It is written in simple English. It does not attempt to cover everything as it strives to explain the underlying concepts in Angular in a concise manner.",
+				"If you would like to master the basics of Angular with a short and easy-to-understand book, then you are in the right place."
 			]
 		},
 		howToSupport: {
 			title: "How to support this project?",
 			paragraphs: [
-				"The best way to support this project is to contribute to the Github project. Besides, you may star this project on Github and share it with friends who are interested in learning Angular!"
+				"The best way to support this project is to contribute to the <a href=\"https://github.com\" target=\"_blank\">Github project</a>. In addition, you can star it on Github and share it with your friends who are interested in learning Angular!"
 			]
 		},
 		contribution: {
 			title: "How may I contribute?",
 			paragraphs: [
-				"To contribute to this project, you can raise Github issues for problems, bugs, and feature requests. You are also welcome to open pull requests for any issues you find!"
+				"To contribute to <a href=\"https://github.com\" target=\"_blank\">this project</a>, you can raise Github issues for problems, bugs, and feature requests. You are also welcome to open pull requests for any issues you find!"
 			]
 		}
 	}
