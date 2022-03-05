@@ -1,6 +1,19 @@
 <main class="homepage">
     <div class="homepage__container">
-        <h1 class="homepage__title">Angular for Everybody</h1>
+        <h1 class="homepage__title">
+            <img
+                    *ngIf="isDarkTheme$ | async; else lightLogo"
+                    class="homepage__angular-logo"
+                    src="assets/images/angular_logo_white.svg"
+                    alt="angular one color white" />
+            <ng-template #lightLogo>
+                <img
+                        class="homepage__angular-logo"
+                        src="assets/images/angular_logo.svg"
+                        alt="angular one color black" />
+            </ng-template>
+            Angular for Everybody
+        </h1>
         <h2 class="homepage__desc">A free, online, ever-growing eBook that explains Angular concepts in simple English</h2>
         <p class="homepage__intro">Now, feel free to click any of the links below to get started:</p>
         <ul class="homepage__links">
@@ -17,6 +30,6 @@
                 <a routerLink="/faq/contribution">How may I contribute?</a>
             </li>
         </ul>
-        <p class="homepage__cta">Learn Angular, And Be a Better Front-End Developer</p>
+        <p class="homepage__cta">Learn Angular, And Be a Better Front-End Developer <br /> <small>Davis Chan</small></p>
     </div>
 </main>
