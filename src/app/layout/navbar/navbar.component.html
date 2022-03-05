@@ -2,7 +2,9 @@
     <div class="menu-icon-container" (click)="toggleMenuOpen()">
         <div class="menu-icon" [class.open]="isMenuOpen$ | async"></div>
     </div>
-    <span class="site-title">ng4eb</span>
+    <span class="site-title">
+        <a routerLink="/">ng4eb</a>
+    </span>
     <app-theme-switch></app-theme-switch>
     <div class="navbar__menu" *ngIf="isMenuOpen$ | async">
         <div class="search-bar-container">

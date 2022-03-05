@@ -34,12 +34,15 @@
 
       &__head {
         .site-title {
-          display: grid;
+          display: inline-grid;
           place-items: center;
           flex-grow: 1;
-          color: var(--white);
-          font-size: function.rem(36px);
-          @include mixin.adventPro;
+          a {
+            color: var(--white);
+            font-size: function.rem(36px);
+            @include mixin.adventPro;
+            text-decoration: none;
+          }
         }
       }
 

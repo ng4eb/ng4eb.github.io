@@ -1,1 +1,13 @@
-<p>faq works!</p>
+<section class="faq">
+    <div class="go-back">
+        <a routerLink="/">
+            <fa-icon [icon]="faAngleLeft"></fa-icon> Go Back to Homepage
+        </a>
+    </div>
+    <div class="faq__content" *ngIf="path">
+        <h1>{{faqContent[path].title}}</h1>
+        <p *ngFor="let p of faqContent[path].paragraphs">
+            {{p}}
+        </p>
+    </div>
+</section>

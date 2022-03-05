@@ -1,7 +1,9 @@
 <aside class="sidebar desktop-only" [class.expanded]="isSidebarOpen$ | async">
         <div class="sidebar__content">
             <div class="sidebar__content__head">
-                <span class="site-title">ng4eb</span>
+                <span class="site-title">
+                    <a routerLink="/">ng4eb</a>
+                </span>
                 <div class="menu-icon-container" (click)="toggleSidebar()">
                     <div class="menu-icon"></div>
                 </div>
