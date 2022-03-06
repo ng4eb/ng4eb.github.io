@@ -161,6 +161,13 @@ $search-bar-height: function.rem(46px);
     & > summary {
       list-style: none;
       margin-top: size.$space-8;
+      outline: none;
+      &::marker {
+        content: "";
+      }
+      &::-webkit-details-marker {
+        display: none;
+      }
       &::after {
         content: '▶';
         margin-left: size.$space-8;
