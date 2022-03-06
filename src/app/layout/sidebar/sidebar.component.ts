@@ -5,6 +5,9 @@ import {
 } from '@angular/core';
 import {LayoutService} from '../../service/layout.service';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {
+	ChapterListingService
+} from '../../service/chapter-listing.service';
 
 @Component({
 	selector: 'app-sidebar',
@@ -15,8 +18,12 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 export class SidebarComponent implements OnInit {
 	faSearch = faSearch;
 	isSidebarOpen$ = this._layoutService.getIsSidebarOpen$();
+	chapterListing = this._chapterListingService.getListing();
 
-	constructor(private _layoutService: LayoutService) {
+	constructor(
+		private _layoutService: LayoutService,
+		private _chapterListingService: ChapterListingService
+	) {
 	}
 
 	toggleSidebar() {

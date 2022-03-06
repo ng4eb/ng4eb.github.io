@@ -26,6 +26,21 @@
                         <fa-icon [icon]="faSearch"></fa-icon>
                     </div>
                 </ng-template>
+                <div class="chapter-listing" *ngIf="isSidebarOpen$ | async">
+                    <details *ngFor="let chapter of chapterListing; let i = index">
+                        <summary>Ch{{i + 1}} - {{chapter.title}}</summary>
+                        <ol class="chapter-listing__parts">
+                            <li *ngFor="let part of chapter.parts; let j = index">
+                                <a [routerLink]="['/ch' + (i+1) + '/p' + (j+1)]">P{{j + 1}} - {{part.title}}</a>
+                                <ul class="chapter-listing__sections" *ngIf="part.sections">
+                                    <li *ngFor="let section of part.sections; let k = index">
+                                        <a [routerLink]="['/ch' + (i+1) + '/p' + (j+1) + '#' + (k+1)]">{{section}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </details>
+                </div>
             </div>
         </div>
     </aside>
