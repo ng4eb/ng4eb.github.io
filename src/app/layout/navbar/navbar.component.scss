@@ -20,6 +20,8 @@
   &__menu {
     position: fixed;
     inset: size.$navbar-height 0 0;
+    height: calc(100vh - #{size.$navbar-height});
+    overflow-y: scroll;
     background: var(--grey-ee-33);
   }
 }
@@ -104,6 +106,30 @@
 
     &::-ms-input-placeholder { /* Microsoft Edge */
       color: var(--white);
+    }
+  }
+}
+
+.chapter-listing {
+  width: 80%;
+  margin-inline: auto;
+  margin-block: size.$space-16;
+  font-size: function.rem(16px);
+  @include mixin.roboto;
+  ol {
+    list-style: none;
+    padding-inline-start: size.$space-8;
+  }
+  &__chapter {
+    font-size: 1.1em;
+    color: var(--black-white);
+    margin-top: size.$space-8;
+    margin-bottom: size.$space-4;
+  }
+  &__sections {
+    font-size: 0.9em;
+    a {
+      text-decoration: none;
     }
   }
 }

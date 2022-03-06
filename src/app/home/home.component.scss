@@ -52,9 +52,21 @@
 
 @media screen and (min-width: 768px) {
   .homepage {
-    font-size: function.rem(22px);
+    font-size: function.rem(20px);
+    &__title {
+      font-size: 1em;
+    }
     &__container {
       max-width: function.rem(840px);
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .homepage {
+    font-size: function.rem(22px);
+    &__title {
+      font-size: 1.8em;
     }
     &__angular-logo {
       width: function.rem(48px);
