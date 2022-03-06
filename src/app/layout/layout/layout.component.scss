@@ -12,7 +12,9 @@
 }
 
 .content {
+  width: 100%;
   padding-top: size.$navbar-height;
+  margin-inline: auto;
 }
 
 .overlay {
@@ -25,9 +27,9 @@
 @media screen and (min-width: 768px) {
   .content {
     padding-top: 0;
-    margin-left: size.$collapse-content-left-spacing;
+    padding-inline: size.$space-26;
     &.expanded {
-      margin-left: size.$content-left-spacing;
+      padding-inline: size.$content-left-spacing;
     }
   }
 }

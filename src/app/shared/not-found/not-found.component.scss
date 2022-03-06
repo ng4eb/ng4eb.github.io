@@ -1,0 +1,8 @@
+@use "/src/styles/size";
+
+.not-found {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  padding-inline: size.$space-16;
+}

@@ -1,0 +1,75 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+.homepage {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+  padding-inline: size.$space-16;
+  margin-inline: auto;
+  max-width: size.$page-max-width;
+  font-size: function.rem(18px);
+  &__angular-logo {
+    width: function.rem(36px);
+    height: auto;
+    margin-right: size.$space-8;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: size.$space-8;
+    font-size: 1.8em;
+  }
+  &__desc,
+  &__intro,
+  &__links,
+  {
+    font-size: 1em;
+  }
+  &__desc {
+    margin-bottom: size.$space-8;
+    font-weight: 200;
+    font-style: italic;
+  }
+  &__intro {
+    margin-bottom: size.$space-16;
+  }
+  &__links {
+    margin-bottom: size.$space-16;
+    a {
+      color: var(--grey-66-cc);
+      &:hover {
+        color: var(--grey-44-aa);
+      }
+    }
+  }
+  &__cta {
+    font-size: 0.8em;
+    font-style: italic;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .homepage {
+    font-size: function.rem(20px);
+    &__title {
+      font-size: 1em;
+    }
+    &__container {
+      max-width: function.rem(840px);
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .homepage {
+    font-size: function.rem(22px);
+    &__title {
+      font-size: 1.8em;
+    }
+    &__angular-logo {
+      width: function.rem(48px);
+    }
+  }
+}
