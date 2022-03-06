@@ -153,7 +153,7 @@ $search-bar-height: function.rem(46px);
   padding-bottom: size.$space-16;
   padding-right: size.$space-4;
   font-size: function.rem(16px);
-  ol, ul {
+  ol {
     list-style: none;
     padding-inline-start: size.$space-16;
   }
@@ -176,13 +176,23 @@ $search-bar-height: function.rem(46px);
 
   &__parts {
     font-size: 0.9em;
+    a {
+      color: var(--grey-44-cc);
+      &:hover {
+        color: var(--grey-22-88);
+      }
+    }
   }
 
   &__sections {
-    font-size: 0.9em;
+    font-size: 0.95em;
     a {
       text-decoration: none;
     }
   }
 
+}
+
+.highlight {
+  background: rgba(223, 217, 43, 0.25);
 }

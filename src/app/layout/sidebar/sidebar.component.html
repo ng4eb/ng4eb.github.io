@@ -1,46 +1,64 @@
-<aside class="sidebar desktop-only" [class.expanded]="isSidebarOpen$ | async">
-        <div class="sidebar__content">
-            <div class="sidebar__content__head">
+<aside class="sidebar desktop-only"
+       [class.expanded]="isSidebarOpen$ | async">
+    <div class="sidebar__content">
+        <div class="sidebar__content__head">
                 <span class="site-title">
                     <a routerLink="/">ng4eb</a>
                 </span>
-                <div class="menu-icon-container" (click)="toggleSidebar()">
-                    <div class="menu-icon"></div>
-                </div>
-            </div>
-            <div class="sidebar__content__body">
-                <ng-container *ngIf="isSidebarOpen$ | async; else searchIcon">
-                    <div class="search-bar-container">
-                        <fa-icon [icon]="faSearch"></fa-icon>
-                        <input
-                                placeholder="search title"
-                                type="text"
-                        />
-                    </div>
-                    <div class="advanced-search" (click)="openAdvancedSearch()">
-                        advanced search
-                    </div>
-                </ng-container>
-                <ng-template #searchIcon>
-                    <div class="search-icon-container" (click)="openAdvancedSearch()">
-                        <fa-icon [icon]="faSearch"></fa-icon>
-                    </div>
-                </ng-template>
-                <div class="chapter-listing" *ngIf="isSidebarOpen$ | async">
-                    <details *ngFor="let chapter of chapterListing; let i = index">
-                        <summary>Ch{{i + 1}} - {{chapter.title}}</summary>
-                        <ol class="chapter-listing__parts">
-                            <li *ngFor="let part of chapter.parts; let j = index">
-                                <a [routerLink]="['/ch' + (i+1) + '/p' + (j+1)]">P{{j + 1}} - {{part.title}}</a>
-                                <ul class="chapter-listing__sections" *ngIf="part.sections">
-                                    <li *ngFor="let section of part.sections; let k = index">
-                                        <a [routerLink]="['/ch' + (i+1) + '/p' + (j+1) + '#' + (k+1)]">{{section}}</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </details>
-                </div>
+            <div class="menu-icon-container"
+                 (click)="toggleSidebar()">
+                <div class="menu-icon"></div>
             </div>
         </div>
-    </aside>
+        <div class="sidebar__content__body">
+            <ng-container
+                    *ngIf="isSidebarOpen$ | async; else searchIcon">
+                <div class="search-bar-container">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                    <input
+                            placeholder="search title"
+                            type="text"
+                            #titleSearch
+                    />
+                </div>
+                <div class="advanced-search"
+                     (click)="openAdvancedSearch()">
+                    advanced search
+                </div>
+            </ng-container>
+            <ng-template #searchIcon>
+                <div class="search-icon-container"
+                     (click)="openAdvancedSearch()">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </div>
+            </ng-template>
+            <div class="chapter-listing"
+                 *ngIf="isSidebarOpen$ | async">
+                <details
+                        *ngFor="let chapter of chapterListing; let i = index">
+                    <summary
+                            [class.highlight]="titleMatched(chapter.title)">
+                        Ch{{chapter.ch}}
+                        - {{chapter.title}}</summary>
+                    <ol class="chapter-listing__parts">
+                        <li *ngFor="let part of chapter.parts; let j = index">
+                            <a [class.highlight]="titleMatched(part.title)"
+                               [routerLink]="['/ch' + chapter.ch + '/p' + (j+1)]">
+                                P{{j + 1}} - {{part.title}}
+                            </a>
+                            <ol class="chapter-listing__sections"
+                                *ngIf="part.sections">
+                                <li *ngFor="let section of part.sections; let k = index">
+                                    <a [class.highlight]="titleMatched(section)"
+                                       [routerLink]="['/ch' + chapter.ch + '/p' + (j+1) + '#' + (k+1)]">
+                                        {{section}}
+                                    </a>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </details>
+            </div>
+        </div>
+    </div>
+</aside>

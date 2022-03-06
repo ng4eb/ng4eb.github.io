@@ -28,6 +28,9 @@
       border-radius: 5px;
       background: var(--grey-ee-33);
       color: var(--grey-44-aa);
+      &.done {
+        background: var(--green-e0-00);
+      }
       &.active {
         background: var(--blue-e0-00);
         color: var(--grey-66-cc);

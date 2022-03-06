@@ -1,6 +1,8 @@
 <nav class="navbar mobile-only">
-    <div class="menu-icon-container" (click)="toggleMenuOpen()">
-        <div class="menu-icon" [class.open]="isMenuOpen$ | async"></div>
+    <div class="menu-icon-container"
+         (click)="toggleMenuOpen()">
+        <div class="menu-icon"
+             [class.open]="isMenuOpen$ | async"></div>
     </div>
     <span class="site-title">
         <a routerLink="/">ng4eb</a>
@@ -10,9 +12,34 @@
         <div class="search-bar-container">
             <fa-icon [icon]="faSearch"></fa-icon>
             <input
-                    placeholder="search title"
+                    placeholder="search anything"
                     type="text"
             />
+        </div>
+        <div class="chapter-listing">
+            <ol class="chapter-listing__chapters">
+                <li *ngFor="let chapter of chapterListing; let i = index">
+                    <div class="chapter-listing__chapter">
+                        Ch{{i + 1}} - {{chapter.title}}
+                    </div>
+                    <ol class="chapter-listing__parts">
+                        <li *ngFor="let part of chapter.parts; let j = index">
+                            <a (click)="toggleMenuOpen()"
+                                    [routerLink]="['/ch' + (i+1) + '/p' + (j+1)]">
+                                P{{j + 1}}
+                                - {{part.title}}</a>
+                            <ol class="chapter-listing__sections">
+                                <li *ngFor="let section of part.sections; let k = index">
+                                    <a (click)="toggleMenuOpen()"
+                                            [routerLink]="['/ch' + (i+1) + '/p' + (j+1) + '#' + (k+1)]">
+                                        {{section}}
+                                    </a>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
         </div>
     </div>
 </nav>

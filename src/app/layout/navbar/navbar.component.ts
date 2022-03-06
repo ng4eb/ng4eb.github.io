@@ -5,6 +5,9 @@ import {
 } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {
+	ChapterListingService
+} from '../../service/chapter-listing.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -15,8 +18,9 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit {
 	faSearch = faSearch;
 	isMenuOpen$ = new BehaviorSubject(false);
+	chapterListing = this._chapterListingService.getListing();
 
-	constructor() {
+	constructor(private _chapterListingService: ChapterListingService) {
 	}
 
 	toggleMenuOpen() {

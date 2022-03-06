@@ -7,6 +7,7 @@ export class ChapterListingService {
 	private _chapterListing = [
 		// chapter 1
 		{
+			ch: 1,
 			title: "Introduction to Angular",
 			parts: [
 				{
@@ -26,6 +27,7 @@ export class ChapterListingService {
 		},
 		// chapter 2
 		{
+			ch: 2,
 			title: "CLI & Workspace",
 			parts: [
 				{
@@ -49,6 +51,7 @@ export class ChapterListingService {
 		},
 		// chapter 3
 		{
+			ch: 3,
 			title: "Components & Modules",
 			parts: [
 				{
@@ -79,6 +82,7 @@ export class ChapterListingService {
 		},
 		// chapter 4
 		{
+			ch: 4,
 			title: "Routing",
 			parts: [
 				{
@@ -100,6 +104,7 @@ export class ChapterListingService {
 		},
 		// chapter 5
 		{
+			ch: 5,
 			title: "Services & RxJS",
 			parts: [
 				{
@@ -120,6 +125,7 @@ export class ChapterListingService {
 			]
 		},
 		{
+			ch: 6,
 			title: "Forms & HTTP Client",
 			parts: [
 				{
@@ -152,5 +158,20 @@ export class ChapterListingService {
 
 	getListing() {
 		return this._chapterListing;
+	}
+
+	getFilteredListing(filterQuery: string) {
+		filterQuery = filterQuery.toLowerCase();
+		return this._chapterListing.filter(chapter => (
+			chapter.title.toLowerCase().includes(filterQuery)
+			||
+			chapter.parts.some(part => (
+				part.title.toLowerCase().includes(filterQuery)
+				||
+				part.sections?.some(section => (
+					section.toLowerCase().includes(filterQuery)
+				))
+			))
+		))
 	}
 }
