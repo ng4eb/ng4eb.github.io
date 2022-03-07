@@ -66,6 +66,10 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 		);
 	}
 
+	onClickHashTagLink(hash: string) {
+		this._chapterListingService.onClickHashTagLink(hash);
+	}
+
 	ngOnInit(): void {
 	}
 

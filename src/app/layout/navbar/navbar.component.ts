@@ -27,6 +27,11 @@ export class NavbarComponent implements OnInit {
 		this.isMenuOpen$.next(!this.isMenuOpen$.value);
 	}
 
+	onClickHashTagLink(hash: string) {
+		this._chapterListingService.onClickHashTagLink(hash);
+		this.toggleMenuOpen();
+	}
+
 	ngOnInit(): void {
 	}
 

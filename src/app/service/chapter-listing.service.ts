@@ -216,4 +216,13 @@ export class ChapterListingService {
 			next
 		}
 	}
+
+	onClickHashTagLink(hash: string) {
+		setTimeout(() => {
+			window.location.hash = hash + '#';
+			setTimeout(() => {
+				window.location.hash = hash;
+			});
+		})
+	}
 }

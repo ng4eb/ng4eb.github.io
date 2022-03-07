@@ -53,7 +53,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
 				let i = 1;
 				arr.forEach(child => {
 					if (child.tagName === 'H2') {
-						console.log('found')
 						child.setAttribute('id', `${i}`);
 						i++;
 					}
