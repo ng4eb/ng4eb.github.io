@@ -31,7 +31,7 @@
                             <ol class="chapter-listing__sections">
                                 <li *ngFor="let section of part.sections; let k = index">
                                     <a (click)="toggleMenuOpen()"
-                                            [routerLink]="['/ch' + (i+1) + '/p' + (j+1) + '#' + (k+1)]">
+                                            [routerLink]="['/ch' + (i+1) + '/p' + (j+1)]"  [fragment]="'' + (k+1)">
                                         {{section}}
                                     </a>
                                 </li>

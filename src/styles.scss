@@ -30,6 +30,25 @@ a {
   }
 }
 
+h2 {
+  margin: size.$space-16 0 size.$space-26;
+  font-size: 1.4em;
+  text-align: center;
+  border-bottom: 5px solid var(--grey-66-cc);
+  &:not(:first-child) {
+    margin-top: size.$space-32;
+  }
+}
+
+h3 {
+  margin-top: size.$space-16;
+}
+
+p {
+  margin-bottom: size.$space-12;
+}
+
+
 /* Global Classes */
 
 .desktop-only {

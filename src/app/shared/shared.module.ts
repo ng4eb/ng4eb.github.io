@@ -5,12 +5,14 @@ import {
 	NotFoundComponent
 } from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
+import { WithoutHashPipe } from './without-hash.pipe';
 
 
 @NgModule({
 	declarations: [
 		AutofocusDirective,
-		NotFoundComponent
+		NotFoundComponent,
+  WithoutHashPipe
 	],
 	imports: [
 		CommonModule,
@@ -18,7 +20,8 @@ import {RouterModule} from '@angular/router';
 	],
 	exports: [
 		AutofocusDirective,
-		NotFoundComponent
+		NotFoundComponent,
+		WithoutHashPipe
 	]
 })
 export class SharedModule {

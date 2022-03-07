@@ -50,7 +50,7 @@
                                 *ngIf="part.sections">
                                 <li *ngFor="let section of part.sections; let k = index">
                                     <a [class.highlight]="titleMatched(section)"
-                                       [routerLink]="['/ch' + chapter.ch + '/p' + (j+1) + '#' + (k+1)]">
+                                       [routerLink]="['/ch' + chapter.ch + '/p' + (j+1)]" [fragment]="'' + (k+1)">
                                         {{section}}
                                     </a>
                                 </li>
