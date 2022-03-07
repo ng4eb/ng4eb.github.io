@@ -9,7 +9,8 @@
   width: 100%;
   height: 100%;
   &__container {
-    padding-inline: size.$space-16;
+    padding-left: size.$space-16;
+    padding-right: size.$space-16;
     width: 100%;
     height: 100%;
     h1 {
@@ -52,8 +53,10 @@
 @media screen and (min-width: 768px) {
   .roadmap {
     max-width: size.$page-max-width;
-    padding-block: size.$space-64;
-    margin-inline: auto;
+    padding-left: size.$space-64;
+    padding-right: size.$space-64;
+    margin-left: auto;
+    margin-right: auto;
     font-size: function.rem(24px);
     h1 {
       text-align: left;
@@ -64,14 +67,17 @@
       align-items: stretch;
       width: 100%;
       max-width: function.rem(700px);
-      margin-inline: auto;
-      padding-inline: size.$space-26;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: size.$space-26;
+      padding-right: size.$space-26;
       font-size: function.rem(16px);
       &::after {
         content: '';
         position: absolute;
         left: 50%;
-        inset-block: 0;
+        top: 0;
+        bottom: 0;
         border-left: 5px dashed var(--grey-66-cc);
         transform: translateX(-50%);
         z-index: var(--z-negative-1);

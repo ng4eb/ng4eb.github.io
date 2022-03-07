@@ -5,13 +5,15 @@
 .navbar {
   position: fixed;
   top: 0;
-  inset-inline: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
   height: size.$navbar-height;
-  padding-inline: size.$space-26;
+  padding-left: size.$space-26;
+  padding-right: size.$space-26;
   font-size: function.rem(36px);
   @include mixin.adventPro;
   background: var(--grey-44);
@@ -19,7 +21,10 @@
 
   &__menu {
     position: fixed;
-    inset: size.$navbar-height 0 0;
+    top: size.$navbar-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
     height: calc(100vh - #{size.$navbar-height});
     overflow-y: scroll;
     background: var(--grey-ee-33);
@@ -47,7 +52,8 @@
   &::after {
     content: '';
     position: absolute;
-    inset-inline: 0;
+    left: 0;
+    right: 0;
     @include menu-icon;
   }
 
@@ -81,7 +87,8 @@
   width: function.rem(242px);
   height: function.rem(48px);
   margin-top: size.$space-26;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: size.$space-8;
   font-size: function.rem(18px);
   @include mixin.roboto;
@@ -112,13 +119,12 @@
 
 .chapter-listing {
   width: 80%;
-  margin-inline: auto;
-  margin-block: size.$space-16;
+  margin: size.$space-16 auto;
   font-size: function.rem(16px);
   @include mixin.roboto;
   ol {
     list-style: none;
-    padding-inline-start: size.$space-8;
+    padding-left: size.$space-8;
   }
   &__chapter {
     font-size: 1.1em;
