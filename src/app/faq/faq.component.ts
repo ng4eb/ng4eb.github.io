@@ -23,7 +23,7 @@ export class FaqComponent implements OnInit {
 			title: "I'm New to Angular",
 			paragraphs: [
 				"Welcome to the world of Angular!",
-				"If you are already familiar with the background of Angular, you can skip chapter one. Otherwise, it is best to start from chapter one.",
+				"If you are already familiar with the background of Angular, you can skip chapter one. Otherwise, it is best to start from there!",
 				"Good luck!"
 			]
 		},

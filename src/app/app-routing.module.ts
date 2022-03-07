@@ -25,6 +25,14 @@ const routes: Routes = [
 		loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapModule)
 	},
 	{
+		path: 'ch1/p1',
+		loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
+	},
+	{
+		path: 'ch1/p2',
+		loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
+	},
+	{
 		path: '**',
 		component: NotFoundComponent
 	}
