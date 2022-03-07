@@ -223,6 +223,6 @@ export class ChapterListingService {
 			setTimeout(() => {
 				window.location.hash = hash;
 			});
-		})
+		}, 100)
 	}
 }
