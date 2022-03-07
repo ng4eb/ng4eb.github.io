@@ -5,8 +5,10 @@
   width: 100%;
   max-width: size.$page-max-width;
   padding-top: size.$space-32;
-  padding-inline: size.$space-16;
-  margin-inline: auto;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
+  margin-left: auto;
+  margin-right: auto;
   &__content {
     h1 {
       margin-bottom: size.$space-12;

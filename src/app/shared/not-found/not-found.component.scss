@@ -4,5 +4,6 @@
   display: grid;
   height: 100%;
   place-items: center;
-  padding-inline: size.$space-16;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
 }

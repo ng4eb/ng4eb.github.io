@@ -47,7 +47,8 @@
       }
 
       &__body {
-        padding-inline: size.$space-26;
+        padding-left: size.$space-26;
+        padding-right: size.$space-26;
       }
     }
   }
@@ -111,15 +112,17 @@ $search-bar-height: function.rem(46px);
   align-items: center;
   width: function.rem(242px);
   height: $search-bar-height;
-  margin-block-start: size.$space-16;
-  margin-inline: auto;
-  padding-inline: size.$space-16;
+  margin-top: size.$space-16;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
   border-radius: 2px;
   background: var(--grey-aa);
   color: var(--white);
   fa-icon {
     flex-shrink: 0;
-    margin-inline-end: size.$space-8;
+    margin-right: size.$space-8;
     font-size: 1.2em;
     cursor: pointer;
   }
@@ -155,7 +158,7 @@ $search-bar-height: function.rem(46px);
   font-size: function.rem(16px);
   ol {
     list-style: none;
-    padding-inline-start: size.$space-16;
+    padding-left: size.$space-16;
   }
   details {
     & > summary {

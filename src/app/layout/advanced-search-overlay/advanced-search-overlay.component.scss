@@ -9,7 +9,8 @@
   align-items: center;
   width: function.rem(740px);
   height: function.rem(100px);
-  padding-inline: size.$space-16;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
   border-radius: 10px;
   background: var(--white);
   color: var(--grey-66);
