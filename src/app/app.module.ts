@@ -7,22 +7,33 @@ import {LayoutModule} from './layout/layout.module';
 import {SharedModule} from './shared/shared.module';
 import {UrlSerializer} from '@angular/router';
 import {CustomUrlSerializer} from './custom-url-serializer';
+import {MarkdownModule, MarkedOptions} from 'ngx-markdown';
+import {
+	MarkedOptionsFactory
+} from './marked-options-factory';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({appId: 'serverApp'}),
 		AppRoutingModule,
 		LayoutModule,
-		SharedModule
+		SharedModule,
+		MarkdownModule.forRoot({
+				markedOptions: {
+					provide: MarkedOptions,
+					useFactory: MarkedOptionsFactory,
+				}
+			},
+		)
 	],
 	providers: [
 		{
 			provide: UrlSerializer,
 			useClass: CustomUrlSerializer
-		}
+		},
 	],
 	bootstrap: [AppComponent]
 })

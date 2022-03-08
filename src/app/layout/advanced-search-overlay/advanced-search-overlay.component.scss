@@ -1,6 +1,11 @@
 @use '/src/styles/function';
 @use '/src/styles/size';
 
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
 .advanced-search-overlay {
   position: fixed;
   top: 20%;
@@ -9,7 +14,8 @@
   align-items: center;
   width: function.rem(740px);
   height: function.rem(100px);
-  padding-inline: size.$space-16;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
   border-radius: 10px;
   background: var(--white);
   color: var(--grey-66);
@@ -26,5 +32,38 @@
     flex-grow: 1;
     min-width: 0;
     font-size: function.rem(24px)
+  }
+}
+
+.search-results-box {
+  position: fixed;
+  top: calc(20% + #{function.rem(100px)} + #{size.$space-12});
+  left: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: function.rem(740px);
+  min-height: function.rem(100px);
+  padding: size.$space-16 size.$space-8;
+  background: var(--white);
+  color: var(--grey-66);
+  z-index: var(--z-10);
+  transform: translateX(-50%);
+
+  fa-icon {
+    font-size: function.rem(24px);
+    animation: spin 1s linear infinite;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    a {
+      color: var(--grey-44);
+      &:hover {
+        color: var(--grey-22)
+      }
+    }
   }
 }

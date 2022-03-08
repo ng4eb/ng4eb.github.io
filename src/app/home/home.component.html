@@ -5,16 +5,16 @@
                     *ngIf="isDarkTheme$ | async; else lightLogo"
                     class="homepage__angular-logo"
                     src="assets/images/angular_logo_white.svg"
-                    alt="angular one color white" />
+                    alt="" />
             <ng-template #lightLogo>
                 <img
                         class="homepage__angular-logo"
                         src="assets/images/angular_logo.svg"
-                        alt="angular one color black" />
+                        alt="" />
             </ng-template>
             Angular for Everybody
         </h1>
-        <h2 class="homepage__desc">A free, online, ever-growing eBook that explains Angular concepts in simple English</h2>
+        <p class="homepage__desc">A free, online, <abbr title="keep it simple, stupid">KISS</abbr> eBook that explains Angular concepts in simple English</p>
         <p class="homepage__intro">Now, feel free to click any of the links below to get started:</p>
         <ul class="homepage__links">
             <li>

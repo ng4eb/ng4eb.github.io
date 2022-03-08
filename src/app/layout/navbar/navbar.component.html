@@ -10,10 +10,13 @@
     <app-theme-switch></app-theme-switch>
     <div class="navbar__menu" *ngIf="isMenuOpen$ | async">
         <div class="search-bar-container">
-            <fa-icon [icon]="faSearch"></fa-icon>
+            <fa-icon (click)="goFullSearch()"
+                    [icon]="faSearch"
+            ></fa-icon>
             <input
                     placeholder="search anything"
                     type="text"
+                    #query
             />
         </div>
         <div class="chapter-listing">
@@ -24,14 +27,16 @@
                     </div>
                     <ol class="chapter-listing__parts">
                         <li *ngFor="let part of chapter.parts; let j = index">
-                            <a (click)="toggleMenuOpen()"
-                                    [routerLink]="['/ch' + (i+1) + '/p' + (j+1)]">
+                            <a (click)="onClickNormalLink()"
+                                    [routerLink]="['/book/ch' + (i+1) + '/p' + (j+1)]">
                                 P{{j + 1}}
                                 - {{part.title}}</a>
                             <ol class="chapter-listing__sections">
                                 <li *ngFor="let section of part.sections; let k = index">
-                                    <a (click)="toggleMenuOpen()"
-                                            [routerLink]="['/ch' + (i+1) + '/p' + (j+1) + '#' + (k+1)]">
+                                    <a
+                                            (click)="onClickHashTagLink('' + (k+1))"
+                                            [routerLink]="['/book/ch' + (i+1) + '/p' + (j+1)]"  [fragment]="'' + (k+1)"
+                                    >
                                         {{section}}
                                     </a>
                                 </li>

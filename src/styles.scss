@@ -12,6 +12,7 @@ body {
   @include mixin.roboto;
   background: var(--white-black);
   color: var(--black-white);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, p, ul, ol {
@@ -25,10 +26,48 @@ input {
 
 a {
   color: var(--grey-66-cc);
+  transition: all 0.1s;
   &:hover {
     color: var(--grey-44-aa);
   }
 }
+
+h2 {
+  margin: size.$space-16 0 size.$space-26;
+  font-size: 1.4em;
+  text-align: center;
+  border-bottom: 5px solid var(--grey-66-cc);
+  &:not(:first-child) {
+    margin-top: size.$space-32;
+  }
+}
+
+h3 {
+  margin-top: size.$space-16;
+}
+
+p, ul, ol, pre {
+  margin-bottom: size.$space-12;
+}
+
+pre {
+  width: 100%;
+  padding: size.$space-8;
+  background: var(--grey-ee-33);
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: Inconsolata, monospace;
+  font-size: 0.9em;
+  padding-left: size.$space-4;
+  padding-right: size.$space-4;
+  color: var(--black-white);
+}
+
+
 
 /* Global Classes */
 

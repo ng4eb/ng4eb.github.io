@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SitemapComponent} from './sitemap.component';
+import {SearchComponent} from './search.component';
 
 const routes: Routes = [
 	{
-		path: '', component: SitemapComponent
+		path: '',
+		component: SearchComponent
 	}
 ];
 
@@ -12,5 +13,5 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class SitemapRoutingModule {
+export class SearchRoutingModule {
 }

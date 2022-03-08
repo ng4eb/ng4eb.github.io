@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	chapterListing = this._chapterListingService.getListing();
 	private _hasRegisteredTitleSearch = false;
 	private _filterQuery = '';
-	private _titleSearchSubscription!: Subscription;
+	private _titleSearchSubscription?: Subscription;
 
 	constructor(
 		private _layoutService: LayoutService,
@@ -66,11 +66,19 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 		);
 	}
 
+	onClickHashTagLink(hash: string) {
+		this._chapterListingService.onClickHashTagLink(hash);
+	}
+
+	scrollToTop() {
+		this._layoutService.scrollToTop();
+	}
+
 	ngOnInit(): void {
 	}
 
 	ngAfterViewChecked() {
-		if (!this._hasRegisteredTitleSearch && this._titleSearch && !this._titleSearchSubscription) {
+		if (!this._hasRegisteredTitleSearch && this._titleSearch) {
 			this._titleSearchSubscription = (fromEvent(this._titleSearch.nativeElement, 'keyup') as Observable<KeyboardEvent>)
 				.pipe(
 					filter(Boolean),
@@ -87,7 +95,10 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this._titleSearchSubscription.unsubscribe();
+		if (this._titleSearchSubscription) {
+			this._titleSearchSubscription.unsubscribe();
+			this._titleSearchSubscription = undefined;
+		}
 	}
 
 }
