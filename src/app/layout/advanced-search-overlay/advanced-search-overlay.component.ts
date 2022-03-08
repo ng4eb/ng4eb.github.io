@@ -71,6 +71,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 				{ queryParams: { query: this.queryString } }
 			);
 			this.closeSearch();
+			this._layoutService.scrollToTop();
 		}
 	}
 

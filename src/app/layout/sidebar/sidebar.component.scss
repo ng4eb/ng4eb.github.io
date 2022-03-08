@@ -187,6 +187,10 @@ $search-bar-height: function.rem(46px);
 
   &__parts {
     font-size: 0.95em;
+    li {
+      padding: 1px;
+      margin: size.$space-4 0;
+    }
     a {
       color: var(--grey-44-cc);
       &:hover {
@@ -197,6 +201,10 @@ $search-bar-height: function.rem(46px);
 
   &__sections {
     font-size: 0.975em;
+    li {
+      padding: 1px;
+      margin: size.$space-4 0;
+    }
     a {
       text-decoration: none;
     }

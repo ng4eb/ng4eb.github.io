@@ -31,13 +31,18 @@ const routes: Routes = [
 	{
 		path: '**',
 		component: NotFoundComponent
+	},
+	{
+		path: '404',
+		component: NotFoundComponent
 	}
 ];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+		initialNavigation: 'enabledBlocking',
+		anchorScrolling: 'enabled'
+	})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -1,4 +1,7 @@
 import {Injectable} from '@angular/core';
+import {
+	IsPlatformBrowserService
+} from './is-platform-browser.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -154,7 +157,7 @@ export class ChapterListingService {
 		}
 	]
 
-	constructor() {
+	constructor(private _isPlatformBrowserService: IsPlatformBrowserService) {
 	}
 
 	getListing() {
@@ -218,10 +221,9 @@ export class ChapterListingService {
 
 	onClickHashTagLink(hash: string) {
 		setTimeout(() => {
-			window.location.hash = hash + '#';
-			setTimeout(() => {
-				window.location.hash = hash;
-			});
+			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+				document.querySelector('#' + hash)?.scrollIntoView();
+			}
 		}, 100)
 	}
 }

@@ -61,6 +61,7 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 				{ queryParams: { query: this.queryString } }
 			);
 			this.toggleMenuOpen();
+			this._layoutService.scrollToTop();
 		}
 	}
 
