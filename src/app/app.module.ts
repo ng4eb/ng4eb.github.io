@@ -7,10 +7,6 @@ import {LayoutModule} from './layout/layout.module';
 import {SharedModule} from './shared/shared.module';
 import {UrlSerializer} from '@angular/router';
 import {CustomUrlSerializer} from './custom-url-serializer';
-import {
-	HttpClient,
-	HttpClientModule
-} from '@angular/common/http';
 import {MarkdownModule, MarkedOptions} from 'ngx-markdown';
 import {
 	MarkedOptionsFactory
@@ -21,13 +17,11 @@ import {
 		AppComponent,
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({appId: 'serverApp'}),
 		AppRoutingModule,
 		LayoutModule,
 		SharedModule,
-		HttpClientModule,
 		MarkdownModule.forRoot({
-				loader: HttpClient,
 				markedOptions: {
 					provide: MarkedOptions,
 					useFactory: MarkedOptionsFactory,
@@ -39,7 +33,7 @@ import {
 		{
 			provide: UrlSerializer,
 			useClass: CustomUrlSerializer
-		}
+		},
 	],
 	bootstrap: [AppComponent]
 })

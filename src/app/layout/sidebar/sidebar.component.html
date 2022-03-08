@@ -43,14 +43,16 @@
                     <ol class="chapter-listing__parts">
                         <li *ngFor="let part of chapter.parts; let j = index">
                             <a [class.highlight]="titleMatched(part.title)"
-                               [routerLink]="['/ch' + chapter.ch + '/p' + (j+1)]">
+                               [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]"
+                               (click)="scrollToTop()"
+                            >
                                 P{{j + 1}} - {{part.title}}
                             </a>
                             <ol class="chapter-listing__sections"
                                 *ngIf="part.sections">
                                 <li *ngFor="let section of part.sections; let k = index">
                                     <a [class.highlight]="titleMatched(section)"
-                                       [routerLink]="['/ch' + chapter.ch + '/p' + (j+1)]" [fragment]="'' + (k+1)"
+                                       [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]" [fragment]="'' + (k+1)"
                                        (click)="onClickHashTagLink('' + (k+1))"
                                     >
                                         {{section}}

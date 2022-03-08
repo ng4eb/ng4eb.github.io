@@ -1,10 +1,35 @@
 <div class="desktop-only">
     <div class="advanced-search-overlay">
-        <fa-icon [icon]="faSearch"></fa-icon>
+        <fa-icon (click)="goFullSearch()" [icon]="faSearch"></fa-icon>
         <input
                 placeholder="search anything"
                 type="text"
                 [autofocus]="true"
+                #query
         />
+    </div>
+    <div *ngIf="queryString" class="search-results-box">
+        <fa-icon *ngIf="isSearching; else searched"
+                 [icon]="faSpinner"></fa-icon>
+        <ng-template #searched>
+            <div *ngIf="searchResults.length > 0; else noResult">
+                <ul>
+                    <li *ngFor="let result of searchResults">
+                        <a
+                                [routerLink]="result.url"
+                                (click)="clickUrl()"
+                        >{{result.title}}</a>
+                        <p>
+                            {{result.content}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <ng-template #noResult>
+                <div>
+                    No results were found
+                </div>
+            </ng-template>
+        </ng-template>
     </div>
 </div>

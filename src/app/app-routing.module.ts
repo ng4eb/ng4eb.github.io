@@ -15,22 +15,18 @@ const routes: Routes = [
 		loadChildren: () => import('./faq/faq.module').then(m => m.FaqModule)
 	},
 	{
-		path: 'sitemap',
-		pathMatch: 'full',
-		loadChildren: () => import('./sitemap/sitemap.module').then(m => m.SitemapModule)
-	},
-	{
 		path: 'roadmap',
 		pathMatch: 'full',
 		loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapModule)
 	},
 	{
-		path: 'ch1/p1',
+		path: 'book',
 		loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
 	},
 	{
-		path: 'ch1/p2',
-		loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
+		path: 'search',
+		pathMatch: 'full',
+		loadChildren: () => import('./search/search.module').then(m => m.SearchModule)
 	},
 	{
 		path: '**',
@@ -39,7 +35,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {

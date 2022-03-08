@@ -18,7 +18,5 @@
         </nav>
         <h1 class="chapter-title">{{navigation.title}}</h1>
     </header>
-    <markdown [src]="'/assets/markdown/' + ((path | async) | withoutHash) + '.md'"
-              (load)="onLoad($event)"
-              #md></markdown>
+    <router-outlet></router-outlet>
 </article>

@@ -10,6 +10,7 @@
   &-navigation {
     display: flex;
     flex-flow: column nowrap;
+    margin-bottom: size.$space-12;
 
     &__prev,
     &__next {
@@ -42,6 +43,11 @@
         padding: size.$space-8;
         margin: size.$space-8;
         border: 2px solid var(--grey-22-88);
+        transition: all 0.2s;
+        &:hover {
+          color: var(--grey-ee-33);
+          background: var(--black-white);
+        }
       }
       &__next {
         margin-left: auto;

@@ -159,6 +159,7 @@ $search-bar-height: function.rem(46px);
   ol {
     list-style: none;
     padding-left: size.$space-16;
+    margin-bottom: size.$space-4;
   }
   details {
     & > summary {
@@ -185,7 +186,7 @@ $search-bar-height: function.rem(46px);
   }
 
   &__parts {
-    font-size: 0.9em;
+    font-size: 0.95em;
     a {
       color: var(--grey-44-cc);
       &:hover {
@@ -195,7 +196,7 @@ $search-bar-height: function.rem(46px);
   }
 
   &__sections {
-    font-size: 0.95em;
+    font-size: 0.975em;
     a {
       text-decoration: none;
     }

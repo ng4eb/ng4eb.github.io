@@ -97,7 +97,8 @@ export class ChapterListingService {
 					title: "Advanced Routing Techniques",
 					sections: [
 						"Lazy-loading a module",
-						"Implementing an authentication router guard"
+						"Implementing an authentication router guard",
+						"Using resolvers"
 					]
 				}
 			]
@@ -176,15 +177,13 @@ export class ChapterListingService {
 	}
 
 	getNavigation(path: string) {
-		const pathArray = path.replace('/ch', '')
+		const pathArray = path.replace('/book/ch', '')
 			.replace('/p', '')
 			.split('#')[0]
 			.split('')
 			.map(s => parseInt(s));
 		const currChapter = this._chapterListing[pathArray[0] - 1];
 		const currPart = currChapter.parts[pathArray[1] - 1];
-		console.log('currChapter', currChapter);
-		console.log('currPart', currPart);
 		const prev = {
 			title: '',
 			path: '',
@@ -196,20 +195,20 @@ export class ChapterListingService {
 		// parsing next
 		if (currChapter.parts.length > pathArray[1]) {
 			next.title = `Ch${pathArray[0]} - P${pathArray[1] + 1} - ${currChapter.parts[pathArray[1]].title}`;
-			next.path = `/ch${pathArray[0]}/p${pathArray[1] + 1}`
+			next.path = `/book/ch${pathArray[0]}/p${pathArray[1] + 1}`
 		} else if (this._chapterListing.length > pathArray[0]) {
-			next.title = `Ch${pathArray[0] + 1} - P1 - ${this._chapterListing[pathArray[0] + 1].parts[0].title}`;
-			next.path = `/ch${pathArray[0] + 1}/p1`
+			next.title = `Ch${pathArray[0] + 1} - P1 - ${this._chapterListing[pathArray[0]].parts[0].title}`;
+			next.path = `/book/ch${pathArray[0] + 1}/p1`
 		}
 		// parsing prev
 		if (1 < pathArray[1]) {
 			prev.title = `Ch${pathArray[0]} - P${pathArray[1] - 1} - ${currChapter.parts[pathArray[1] - 2].title}`;
-			prev.path = `/ch${pathArray[0]}/p${pathArray[1] - 1}`
+			prev.path = `/book/ch${pathArray[0]}/p${pathArray[1] - 1}`
 		} else if (1 < pathArray[0]) {
-			next.title = `Ch${pathArray[0] - 1} - P1 - ${this._chapterListing[pathArray[0] - 2].parts[0].title}`;
-			next.path = `/ch${pathArray[0] - 1}/p1`
+			const prevChapter = this._chapterListing[pathArray[0] - 2];
+			prev.title = `Ch${pathArray[0] - 1} - P${prevChapter.parts.length} - ${this._chapterListing[pathArray[0] - 2].parts[0].title}`;
+			prev.path = `/book/ch${pathArray[0] - 1}/p${prevChapter.parts.length}`
 		}
-
 		return {
 			title: `Ch${pathArray[0]}-P${pathArray[1]} - ${currPart.title}`,
 			prev,

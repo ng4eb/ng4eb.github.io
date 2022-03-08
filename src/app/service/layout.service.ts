@@ -1,56 +1,65 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {
+	IsPlatformBrowserService
+} from './is-platform-browser.service';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class LayoutService {
-  private _isOverlayOpen$ = new BehaviorSubject(false);
-  private _isAdvancedSearchOpen$ = new BehaviorSubject(false);
-  private _isSidebarOpen$ = new BehaviorSubject(true);
-  private _darkTheme$ = new BehaviorSubject(localStorage.getItem('darkTheme') === 'true' ? true : false);
+	private _isPlatformBrowser = this._isPlateFormBrowserService.getIsPlatformBrowser();
+	private _isOverlayOpen$ = new BehaviorSubject(false);
+	private _isAdvancedSearchOpen$ = new BehaviorSubject(false);
+	private _isSidebarOpen$ = new BehaviorSubject(true);
+	private _darkTheme$ = new BehaviorSubject(this._isPlatformBrowser && localStorage.getItem('darkTheme') === 'true' ? true : false);
 
 
-  constructor() { }
+	constructor(private _isPlateFormBrowserService: IsPlatformBrowserService) {
+	}
 
-  getIsSidebarOpen$(): Observable<boolean> {
-    return this._isSidebarOpen$;
-  }
+	getIsSidebarOpen$(): Observable<boolean> {
+		return this._isSidebarOpen$;
+	}
 
-  toggleSidebarOpen() {
-    this._isSidebarOpen$.next(!this._isSidebarOpen$.value);
-  }
+	toggleSidebarOpen() {
+		this._isSidebarOpen$.next(!this._isSidebarOpen$.value);
+	}
 
-  getIsOverlayOpen$(): Observable<boolean> {
-    return this._isOverlayOpen$;
-  }
+	getIsOverlayOpen$(): Observable<boolean> {
+		return this._isOverlayOpen$;
+	}
 
-  setOverlayOpen(value: boolean) {
-    this._isOverlayOpen$.next(value);
-  }
+	setOverlayOpen(value: boolean) {
+		this._isOverlayOpen$.next(value);
+	}
 
-  getIsAdvacnedSearchOpen$(): Observable<boolean> {
-    return this._isAdvancedSearchOpen$;
-  }
+	getIsAdvacnedSearchOpen$(): Observable<boolean> {
+		return this._isAdvancedSearchOpen$;
+	}
 
-  setIsAdvancedSearchOpen(value: boolean) {
-    this._isAdvancedSearchOpen$.next(value);
-    this.setOverlayOpen(value);
-  }
+	setIsAdvancedSearchOpen(value: boolean) {
+		this._isAdvancedSearchOpen$.next(value);
+		this.setOverlayOpen(value);
+	}
 
-  getIsDarkTheme$(): Observable<boolean> {
-    return this._darkTheme$;
-  }
+	getIsDarkTheme$(): Observable<boolean> {
+		return this._darkTheme$;
+	}
 
-  toggleTheme() {
-    localStorage.setItem('darkTheme', !this._darkTheme$.value ? 'true' : 'false');
-    this._darkTheme$.next(!this._darkTheme$.value);
-  }
+	toggleTheme() {
+		if (this._isPlatformBrowser) {
+			localStorage.setItem('darkTheme', !this._darkTheme$.value ? 'true' : 'false');
+			this._darkTheme$.next(!this._darkTheme$.value);
+		}
+	}
 
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }
+	scrollToTop() {
+		if (this._isPlatformBrowser) {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		}
+	}
 }

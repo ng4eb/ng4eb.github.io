@@ -1,0 +1,40 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+.search-results-page {
+  max-width: size.$page-max-width;
+  padding: size.$space-32 size.$space-16;
+
+  h1 {
+    margin-bottom: size.$space-16;
+  }
+
+  p {
+    font-size: 0.8em;
+    color: var(--grey-66-cc);
+  }
+
+  .go-back {
+    margin-bottom: size.$space-8;
+    a {
+      color: var(--grey-66-cc);
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    a {
+      display: block;
+      margin-bottom: size.$space-8;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .search-results-page {
+    padding-top: size.$space-64;
+    font-size: function.rem(20px);
+  }
+}

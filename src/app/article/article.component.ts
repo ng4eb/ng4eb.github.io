@@ -16,6 +16,10 @@ import {
 	faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 import {MarkdownComponent} from 'ngx-markdown';
+import {Router} from '@angular/router';
+import {
+	IsPlatformBrowserService
+} from '../service/is-platform-browser.service';
 
 @Component({
 	selector: 'app-article',
@@ -28,6 +32,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
 	faAngleLeft = faAngleLeft;
 	faAngleRight = faAngleRight;
 	path = this._routingService.getPath();
+	url = this._router.url;
 	navigation = {
 		title: '',
 		prev: {
@@ -42,8 +47,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
 	subscription!: Subscription;
 
 	constructor(
+		private _router: Router,
 		private _routingService: RoutingService,
-		private _chapterListingService: ChapterListingService
+		private _chapterListingService: ChapterListingService,
+		private _isPlatformBrowserService: IsPlatformBrowserService
 	) {
 	}
 
@@ -59,7 +66,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
 				});
 			}
 		);
-		if (window.location.hash) {
+		if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.location.hash) {
 			const hash = window.location.hash.split('#')[1];
 			window.location.hash = hash + '#';
 			setTimeout(() => {
@@ -68,11 +75,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		}
 	}
 
-
 	ngOnInit(): void {
-		this.subscription = this.path.subscribe((path) =>
-			this.navigation = this._chapterListingService.getNavigation(path)
-		);
+		this.subscription = this.path.subscribe((path) => {
+			this.url = path || this.url;
+			this.navigation = this._chapterListingService.getNavigation(this.url);
+		});
 	}
 
 	ngOnDestroy() {
