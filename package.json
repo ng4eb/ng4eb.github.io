@@ -11,7 +11,8 @@
     "serve:ssr": "node dist/ng4eb-revamp/server/main.js",
     "build:ssr": "ng build && ng run ng4eb-revamp:server",
     "prerender": "ng run ng4eb-revamp:prerender",
-    "serve:prerender": "npx ts-node --project tsconfig.ssr-preview.json ssr-preview.ts"
+    "serve:prerender": "npx ts-node --project tsconfig.ssr-preview.json ssr-preview.ts",
+    "copy": "cp _redirects dist/ng4eb-revamp/browser"
   },
   "private": true,
   "dependencies": {
