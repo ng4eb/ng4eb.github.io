@@ -10,6 +10,7 @@ import {
 } from '../service/advanced-search.service';
 
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import {LayoutService} from '../service/layout.service';
 
 @Component({
 	selector: 'app-search',
@@ -25,8 +26,13 @@ export class SearchComponent implements OnInit {
 	constructor(
 		private _route: ActivatedRoute,
 		private _advancedSearchService: AdvancedSearchService,
+		private _layoutService: LayoutService,
 		private _cdr: ChangeDetectorRef
 	) {
+	}
+
+	scrollToTop() {
+		this._layoutService.scrollToTop();
 	}
 
 	ngOnInit(): void {
