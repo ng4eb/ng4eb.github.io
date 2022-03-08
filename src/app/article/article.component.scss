@@ -12,6 +12,10 @@
     flex-flow: column nowrap;
     margin-bottom: size.$space-12;
 
+    &__prev {
+      margin-bottom: size.$space-12;
+    }
+
     &__prev,
     &__next {
       display: flex;
