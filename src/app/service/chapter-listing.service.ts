@@ -222,7 +222,7 @@ export class ChapterListingService {
 	onClickHashTagLink(hash: string) {
 		setTimeout(() => {
 			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
-				document.querySelector('#' + hash)?.scrollIntoView();
+				document.getElementById(hash)?.scrollIntoView();
 			}
 		}, 100)
 	}

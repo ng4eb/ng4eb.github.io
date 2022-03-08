@@ -6,7 +6,7 @@
     <app-options-widget></app-options-widget>
     <div class="middle">
         <app-sidebar></app-sidebar>
-        <div class="content" [class.expanded]="isSidebarOpen$ | async">
+        <div id="content" class="content" [class.expanded]="isSidebarOpen$ | async">
             <ng-content></ng-content>
         </div>
     </div>

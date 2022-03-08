@@ -20,6 +20,7 @@ import {
 	AdvancedSearchOverlayComponent
 } from './advanced-search-overlay/advanced-search-overlay.component';
 import {SharedModule} from '../shared/shared.module';
+import {NgxPrintModule} from 'ngx-print';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {SharedModule} from '../shared/shared.module';
 		CommonModule,
 		FontAwesomeModule,
 		RouterModule,
-		SharedModule
+		SharedModule,
+		NgxPrintModule
 	]
 })
 export class LayoutModule {

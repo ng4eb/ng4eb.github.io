@@ -44,7 +44,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
 			path: ''
 		}
 	}
-	subscription!: Subscription;
+	private _subscription!: Subscription;
 
 	constructor(
 		private _router: Router,
@@ -76,14 +76,14 @@ export class ArticleComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this.subscription = this.path.subscribe((path) => {
+		this._subscription = this.path.subscribe((path) => {
 			this.url = path || this.url;
 			this.navigation = this._chapterListingService.getNavigation(this.url);
 		});
 	}
 
 	ngOnDestroy() {
-		this.subscription.unsubscribe();
+		this._subscription.unsubscribe();
 	}
 
 }
