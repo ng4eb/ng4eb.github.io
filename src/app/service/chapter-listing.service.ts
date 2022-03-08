@@ -218,10 +218,10 @@ export class ChapterListingService {
 
 	onClickHashTagLink(hash: string) {
 		setTimeout(() => {
-			window.location.hash = hash + '#';
+			window.location.hash = '#' + hash + '#';
 			setTimeout(() => {
-				window.location.hash = hash;
+				window.location.hash = '#' + hash;
 			});
-		}, 500)
+		}, 100)
 	}
 }
