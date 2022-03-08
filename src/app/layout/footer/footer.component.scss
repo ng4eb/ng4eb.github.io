@@ -3,7 +3,7 @@
 
 .footer {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
@@ -13,7 +13,9 @@
   background: var(--grey-22);
   color: var(--white);
 
-  & > *:not(:last-child) {
+  & > *:not(:last-child),
+  .text > *:not(:last-child)
+  {
     margin-right: size.$space-16;
   }
 
@@ -40,11 +42,12 @@
 
 
   @media screen and (min-width: 768px) {
+    flex-flow: row wrap;
     padding-left: size.$space-64;
     padding-right: size.$space-64;
     font-size: function.rem(14px);
 
-    .copyright-text {
+    .icons {
       margin-right: auto;
     }
 

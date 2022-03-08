@@ -70,6 +70,10 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 		this._chapterListingService.onClickHashTagLink(hash);
 	}
 
+	scrollToTop() {
+		this._layoutService.scrollToTop();
+	}
+
 	ngOnInit(): void {
 	}
 
@@ -82,7 +86,6 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 					distinctUntilChanged(),
 					tap((_event: KeyboardEvent) => {
 						this._filterQuery = this._titleSearch.nativeElement.value.toLowerCase();
-						console.log(this._filterQuery);
 						this.chapterListing = this._chapterListingService.getFilteredListing(this._titleSearch.nativeElement.value);
 						this._cdr.detectChanges();
 					})

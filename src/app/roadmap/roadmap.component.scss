@@ -85,7 +85,7 @@
       &__bubble {
         width: function.rem(200px);
         &:nth-child(even) {
-          align-self: end;
+          align-self: flex-end;
         }
       }
     }

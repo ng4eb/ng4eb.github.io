@@ -1,0 +1,26 @@
+<section class="search-results-page">
+    <div class="go-back">
+        <a routerLink="/">
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+            Go Back to Homepage
+        </a>
+    </div>
+    <h1>Search Results of "{{query}}"</h1>
+    <div *ngIf="searchResults.length > 0; else noResult">
+        <ul>
+            <li *ngFor="let result of searchResults">
+                <a
+                        [routerLink]="result.url"
+                >{{result.title}}</a>
+                <p>
+                    {{result.content}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noResult>
+        <div>
+            No results were found
+        </div>
+    </ng-template>
+</section>
