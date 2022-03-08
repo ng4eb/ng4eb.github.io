@@ -26,7 +26,7 @@
     right: 0;
     bottom: 0;
     height: calc(100vh - #{size.$navbar-height});
-    padding-bottom: size.$space-32;
+    padding-bottom: size.$space-48;
     overflow-y: scroll;
     background: var(--grey-ee-33);
   }
