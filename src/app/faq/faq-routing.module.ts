@@ -26,6 +26,11 @@ const routes: Routes = [
 		pathMatch: 'full',
 		component: FaqComponent
 	},
+	{
+		path: 'resources',
+		pathMatch: 'full',
+		component: FaqComponent
+	},
 	{path: '**', component: NotFoundComponent}
 ];
 
