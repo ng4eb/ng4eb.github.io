@@ -209,7 +209,7 @@ export class ChapterListingService {
 			prev.path = `/book/ch${pathArray[0]}/p${pathArray[1] - 1}`
 		} else if (1 < pathArray[0]) {
 			const prevChapter = this._chapterListing[pathArray[0] - 2];
-			prev.title = `Ch${pathArray[0] - 1} - P${prevChapter.parts.length} - ${this._chapterListing[pathArray[0] - 2].parts[0].title}`;
+			prev.title = `Ch${pathArray[0] - 1} - P${prevChapter.parts.length} - ${this._chapterListing[pathArray[0] - 2].parts[prevChapter.parts.length - 1].title}`;
 			prev.path = `/book/ch${pathArray[0] - 1}/p${prevChapter.parts.length}`
 		}
 		return {
