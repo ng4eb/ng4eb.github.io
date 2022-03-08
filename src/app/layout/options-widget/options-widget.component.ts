@@ -1,5 +1,5 @@
 import {
-	ChangeDetectionStrategy,
+	ChangeDetectionStrategy, ChangeDetectorRef,
 	Component,
 	OnInit
 } from '@angular/core';
@@ -9,6 +9,11 @@ import {
 	faPrint
 } from '@fortawesome/free-solid-svg-icons';
 import {LayoutService} from '../../service/layout.service';
+import {
+	RoutingService
+} from '../../service/routing.service';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
 	selector: 'app-options-widget',
@@ -21,8 +26,16 @@ export class OptionsWidgetComponent implements OnInit {
 	faAngleDoubleUp = faAngleDoubleUp;
 	faPrint = faPrint;
 	isOptionsOpen = false;
+	path = this._routingService.getPath();
+	url = this._router.url;
+	private _subscription!: Subscription;
 
-	constructor(private _layoutService: LayoutService) {
+	constructor(
+		private _layoutService: LayoutService,
+		private _routingService: RoutingService,
+		private _router: Router,
+		private _cdr: ChangeDetectorRef
+	) {
 	}
 
 	toggleOptionsOpen() {
@@ -34,12 +47,15 @@ export class OptionsWidgetComponent implements OnInit {
 		this.toggleOptionsOpen();
 	}
 
-	printThisPage() {
-		// TODO
-		this.toggleOptionsOpen();
+	ngOnInit(): void {
+		this._subscription = this.path.subscribe((path) => {
+			this.url = path || this.url;
+			this._cdr.detectChanges();
+		});
 	}
 
-	ngOnInit(): void {
+	ngOnDestroy() {
+		this._subscription.unsubscribe();
 	}
 
 }
