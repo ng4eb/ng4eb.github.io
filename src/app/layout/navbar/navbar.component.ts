@@ -1,6 +1,6 @@
 import {
 	AfterViewChecked,
-	ChangeDetectionStrategy,
+	ChangeDetectionStrategy, ChangeDetectorRef,
 	Component, ElementRef, OnDestroy,
 	OnInit, ViewChild
 } from '@angular/core';
@@ -20,6 +20,9 @@ import {
 } from '../../service/chapter-listing.service';
 import {LayoutService} from '../../service/layout.service';
 import {Router} from '@angular/router';
+import {
+	RoutingService
+} from '../../service/routing.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -31,14 +34,20 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	queryString = '';
 	faSearch = faSearch;
 	isMenuOpen$ = new BehaviorSubject(false);
+	currentPosition$ = this._chapterListingService.getCurrentPosition$();
 	chapterListing = this._chapterListingService.getListing();
+	url = this._router.url;
 	private _hasRegisteredQuery = false;
 	private _querySubscription?: Subscription;
+	private _path$ = this._routingService.getPath$();
+	private _subscription!: Subscription;
 
 	constructor(
 		private _chapterListingService: ChapterListingService,
 		private _layoutService: LayoutService,
+		private _routingService: RoutingService,
 		private _router: Router,
+		private _cdr: ChangeDetectorRef
 	) {
 	}
 
@@ -77,6 +86,10 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this._subscription = this._path$.subscribe((path) => {
+			this.url = path || this.url;
+			this._cdr.detectChanges();
+		});
 	}
 
 	ngAfterViewChecked() {
@@ -105,6 +118,7 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 			this._querySubscription.unsubscribe();
 			this._querySubscription = undefined;
 		}
+		this._subscription.unsubscribe();
 	}
 
 }
