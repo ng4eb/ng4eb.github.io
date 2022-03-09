@@ -234,7 +234,7 @@ With \`@Input()\`, we can pass the values from the outer component by editing it
 <button (click)="reset()">reset</button>
 \`\`\`
 
-Angular recognizes \`[count]="someValue"\` as a special syntax. The square brackets \`[]\` is used for **property binding**. You can read more about it in [the documentation](https://angular.io/guide/property-binding).
+Angular recognizes \`[count]="someValue"\` as a special syntax. The square brackets \`[]\` are used for **property binding**. You can read more about it in [the documentation](https://angular.io/guide/property-binding).
  
 In short, \`[]\` means that there is a property of a child element that we control from the parent.
 
