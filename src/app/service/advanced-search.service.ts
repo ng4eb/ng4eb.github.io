@@ -4,6 +4,7 @@ import {ch1P2Markdown} from '../article/ch1-p2/ch1-p2.markdown';
 import {ch2P1Markdown} from '../article/ch2-p1/ch2-p1.markdown';
 import {ch2P2Markdown} from '../article/ch2-p2/ch2-p2.markdown';
 import {ch2P3Markdown} from '../article/ch2-p3/ch2-p3.markdown';
+import {ch3P1Markdown} from '../article/ch3-p1/ch3-p1.markdown';
 import {
   ChapterListingService
 } from './chapter-listing.service';
@@ -17,7 +18,8 @@ export class AdvancedSearchService {
     ch1p2: ch1P2Markdown,
     ch2p1: ch2P1Markdown,
     ch2p2: ch2P2Markdown,
-    ch2p3: ch2P3Markdown
+    ch2p3: ch2P3Markdown,
+    ch3p1: ch3P1Markdown
   };
 
   private _listing = this._chapterListingService.getListing();

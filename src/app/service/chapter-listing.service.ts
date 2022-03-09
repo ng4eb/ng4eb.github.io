@@ -62,7 +62,7 @@ export class ChapterListingService {
 					sections: [
 						"How components & modules work",
 						"Creating a counter component",
-						"Nested components & communication"
+						"Nested components & two-way binding"
 					]
 				},
 				{
