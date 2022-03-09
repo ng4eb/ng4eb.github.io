@@ -5,17 +5,17 @@ import {BehaviorSubject, Observable} from 'rxjs';
 	providedIn: 'root'
 })
 export class RoutingService {
-	private _path = new BehaviorSubject('');
+	private _path$ = new BehaviorSubject('');
 
 	constructor() {
 	}
 
 	updatePath(path: string) {
-		this._path.next(path);
+		this._path$.next(path);
 	}
 
-	getPath(): Observable<string> {
-		return this._path;
+	getPath$(): Observable<string> {
+		return this._path$;
 	}
 
 }
