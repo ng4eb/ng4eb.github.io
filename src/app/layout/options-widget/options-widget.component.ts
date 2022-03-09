@@ -26,8 +26,8 @@ export class OptionsWidgetComponent implements OnInit {
 	faAngleDoubleUp = faAngleDoubleUp;
 	faPrint = faPrint;
 	isOptionsOpen = false;
-	path = this._routingService.getPath();
 	url = this._router.url;
+	private _path$ = this._routingService.getPath$();
 	private _subscription!: Subscription;
 
 	constructor(
@@ -48,7 +48,7 @@ export class OptionsWidgetComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this._subscription = this.path.subscribe((path) => {
+		this._subscription = this._path$.subscribe((path) => {
 			this.url = path || this.url;
 			this._cdr.detectChanges();
 		});

@@ -1,25 +1,26 @@
 import {
-	ChangeDetectionStrategy,
+	ChangeDetectionStrategy, ChangeDetectorRef,
 	Component,
 	OnDestroy,
 	OnInit,
-	QueryList,
 	ViewChildren
 } from '@angular/core';
 import {RoutingService} from '../service/routing.service';
 import {
 	ChapterListingService
 } from '../service/chapter-listing.service';
-import {Subscription} from 'rxjs';
+import {filter, Subscription} from 'rxjs';
 import {
 	faAngleLeft,
 	faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
-import {MarkdownComponent} from 'ngx-markdown';
 import {Router} from '@angular/router';
 import {
 	IsPlatformBrowserService
 } from '../service/is-platform-browser.service';
+import {
+	OnLoadMdService
+} from '../service/on-load-md.service';
 
 @Component({
 	selector: 'app-article',
@@ -31,7 +32,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
 	@ViewChildren('md') md: any;
 	faAngleLeft = faAngleLeft;
 	faAngleRight = faAngleRight;
-	path = this._routingService.getPath();
 	url = this._router.url;
 	navigation = {
 		title: '',
@@ -44,42 +44,34 @@ export class ArticleComponent implements OnInit, OnDestroy {
 			path: ''
 		}
 	}
+	h2Elements: Element[] = [];
+	private _path$ = this._routingService.getPath$();
 	private _subscription!: Subscription;
 
 	constructor(
 		private _router: Router,
 		private _routingService: RoutingService,
 		private _chapterListingService: ChapterListingService,
-		private _isPlatformBrowserService: IsPlatformBrowserService
+		private _isPlatformBrowserService: IsPlatformBrowserService,
+		private _onLoadMdService: OnLoadMdService,
+		private _cdr: ChangeDetectorRef
 	) {
 	}
 
-	onLoad(_e: any) {
-		(this.md as QueryList<MarkdownComponent>).forEach((el) => {
-				const arr = Array.from(el.element.nativeElement.children);
-				let i = 1;
-				arr.forEach(child => {
-					if (child.tagName === 'H2') {
-						child.setAttribute('id', `${i}`);
-						i++;
-					}
-				});
-			}
-		);
-		if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.location.hash) {
-			const hash = window.location.hash.split('#')[1];
-			window.location.hash = hash + '#';
-			setTimeout(() => {
-				window.location.hash = hash;
-			});
-		}
-	}
-
 	ngOnInit(): void {
-		this._subscription = this.path.subscribe((path) => {
+		this._subscription = this._path$.subscribe((path) => {
 			this.url = path || this.url;
 			this.navigation = this._chapterListingService.getNavigation(this.url);
 		});
+	}
+
+	ngAfterViewInit(): void {
+		this._onLoadMdService.getH2Elements()
+			.pipe(filter(Boolean))
+			.subscribe((elements) => {
+				this.h2Elements = elements;
+				this._cdr.detectChanges();
+			});
 	}
 
 	ngOnDestroy() {

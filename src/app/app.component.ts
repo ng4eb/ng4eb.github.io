@@ -1,10 +1,12 @@
 import {
 	ChangeDetectionStrategy,
-	Component, Inject,
-	OnInit, PLATFORM_ID
+	Component,
+	Inject,
+	OnInit,
+	PLATFORM_ID
 } from '@angular/core';
 import {LayoutService} from './service/layout.service';
-import {NavigationStart, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {filter, map} from 'rxjs';
 import {RoutingService} from './service/routing.service';
 import {isPlatformBrowser} from '@angular/common';
@@ -32,8 +34,8 @@ export class AppComponent implements OnInit {
 			});
 
 			this._router.events.pipe(
-				filter(events => events instanceof NavigationStart),
-				map(events => events as NavigationStart),
+				filter(events => events instanceof NavigationEnd),
+				map(events => events as NavigationEnd),
 				map(events => events.url)
 			).subscribe({
 				next: (url) => {

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {
 	IsPlatformBrowserService
 } from './is-platform-browser.service';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -157,6 +158,8 @@ export class ChapterListingService {
 		}
 	]
 
+	private _currentPosition = new BehaviorSubject(0);
+
 	constructor(private _isPlatformBrowserService: IsPlatformBrowserService) {
 	}
 
@@ -225,5 +228,13 @@ export class ChapterListingService {
 				document.getElementById(hash)?.scrollIntoView();
 			}
 		}, 100)
+	}
+
+	getCurrentPosition$(): Observable<number> {
+		return this._currentPosition;
+	}
+
+	setCurrentPosition(index: number) {
+		this._currentPosition.next(index);
 	}
 }
