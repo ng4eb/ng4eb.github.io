@@ -15,6 +15,7 @@ import { Ch1P2Component } from './ch1-p2/ch1-p2.component';
 import { Ch2P1Component } from './ch2-p1/ch2-p1.component';
 import { Ch2P2Component } from './ch2-p2/ch2-p2.component';
 import { Ch2P3Component } from './ch2-p3/ch2-p3.component';
+import { Ch3P1Component } from './ch3-p1/ch3-p1.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { Ch2P3Component } from './ch2-p3/ch2-p3.component';
         Ch1P2Component,
         Ch2P1Component,
         Ch2P2Component,
-        Ch2P3Component
+        Ch2P3Component,
+        Ch3P1Component
 	],
 	imports: [
 		CommonModule,

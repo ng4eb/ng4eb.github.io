@@ -33,13 +33,17 @@
     }
   }
 
-  .icon-link {
+  .icon-link,
+  .license-text a {
     color: var(--white);
     &:hover {
       color: var(--grey-aa);
     }
   }
 
+  .site-title {
+    font-weight: 700;
+  }
 
   @media screen and (min-width: 768px) {
     flex-flow: row wrap;
