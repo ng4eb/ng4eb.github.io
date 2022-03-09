@@ -70,8 +70,15 @@ export class ChapterListingService {
 					title: "Using Directives",
 					sections: [
 						"How directives work",
-						"Using ngIf and ngFor",
+						"Using ngIf, ngFor & ngStyle",
 						"Creating a random color directive"
+					]
+				},
+				{
+					title: "Lifecycles",
+					sections: [
+						"Overview of lifecycles",
+						"Using lifecycles"
 					]
 				},
 				{
