@@ -164,7 +164,7 @@ Let's create a project named \`super-counter-demo\`:
 ng new super-counter-demo --routing=false --style=css
 \`\`\`
 
-We will create a super counter. The super counter is consisted of a outer counter and two inner counters. The outer counter will keep the count values of the two inner counters. The inner counter will be able to increment and decrement those values respectively.
+We will create a super counter. The super counter is consisted of an outer counter and two inner counters. The outer counter will keep the count values of the two inner counters, and the inner counters will be able to increment and decrement those values respectively.
 
 So let's create the two types of counter:
 
@@ -223,9 +223,9 @@ export class InnerCounterComponent implements OnInit {
 }
 \`\`\`
 
-Above, we added the line \`@Input() count!: number;\`, which means to save an *input* value from the parent, of the type *number*, to a local variable called \`count\`. The exclamation mark (\`!\`) after the variable name is for handling the **strict property initialization** requirement from TypeScript. You can read more it in [the TypeScript documentation](https://www.typescriptlang.org/tsconfig#strictPropertyInitialization). Essentially, using \`!\` tells TypeScript that the variable won't be \`undefined\` though it is not initialized inline or in the constructor function.
+Above, we added the line \`@Input() count!: number;\`, which means to save an *input* value from the parent, of the type *number*, to a local variable called \`count\`. The exclamation mark (\`!\`) after the variable name is for handling the **strict property initialization** requirement from TypeScript. You can read more about it in [the TypeScript documentation](https://www.typescriptlang.org/tsconfig#strictPropertyInitialization). Essentially, using \`!\` tells TypeScript that the variable won't be \`undefined\` though it is not initialized inline or in the constructor function.
 
-With \`@Input()\` set, we can pass the values from the outer component by editing its template file again:
+With \`@Input()\`, we can pass the values from the outer component by editing its template file again:
 
 \`\`\`html
 <app-inner-counter [count]="count1"></app-inner-counter>  
@@ -234,7 +234,9 @@ With \`@Input()\` set, we can pass the values from the outer component by editin
 <button (click)="reset()">reset</button>
 \`\`\`
 
-Angular recognizes \`[count]="someValue"\` as a special syntax. The square brackets \`[]\` is used for **property binding**. You can read more about it in [the documentation](https://angular.io/guide/property-binding). In short, \`[]\` means that there is a property of a child element that we control from the parent.
+Angular recognizes \`[count]="someValue"\` as a special syntax. The square brackets \`[]\` is used for **property binding**. You can read more about it in [the documentation](https://angular.io/guide/property-binding).
+ 
+In short, \`[]\` means that there is a property of a child element that we control from the parent.
 
 Now the inner counters will receive the \`count\` value from the outer counter. So we should be able to use them in the template (\`inner-counter.component.html\`):
 
@@ -290,7 +292,7 @@ import {
 })
 export class InnerCounterComponent implements OnInit {  
   @Input() count!: number;  
- constructor() { }  
+  constructor() { }  
   
   @Output() countUpdatedEvent = new EventEmitter<number>();  
   
