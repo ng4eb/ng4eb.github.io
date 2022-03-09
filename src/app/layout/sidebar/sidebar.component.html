@@ -51,8 +51,10 @@
                             <ol class="chapter-listing__sections"
                                 *ngIf="part.sections">
                                 <li *ngFor="let section of part.sections; let k = index">
-                                    <a [class.highlight]="titleMatched(section)"
-                                       [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]" [fragment]="'' + (k+1)"
+                                    <a [class.current]="url.startsWith('/book/ch' + chapter.ch + '/p' + (j+1)) && k === (currentPosition$ | async)"
+                                       [class.highlight]="titleMatched(section)"
+                                       [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]"
+                                       [fragment]="'' + (k+1)"
                                        (click)="onClickHashTagLink('' + (k+1))"
                                     >
                                         {{section}}

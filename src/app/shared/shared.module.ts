@@ -5,14 +5,18 @@ import {
 	NotFoundComponent
 } from './not-found/not-found.component';
 import {RouterModule} from '@angular/router';
-import { WithoutHashPipe } from './without-hash.pipe';
+import {WithoutHashPipe} from './without-hash.pipe';
+import {
+	ScrollTrackerDirective
+} from './scroll-tracker.directive';
 
 
 @NgModule({
 	declarations: [
 		AutofocusDirective,
 		NotFoundComponent,
-  WithoutHashPipe
+		WithoutHashPipe,
+		ScrollTrackerDirective
 	],
 	imports: [
 		CommonModule,
@@ -21,7 +25,8 @@ import { WithoutHashPipe } from './without-hash.pipe';
 	exports: [
 		AutofocusDirective,
 		NotFoundComponent,
-		WithoutHashPipe
+		WithoutHashPipe,
+		ScrollTrackerDirective
 	]
 })
 export class SharedModule {

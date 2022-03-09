@@ -22,6 +22,10 @@ import {
 	Subscription,
 	tap
 } from 'rxjs';
+import {
+	RoutingService
+} from '../../service/routing.service';
+import {Router} from '@angular/router';
 
 @Component({
 	selector: 'app-sidebar',
@@ -32,14 +36,20 @@ import {
 export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	faSearch = faSearch;
 	isSidebarOpen$ = this._layoutService.getIsSidebarOpen$();
+	currentPosition$ = this._chapterListingService.getCurrentPosition$();
+	url = this._router.url;
 	chapterListing = this._chapterListingService.getListing();
 	private _hasRegisteredTitleSearch = false;
 	private _filterQuery = '';
 	private _titleSearchSubscription?: Subscription;
+	private _path$ = this._routingService.getPath$();
+	private _subscription!: Subscription;
 
 	constructor(
 		private _layoutService: LayoutService,
 		private _chapterListingService: ChapterListingService,
+		private _routingService: RoutingService,
+		private _router: Router,
 		private _cdr: ChangeDetectorRef
 	) {
 	}
@@ -75,6 +85,10 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		this._subscription = this._path$.subscribe((path) => {
+			this.url = path || this.url;
+			this._cdr.detectChanges();
+		});
 	}
 
 	ngAfterViewChecked() {
@@ -99,6 +113,7 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 			this._titleSearchSubscription.unsubscribe();
 			this._titleSearchSubscription = undefined;
 		}
+		this._subscription.unsubscribe();
 	}
 
 }
