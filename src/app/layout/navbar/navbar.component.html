@@ -36,6 +36,7 @@
                                     <a
                                             (click)="onClickHashTagLink('' + (k+1))"
                                             [routerLink]="['/book/ch' + (i+1) + '/p' + (j+1)]"  [fragment]="'' + (k+1)"
+                                            [class.current]="url.startsWith('/book/ch' + chapter.ch + '/p' + (j+1)) && k === (currentPosition$ | async)"
                                     >
                                         {{section}}
                                     </a>

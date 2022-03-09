@@ -208,9 +208,8 @@ $search-bar-height: function.rem(46px);
     a {
       text-decoration: none;
       &.current {
-        font-size: 0.975em;
-        font-weight: 700;
         color: var(--blue-00-e0);
+        text-decoration: underline;
       }
     }
   }

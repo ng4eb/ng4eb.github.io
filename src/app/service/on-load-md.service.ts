@@ -24,6 +24,9 @@ export class OnLoadMdService {
             if (child.tagName === 'H2') {
               this._h2Elements.next([...this._h2Elements.value, child]);
               child.setAttribute('id', `${i}`);
+              if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.innerWidth < 768) {
+                  child.setAttribute('style', 'scroll-margin-top: 65px');
+              }
               i++;
             }
           });

@@ -137,6 +137,10 @@
     font-size: 0.9em;
     a {
       text-decoration: none;
+      &.current {
+        font-weight: 700;
+        color: var(--blue-00-e0);
+      }
     }
   }
 }
