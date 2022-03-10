@@ -5,7 +5,10 @@
              [class.open]="isMenuOpen$ | async"></div>
     </div>
     <span class="site-title">
-        <a routerLink="/">ng4eb</a>
+        <a routerLink="/">
+            <app-logo width="30px"></app-logo>
+            <span>ng4eb</span>
+        </a>
     </span>
     <app-theme-switch></app-theme-switch>
     <div class="navbar__menu" *ngIf="isMenuOpen$ | async">

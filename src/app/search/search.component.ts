@@ -11,6 +11,7 @@ import {
 
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import {LayoutService} from '../service/layout.service';
+import {SeoService} from '../service/seo.service';
 
 @Component({
 	selector: 'app-search',
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _advancedSearchService: AdvancedSearchService,
 		private _layoutService: LayoutService,
+		private _seoService: SeoService,
 		private _cdr: ChangeDetectorRef
 	) {
 	}
@@ -47,6 +49,13 @@ export class SearchComponent implements OnInit {
 					this._cdr.detectChanges();
 				}
 			);
+
+		this._seoService.setSEO({
+			title: 'Search Results',
+			description: 'Search Results Page of ng4eb',
+			keywords: 'Angular, resources, free, online, ng4eb',
+			path: '/search'
+		})
 	}
 
 }

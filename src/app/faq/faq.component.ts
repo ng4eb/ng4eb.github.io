@@ -7,6 +7,7 @@ import {
 	faAngleLeft
 } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute} from '@angular/router';
+import {SeoService} from '../service/seo.service';
 
 @Component({
 	selector: 'app-faq',
@@ -61,7 +62,10 @@ export class FaqComponent implements OnInit {
 		}
 	}
 
-	constructor(private _route: ActivatedRoute) {
+	constructor(
+		private _route: ActivatedRoute,
+		private _seoService: SeoService
+	) {
 	}
 
 	mapPathToKey(path: string) {
@@ -74,6 +78,48 @@ export class FaqComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.path = this.mapPathToKey(this._route.snapshot.url[0].path);
+		switch(this.path) {
+			case 'newToAngular':
+				this._seoService.setSEO({
+					title: 'New to Angular',
+					description: 'New to Angular? Great to see you! This free eBook is for you to begin your wonderful journey in the Angular world!',
+					keywords: 'Angular, eBook, free, online, faq, ng4eb, learning, journey, reference',
+					path: this._route.snapshot.url[0].path
+				});
+				break;
+			case 'whyThisBook':
+				this._seoService.setSEO({
+					title: 'Why This Book',
+					description: 'Why this book? Because this book is written with simplicity in mind. It aims to cover the basic knowledge and skills you need to get started in Angular within a short time.',
+					keywords: 'Angular, eBook, free, online, faq, ng4eb, concise, basics, core knowledge, core skills',
+					path: this._route.snapshot.url[0].path
+				});
+				break;
+			case 'howToSupport':
+				this._seoService.setSEO({
+					title: 'How to Support',
+					description: 'To support this project, please star the Github repo and contribute anytime!',
+					keywords: 'Angular, eBook, free, online, faq, ng4eb, Github, support, contribute',
+					path: this._route.snapshot.url[0].path
+				});
+				break;
+			case 'contribution':
+				this._seoService.setSEO({
+					title: 'Contribution',
+					description: 'It is easy to contribute to this project. Raise any issues you find, or open pull requests.',
+					keywords: 'Angular, eBook, free, online, faq, ng4eb, Github, contribution, issues, pull requests',
+					path: this._route.snapshot.url[0].path
+				});
+				break;
+			case 'resources':
+				this._seoService.setSEO({
+					title: 'Resources',
+					description: 'Here is a list of free resources that are great for learning more about Angular.',
+					keywords: 'Angular, resources, free, online, faq, ng4eb',
+					path: this._route.snapshot.url[0].path
+				});
+				break;
+		}
 	}
 
 }

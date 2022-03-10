@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  place-items: center;
+}
+svg {
+  display: inline;
+  transition: transform 1s;
+  &:hover {
+    transform: rotate(360deg);
+  }
+}

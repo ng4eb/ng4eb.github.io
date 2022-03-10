@@ -58,8 +58,50 @@
     &__title {
       font-size: 1em;
     }
+    &__desc {
+      font-size: 0.8em;
+    }
+    &__intro,
+    &__links {
+      font-size: 0.8em;
+    }
     &__container {
       max-width: function.rem(840px);
+      padding: size.$space-16;
+      background: var(--grey-fe-44-75);
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+      }
+    }
+  }
+  .square {
+    position: absolute;
+    background: var(--grey-ee-33);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+    z-index: var(--z-negative-1);
+    &--1 {
+      left: 10%;
+      top: 20%;
+      width: 400px;
+      height: 400px;
+      transform: rotate(15deg);
+    }
+    &--2 {
+      right: 20%;
+      top: 5%;
+      width: 275px;
+      height: 275px;
+      transform: rotate(43.05deg);
+    }
+    &--3 {
+      right: 10%;
+      bottom: 10%;
+      width: 250px;
+      height: 250px;
+      transform: rotate(60deg);
     }
   }
 }
@@ -69,6 +111,16 @@
     font-size: function.rem(22px);
     &__title {
       font-size: 1.8em;
+    }
+    &__desc {
+      font-size: 0.9em;
+    }
+    &__intro,
+    &__links {
+      font-size: 0.9em;
+    }
+      &__container {
+      padding: size.$space-16 size.$space-48;
     }
     &__angular-logo {
       width: function.rem(48px);

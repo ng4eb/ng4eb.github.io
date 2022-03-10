@@ -1,6 +1,8 @@
 import {
-	ChangeDetectionStrategy, ChangeDetectorRef,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
+	HostListener,
 	OnDestroy,
 	OnInit,
 	ViewChildren
@@ -56,6 +58,21 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		private _onLoadMdService: OnLoadMdService,
 		private _cdr: ChangeDetectorRef
 	) {
+	}
+
+	@HostListener('document:click', ['$event'])
+	public handleClickH2Anchor(event: Event) {
+		if (event.target instanceof HTMLAnchorElement) {
+			const element = event.target as HTMLAnchorElement;
+			if (element.className === 'h2-anchor') {
+				event.preventDefault();
+				const hash = element?.getAttribute('name');
+				if (hash) {
+					window.location.hash = hash;
+					element.scrollIntoView();
+				}
+			}
+		}
 	}
 
 	ngOnInit(): void {
