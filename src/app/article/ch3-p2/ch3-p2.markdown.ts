@@ -145,6 +145,8 @@ First, the decorator \`@HostBinding()\` is used to retrieve a property of the **
 
 Then, we typically use \`@HostBinding()\` with a getter function. The getter will set the value to the bound property. In the getter above, we return \`'red'\`.Therefore, the host element of this directive will have its \`style.color\` property set to \`'red'\`.
 
+You can read more about **HostBinding** in [the documentation](https://angular.io/api/core/HostBinding).
+
 For generating a random color, we can use \`rgb\`, which accepts three integers of range between 0 and 255. Let's change the implementation now:
 
 \`\`\`typescript
