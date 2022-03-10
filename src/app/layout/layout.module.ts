@@ -21,6 +21,7 @@ import {
 } from './advanced-search-overlay/advanced-search-overlay.component';
 import {SharedModule} from '../shared/shared.module';
 import {NgxPrintModule} from 'ngx-print';
+import { LogoComponent } from './logo/logo.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {NgxPrintModule} from 'ngx-print';
 		ThemeSwitchComponent,
 		OptionsWidgetComponent,
 		LayoutComponent,
-		AdvancedSearchOverlayComponent
+		AdvancedSearchOverlayComponent,
+  LogoComponent
 	],
 	exports: [
 		LayoutComponent

@@ -8,6 +8,7 @@ import {
 	OnLoadMdService
 } from '../../service/on-load-md.service';
 import {ch2P2Markdown} from './ch2-p2.markdown';
+import {SeoService} from '../../service/seo.service';
 
 @Component({
 	selector: 'app-ch2-p2',
@@ -24,7 +25,10 @@ export class Ch2P2Component implements OnInit {
 	@ViewChildren('md') md: any;
 	ch2P2Markdown = ch2P2Markdown;
 
-	constructor(private _onLoadMdService: OnLoadMdService) {
+	constructor(
+		private _onLoadMdService: OnLoadMdService,
+		private _seoService: SeoService,
+	) {
 	}
 
 	onLoad(_e: any) {
@@ -34,6 +38,12 @@ export class Ch2P2Component implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this._seoService.setSEO({
+			title: 'Ch2-P2 - CLI Commands',
+			description: 'Angular CLI is extremely powerful. This part goes through the basics of the CLI to get you started.',
+			keywords: 'Angular, resources, free, online, ng4eb, Angular CLI, basic commands',
+			path: '/ch2/p2'
+		})
 	}
 
 }

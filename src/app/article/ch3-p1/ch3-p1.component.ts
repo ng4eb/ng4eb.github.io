@@ -8,6 +8,7 @@ import {
 	OnLoadMdService
 } from '../../service/on-load-md.service';
 import {ch3P1Markdown} from './ch3-p1.markdown';
+import {SeoService} from '../../service/seo.service';
 
 @Component({
 	selector: 'app-ch3-p1',
@@ -24,7 +25,10 @@ export class Ch3P1Component implements OnInit {
 	@ViewChildren('md') md: any;
 	ch3P1Markdown = ch3P1Markdown;
 
-	constructor(private _onLoadMdService: OnLoadMdService) {
+	constructor(
+		private _onLoadMdService: OnLoadMdService,
+		private _seoService: SeoService,
+	) {
 	}
 
 	onLoad(_e: any) {
@@ -34,6 +38,12 @@ export class Ch3P1Component implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this._seoService.setSEO({
+			title: 'Ch3-P1 - Using Components & Modules',
+			description: 'This part focuses on the basics of components and modules in Angular.',
+			keywords: 'Angular, resources, free, online, ng4eb, components, modules',
+			path: '/ch3/p1'
+		})
 	}
 
 }

@@ -20,11 +20,12 @@ export class OnLoadMdService {
           const arr = Array.from(el.element.nativeElement.children);
           let i = 1;
           this._h2Elements.next([]);
-          arr.forEach(child => {
+          arr.forEach((child) => {
             if (child.tagName === 'H2') {
               this._h2Elements.next([...this._h2Elements.value, child]);
               child.setAttribute('id', `${i}`);
-              if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.innerWidth < 768) {
+                child.innerHTML = child.innerHTML + `<a class="h2-anchor" name="${i}">✡</a>`;
+                if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.innerWidth < 768) {
                   child.setAttribute('style', 'scroll-margin-top: 65px');
               }
               i++;

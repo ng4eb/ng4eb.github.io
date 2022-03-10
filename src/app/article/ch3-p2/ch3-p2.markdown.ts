@@ -151,11 +151,9 @@ For generating a random color, we can use \`rgb\`, which accepts three integers 
 
 \`\`\`typescript
 @HostBinding('style.color') get color() {  
-   // generate three values of range 0 - 255  
- const rand1 = Math.ceil(Math.random() * 255);  
- const rand2 = Math.ceil(Math.random() * 255);  
- const rand3 = Math.ceil(Math.random() * 255);  
- return \`rgb(\${rand1}, \${rand2}, \${rand3})\`;  
+  // generate values of range 0 - 255
+  const genRandom = () => Math.ceil(Math.random() * 255);
+  return \`rgb(\${genRandom()}, \${genRandom()}, \${genRandom()})\`;
 }
 \`\`\`
 
@@ -169,7 +167,9 @@ Then, we can test the decorator by using it in \`app.component.html\`:
 <p appRandomColor>testing 5</p>
 \`\`\`
 
-And voila! You should see some random text colors on the screen.
+And voila! You should see some random text colors on the screen:
 
-You can check out the code for this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-random-color-directive-demo).
+![random text colors](/assets/images/ch3/random_colors.png)
+
+You can also check out the code for this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-random-color-directive-demo).
 `

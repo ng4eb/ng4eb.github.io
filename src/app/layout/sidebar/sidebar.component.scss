@@ -38,10 +38,14 @@
           place-items: center;
           flex-grow: 1;
           a {
+            display: inline-flex;
             color: var(--white);
             font-size: function.rem(36px);
             @include mixin.adventPro;
             text-decoration: none;
+            & > *:not(:last-child) {
+              margin-right: size.$space-8;
+            }
           }
         }
       }
