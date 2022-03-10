@@ -33,7 +33,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/prismjs/themes/prism-okaidia.css"
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/@fortawesome/fontawesome-svg-core/styles.css"
             ],
             "scripts": [
               "node_modules/marked/marked.min.js",
