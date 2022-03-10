@@ -78,9 +78,11 @@ code {
   margin-left: size.$space-8;
   font-size: 0.95em;
   cursor: pointer;
-  transition: all 0.15s;
-  &:hover {
-    transform: rotateZ(90deg) scale(1.2);
+  @media screen and (min-width: 768px) {
+    transition: all 0.15s;
+    &:hover {
+      transform: rotateZ(90deg) scale(1.2);
+    }
   }
 }
 
