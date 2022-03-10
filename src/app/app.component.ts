@@ -25,14 +25,15 @@ export class AppComponent implements OnInit {
 		private _router: Router,
 		@Inject(PLATFORM_ID) private platformId: any
 	) {
-	}
-
-	ngOnInit() {
 		if (isPlatformBrowser(this.platformId)) {
 			this._layoutService.getIsDarkTheme$().subscribe((bool) => {
 				document.body.setAttribute('data-theme', bool ? 'dark' : 'light');
 			});
+		}
+	}
 
+	ngOnInit() {
+		if (isPlatformBrowser(this.platformId)) {
 			this._router.events.pipe(
 				filter(events => events instanceof NavigationEnd),
 				map(events => events as NavigationEnd),
