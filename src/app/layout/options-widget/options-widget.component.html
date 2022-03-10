@@ -7,7 +7,12 @@
     <div class="options__button" (click)="scrollToTop()">
         <fa-icon [icon]="faAngleDoubleUp"></fa-icon>
     </div>
-    <button class="options__button" *ngIf="url.startsWith('/book/')" printSectionId="article-content" ngxPrint (click)="toggleOptionsOpen()">
+    <button class="options__button"
+            *ngIf="url.startsWith('/book/')"
+            printSectionId="article-content"
+            ngxPrint
+            [useExistingCss]="true"
+            (click)="toggleOptionsOpen()">
         <fa-icon [icon]="faPrint"></fa-icon>
     </button>
 </div>

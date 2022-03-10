@@ -65,7 +65,11 @@ code {
   color: var(--black-white);
 }
 
-
+@media print {
+  img {
+    max-width: 40vw;
+  }
+}
 
 /* Global Classes */
 

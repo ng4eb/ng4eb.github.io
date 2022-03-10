@@ -75,10 +75,14 @@
 }
 
 .site-title a {
+  display: flex;
   color: var(--white);
-  font-size: function.rem(36px);
+  font-size: function.rem(30px);
   @include mixin.adventPro;
   text-decoration: none;
+  & > *:not(:last-child) {
+    margin-right: size.$space-8;
+  }
 }
 
 

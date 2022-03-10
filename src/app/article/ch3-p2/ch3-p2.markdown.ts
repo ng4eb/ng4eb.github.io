@@ -151,11 +151,9 @@ For generating a random color, we can use \`rgb\`, which accepts three integers 
 
 \`\`\`typescript
 @HostBinding('style.color') get color() {  
-   // generate three values of range 0 - 255  
- const rand1 = Math.ceil(Math.random() * 255);  
- const rand2 = Math.ceil(Math.random() * 255);  
- const rand3 = Math.ceil(Math.random() * 255);  
- return \`rgb(\${rand1}, \${rand2}, \${rand3})\`;  
+  // generate values of range 0 - 255
+  const genRandom = () => Math.ceil(Math.random() * 255);
+  return \`rgb(\${genRandom()}, \${genRandom()}, \${genRandom()})\`;
 }
 \`\`\`
 
