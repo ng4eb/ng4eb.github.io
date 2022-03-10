@@ -37,6 +37,7 @@
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css"
             ],
             "scripts": [
+              "src/theme.js",
               "node_modules/marked/marked.min.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-scss.js",
