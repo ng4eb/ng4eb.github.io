@@ -39,7 +39,7 @@ Angular is used by many developers around the world. Therefore, if you encounter
 
 React is arguably easier to learn for building a simple application. However, for building a large application, React requires a solid understanding of its ecosystem, i.e., the libraries available in the community.
 
-On the other hand, Angular is a framework. Angular does not use JSX and instead uses HTML with directives for templates. As Angular comes with more tools such as TypeScript and RxJS, they can make Angular harder and longer to pick up.
+On the other hand, Angular is a framework. Angular does not use JSX and instead uses HTML with directives for templates. As Angular comes with more tools such as TypeScript and RxJS, they can make Angular harder and take longer to pick up.
 
 ### Angular vs Vue
 Like Angular, [Vue](https://vuejs.org/) is a framework. It is created by Evan You, an ex-Google employee.  Like React, Vue also embraces the Virtual DOM. Vue allows developers to write in both JSX and HTML templates.

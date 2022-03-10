@@ -73,6 +73,12 @@ code {
 
 /* Global Classes */
 
+.h2-anchor {
+  margin-left: size.$space-8;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
 .desktop-only {
   display: none !important;
   @media screen and (min-width: 768px) {

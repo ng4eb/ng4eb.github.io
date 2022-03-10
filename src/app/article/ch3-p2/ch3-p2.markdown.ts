@@ -167,7 +167,9 @@ Then, we can test the decorator by using it in \`app.component.html\`:
 <p appRandomColor>testing 5</p>
 \`\`\`
 
-And voila! You should see some random text colors on the screen.
+And voila! You should see some random text colors on the screen:
 
-You can check out the code for this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-random-color-directive-demo).
+![random text colors](/assets/images/ch3/random_colors.png)
+
+You can also check out the code for this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-random-color-directive-demo).
 `
