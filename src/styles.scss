@@ -82,11 +82,12 @@ code {
 /* Global Classes */
 
 .h2-anchor {
-  display: inline-block;
-  margin-left: size.$space-8;
-  font-size: 0.95em;
-  cursor: pointer;
+  display: none;
   @media screen and (min-width: 768px) {
+    display: inline-block;
+    margin-left: size.$space-8;
+    font-size: 0.95em;
+    cursor: pointer;
     transition: all 0.15s;
     &:hover {
       transform: rotateZ(90deg) scale(1.2);
