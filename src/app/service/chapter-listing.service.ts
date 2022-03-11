@@ -78,7 +78,8 @@ export class ChapterListingService {
 					title: "Lifecycles",
 					sections: [
 						"Overview of lifecycles",
-						"Using lifecycles"
+						"Change Detection",
+						"Using lifecycle hooks"
 					]
 				},
 				{
