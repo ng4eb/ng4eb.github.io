@@ -63,6 +63,10 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 		this.isMenuOpen$.next(!this.isMenuOpen$.value);
 	}
 
+	closeMenu() {
+		this.isMenuOpen$.next(false);
+	}
+
 	goFullSearch() {
 		if (this.queryString) {
 			this._router.navigate(

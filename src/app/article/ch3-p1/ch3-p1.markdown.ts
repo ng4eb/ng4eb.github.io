@@ -59,7 +59,7 @@ ng generate component counter
 
 The above command should create four new files and register the new component in app module.
 
-To use the counter component, we need to add it into the template of the app component. That's because in our current setup, only the app component is read. So let's add counter inside \`app.component.html\`:
+To use the counter component, we need to add it into the template of the app component. That's because in our current setup, only the app component is read. So let's add the counter inside \`app.component.html\`:
 
 \`\`\`html
 <app-counter></app-counter>
@@ -86,7 +86,7 @@ import { Component, OnInit } from '@angular/core';
 export class CounterComponent implements OnInit {  
   count = 0;  
   
- constructor() { }  
+  constructor() { }  
   
   ngOnInit(): void {  
   }  
