@@ -73,6 +73,20 @@ code {
   color: var(--black-white);
 }
 
+blockquote {
+  position: relative;
+  padding: size.$space-16 size.$space-12 size.$space-4 size.$space-48;
+  margin: size.$space-12 auto;
+  background: var(--grey-ee-33);
+  &::before {
+    content: '❝';
+    position: absolute;
+    top: size.$space-4;
+    left: size.$space-12;
+    font-size: function.rem(32px);
+  }
+}
+
 @media print {
   img {
     max-width: 40vw;
