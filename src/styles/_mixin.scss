@@ -5,3 +5,17 @@
 @mixin roboto {
   font-family: Roboto, sans-serif;
 }
+
+@mixin primary-desktop-icon {
+  background: var(--grey-44);
+  cursor: pointer;
+  color: var(--white);
+
+  &:hover {
+    background: var(--grey-55);
+  }
+
+  &:active {
+    background: var(--grey-66);
+  }
+}

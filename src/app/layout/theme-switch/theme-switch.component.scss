@@ -1,4 +1,5 @@
 @use '/src/styles/function';
+@use '/src/styles/mixin';
 
 .theme-switch {
   font-size: 0.7em;
@@ -15,10 +16,8 @@
     height: function.rem(147px);
     font-size: 1em;
     border-radius: 100vh;
-    background: var(--grey-44);
-    color: var(--white);
     transform: translate(60%, -60%);
-    cursor: pointer;
+    @include mixin.primary-desktop-icon;
 
     fa-icon {
       margin-top: 50%;

@@ -64,8 +64,7 @@
   place-items: center;
   width: size.$collapse-sidebar-width;
   height: size.$collapse-sidebar-width;
-  background: var(--grey-44);
-  cursor: pointer;
+  @include mixin.primary-desktop-icon;
 }
 
 $menu-icon-width: function.rem(30px);
@@ -107,6 +106,14 @@ $menu-icon-height: function.rem(2px);
   background: var(--grey-aa);
   color: var(--white);
   cursor: pointer;
+
+  &:hover {
+    background: var(--grey-bb);
+  }
+
+  &:active {
+    background: var(--grey-cc);
+  }
 }
 
 $search-bar-height: function.rem(46px);
@@ -170,6 +177,10 @@ $search-bar-height: function.rem(46px);
       list-style: none;
       margin-top: size.$space-8;
       outline: none;
+      cursor: pointer;
+      &:hover {
+        background: var(--blue-e0-00);
+      }
       &::marker {
         content: "";
       }
@@ -194,11 +205,14 @@ $search-bar-height: function.rem(46px);
     li {
       padding: 1px;
       margin: size.$space-4 0;
+      & > a:hover {
+        background: var(--blue-df-24);
+      }
     }
     a {
       color: var(--grey-44-cc);
       &:hover {
-        color: var(--grey-22-88);
+        color: var(--grey-66-cc);
       }
     }
   }
@@ -208,6 +222,9 @@ $search-bar-height: function.rem(46px);
     li {
       padding: 1px;
       margin: size.$space-4 0;
+      & > a:hover {
+        background: var(--blue-df-24);
+      }
     }
     a {
       text-decoration: none;

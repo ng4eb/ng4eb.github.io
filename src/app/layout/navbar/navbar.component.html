@@ -1,8 +1,9 @@
 <nav class="navbar mobile-only">
-    <div class="menu-icon-container"
-         (click)="toggleMenuOpen()">
-        <div class="menu-icon"
-             [class.open]="isMenuOpen$ | async"></div>
+    <div class="outer-icon-container" (click)="toggleMenuOpen()">
+        <div class="menu-icon-container">
+            <div class="menu-icon"
+                 [class.open]="isMenuOpen$ | async"></div>
+        </div>
     </div>
     <span class="site-title">
         <a routerLink="/">
@@ -10,7 +11,9 @@
             <span>ng4eb</span>
         </a>
     </span>
-    <app-theme-switch></app-theme-switch>
+    <div class="outer-icon-container outer-icon-container--round">
+        <app-theme-switch></app-theme-switch>
+    </div>
     <div class="navbar__menu" *ngIf="isMenuOpen$ | async">
         <div class="search-bar-container">
             <fa-icon (click)="goFullSearch()"
