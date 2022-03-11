@@ -2,6 +2,7 @@
 @use 'styles/size';
 @use 'styles/variable';
 @use 'styles/mixin';
+@use 'styles/function';
 
 html,
 body {
@@ -17,6 +18,13 @@ body {
 
 h1, h2, h3, p, ul, ol {
   line-height: 1.6;
+}
+
+p {
+  font-size: function.rem(18px);
+  @media screen and (min-width: 1200px) {
+    font-size: function.rem(20px);
+  }
 }
 
 input {
@@ -65,6 +73,20 @@ code {
   color: var(--black-white);
 }
 
+blockquote {
+  position: relative;
+  padding: size.$space-16 size.$space-12 size.$space-4 size.$space-48;
+  margin: size.$space-12 auto;
+  background: var(--grey-ee-33);
+  &::before {
+    content: '❝';
+    position: absolute;
+    top: size.$space-4;
+    left: size.$space-12;
+    font-size: function.rem(32px);
+  }
+}
+
 @media print {
   img {
     max-width: 40vw;
@@ -74,11 +96,12 @@ code {
 /* Global Classes */
 
 .h2-anchor {
-  display: inline-block;
-  margin-left: size.$space-8;
-  font-size: 0.95em;
-  cursor: pointer;
+  display: none;
   @media screen and (min-width: 768px) {
+    display: inline-block;
+    margin-left: size.$space-8;
+    font-size: 0.95em;
+    cursor: pointer;
     transition: all 0.15s;
     &:hover {
       transform: rotateZ(90deg) scale(1.2);
