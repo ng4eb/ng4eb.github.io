@@ -95,6 +95,10 @@ blockquote {
 
 /* Global Classes */
 
+.md-img {
+  object-fit: scale-down;
+}
+
 .h2-anchor {
   display: none;
   @media screen and (min-width: 768px) {

@@ -97,7 +97,7 @@ export class CustomDirective {
 }
 \`\`\`
 
-The structure for \`@Directive\` is almost identical to \`@Component\`. The only difference is that \`@Component\` requires either the property \`template\` or \`templateUrl\`. 
+The structure of \`@Directive\` is almost identical to \`@Component\`. The only difference is that \`@Component\` requires either the property \`template\` or \`templateUrl\`. 
 
 Like \`@Component\`, \`@Director\` has a \`selector\` property. Typically, we would use \`[someName]\` for the \`selector\` . It is a special syntax to allow the directive to be attached as an attribute to a tag in the template.
 

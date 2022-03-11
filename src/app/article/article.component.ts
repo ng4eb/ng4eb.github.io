@@ -1,4 +1,5 @@
 import {
+	AfterViewInit,
 	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
@@ -23,6 +24,7 @@ import {
 import {
 	OnLoadMdService
 } from '../service/on-load-md.service';
+import mediumZoom from 'medium-zoom';
 
 @Component({
 	selector: 'app-article',
@@ -30,7 +32,7 @@ import {
 	styleUrls: ['./article.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleComponent implements OnInit, OnDestroy {
+export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChildren('md') md: any;
 	faAngleLeft = faAngleLeft;
 	faAngleRight = faAngleRight;
@@ -47,8 +49,11 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		}
 	}
 	h2Elements: Element[] = [];
+	private _zoom: any;
 	private _path$ = this._routingService.getPath$();
 	private _subscription!: Subscription;
+	private _subscription2!: Subscription;
+	private _subscription3!: Subscription;
 
 	constructor(
 		private _router: Router,
@@ -56,7 +61,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		private _chapterListingService: ChapterListingService,
 		private _isPlatformBrowserService: IsPlatformBrowserService,
 		private _onLoadMdService: OnLoadMdService,
-		private _cdr: ChangeDetectorRef
+		private _cdr: ChangeDetectorRef,
 	) {
 	}
 
@@ -82,17 +87,30 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	ngAfterViewInit(): void {
-		this._onLoadMdService.getH2Elements()
+	ngAfterViewInit() {
+		this._subscription2 = this._onLoadMdService.getH2Elements()
 			.pipe(filter(Boolean))
 			.subscribe((elements) => {
 				this.h2Elements = elements;
 				this._cdr.detectChanges();
 			});
+
+		this._subscription3 = this._routingService.getPath$().subscribe(() => {
+			if (!this._zoom) {
+				this._zoom = mediumZoom('.md-img', {background: '#222222'});
+			} else {
+				this._zoom.detach();
+				setTimeout(() => {
+					this._zoom = mediumZoom('.md-img', {background: '#222222'});
+				})
+			}
+		})
 	}
 
 	ngOnDestroy() {
 		this._subscription.unsubscribe();
+		this._subscription2.unsubscribe();
+		this._subscription3.unsubscribe();
 	}
 
 }
