@@ -1,5 +1,6 @@
 @use '/src/styles/size';
 @use '/src/styles/function';
+@use '/src/styles/mixin';
 
 .options-widget {
   position: fixed;
@@ -10,10 +11,9 @@
   width: function.rem(147px);
   height: function.rem(147px);
   border-radius: 100vh;
-  background: var(--grey-44);
-  color: var(--white);
   transform: translate(60%, 60%);
-  cursor: pointer;
+  @include mixin.primary-desktop-icon;
+
 
   fa-icon {
     margin-bottom: 50%;
@@ -31,7 +31,7 @@
   width: function.rem(61px);
   padding: size.$space-8 size.$space-4;
   border-radius: 5px;
-  background: var(--grey-66);
+  background: var(--grey-77);
 
   &__button {
     display: grid;
@@ -40,9 +40,7 @@
     height: function.rem(48px);
     border-radius: 5px;
     border: none;
-    background: var(--grey-44);
-    color: var(--white);
-    cursor: pointer;
+    @include mixin.primary-desktop-icon;
     &:not(:last-child) {
       margin-bottom: size.$space-4;
     }
