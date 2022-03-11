@@ -2,6 +2,7 @@
 @use 'styles/size';
 @use 'styles/variable';
 @use 'styles/mixin';
+@use 'styles/function';
 
 html,
 body {
@@ -17,6 +18,13 @@ body {
 
 h1, h2, h3, p, ul, ol {
   line-height: 1.6;
+}
+
+p {
+  font-size: function.rem(18px);
+  @media screen and (min-width: 1200px) {
+    font-size: function.rem(20px);
+  }
 }
 
 input {
