@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {RoutingService} from '../service/routing.service';
 import {
-	ChapterListingService
+	ChapterListingService, navigationPart
 } from '../service/chapter-listing.service';
 import {filter, Subscription} from 'rxjs';
 import {
@@ -37,15 +37,21 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 	faAngleLeft = faAngleLeft;
 	faAngleRight = faAngleRight;
 	url = this._router.url;
-	navigation = {
+	navigation: {
+		title: string;
+		prev: navigationPart;
+		next: navigationPart;
+	} = {
 		title: '',
 		prev: {
 			title: '',
-			path: ''
+			path: '',
+			index: null
 		},
 		next: {
 			title: '',
-			path: ''
+			path: '',
+			index: null
 		}
 	}
 	h2Elements: Element[] = [];
@@ -77,6 +83,12 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 					element.scrollIntoView();
 				}
 			}
+		}
+	}
+
+	setToExpand(index: number | null) {
+		if (index !== null) {
+			this._chapterListingService.setToExpand(index);
 		}
 	}
 

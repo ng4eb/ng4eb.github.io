@@ -39,6 +39,7 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	currentPosition$ = this._chapterListingService.getCurrentPosition$();
 	url = this._router.url;
 	chapterListing = this._chapterListingService.getListing();
+	toExpand$ = this._chapterListingService.getToExpand$();
 	private _hasRegisteredTitleSearch = false;
 	private _filterQuery = '';
 	private _titleSearchSubscription?: Subscription;
