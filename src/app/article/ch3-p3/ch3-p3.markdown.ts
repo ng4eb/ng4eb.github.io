@@ -229,7 +229,7 @@ The page should be blank. If we inspect it with the element inspector, we should
 
 If we look at any of the component we have created, we will find that they all implement the \`OnInit\` interface by default. For example, here's the line inside \`a.component.ts\`:
 
-\`\`\`
+\`\`\`typescript
 export class AComponent implements OnInit {
 \`\`\`
 
