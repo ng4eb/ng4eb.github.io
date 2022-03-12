@@ -96,13 +96,15 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 			});
 
 		this._subscription3 = this._routingService.getPath$().subscribe(() => {
-			if (!this._zoom) {
-				this._zoom = mediumZoom('.md-img', {background: '#222222'});
-			} else {
-				this._zoom.detach();
-				setTimeout(() => {
+			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+				if (!this._zoom) {
 					this._zoom = mediumZoom('.md-img', {background: '#222222'});
-				})
+				} else {
+					this._zoom.detach();
+					setTimeout(() => {
+						this._zoom = mediumZoom('.md-img', {background: '#222222'});
+					})
+				}
 			}
 		})
 	}
