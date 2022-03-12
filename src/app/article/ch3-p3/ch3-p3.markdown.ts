@@ -585,9 +585,14 @@ The \`OnDestory\` event will not occur unless we have a way to remove \`X\` comp
 @Component({  
  selector: 'app-a',  
  template: \`  
- <app-b></app-b> <app-x *ngIf="renderX" [boundInput]="boundInput"></app-x>  
- <button (click)="changeBoundInput()">Change Bound  
- Input </button> <button (click)="toggleXComponent()">Toggle X Component</button>  
+ <app-b></app-b> 
+ <app-x *ngIf="renderX" [boundInput]="boundInput"></app-x>  
+ <button (click)="changeBoundInput()">
+ Change Bound Input
+ </button>
+ <button (click)="toggleXComponent()">
+ Toggle X Component
+ </button>  
  \`,  
  styles: []  
 })  
