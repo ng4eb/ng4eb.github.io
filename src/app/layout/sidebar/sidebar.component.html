@@ -38,7 +38,9 @@
             <div class="chapter-listing"
                  *ngIf="isSidebarOpen$ | async">
                 <details
-                        *ngFor="let chapter of chapterListing; let i = index">
+                        *ngFor="let chapter of chapterListing; let i = index"
+                        [open]="i === (toExpand$ | async)"
+                >
                     <summary
                             [class.highlight]="titleMatched(chapter.title)">
                         Ch{{chapter.ch}}
