@@ -11,6 +11,7 @@ import {Ch2P2Component} from './ch2-p2/ch2-p2.component';
 import {Ch2P3Component} from './ch2-p3/ch2-p3.component';
 import {Ch3P1Component} from './ch3-p1/ch3-p1.component';
 import {Ch3P2Component} from './ch3-p2/ch3-p2.component';
+import {Ch3P3Component} from './ch3-p3/ch3-p3.component';
 
 const routes: Routes = [
 	{
@@ -44,6 +45,10 @@ const routes: Routes = [
 			{
 				path: 'ch3/p2',
 				component: Ch3P2Component
+			},
+			{
+				path: 'ch3/p3',
+				component: Ch3P3Component
 			},
 			{
 				path: '**',
