@@ -107,8 +107,8 @@ export class ChapterListingService {
 					title: "Using Routing",
 					sections: [
 						"How routing works",
-						"Using routing modules",
-						"Creating nested pages"
+						"Using routing module",
+						"Creating child routes"
 					]
 				},
 				{

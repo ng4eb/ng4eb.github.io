@@ -150,13 +150,13 @@ You can see the code for the counter demo app on [Stackblitz](https://stackblitz
 
 ## Nested components & two-way binding
 
-### @Input Decorator - From Parent to Child
-
 A nested component is a component that appears inside the template of another component. For example, when we put the counter component inside the template of the app component, the counter component is nested.
 
 In a nested relationship, we have a parent component and a child component. The parent component is the one that contains the other. In the example above, the app component is the parent of the counter component.
 
 What's special about nested components? Angular provides us ways for making them communicate. With an example, we will see how the parent component can give values to the child, and also how the child can give its parent some values based on events.
+
+### Project Setup
 
 Let's create a project named \`super-counter-demo\`:
 
@@ -209,6 +209,8 @@ export class OuterCounterComponent implements OnInit {
 \`\`\`
 
 We set \`count1\` and \`count2\` to \`5\` and \`10\` initially above.
+
+### @Input Decorator - From Parent to Child
 
 Now, we need to set up a way for the inner counters to receive the values from the parent. For that, Angular provides the decorator \`@Input\`. Let's edit \`inner-counter.component.ts\` now to see it in play:
 
