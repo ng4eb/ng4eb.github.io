@@ -6,15 +6,15 @@ export const ch4P1Markdown = `
 
 ### Why Router Is Needed
 
-For a traditional, non-SPA (single page application) website, when a visitor goes to a page, the server returns the HTML file along with the assets that it contains.
+For a traditional, non-SPA (single page application) website, when a visitor goes to a page, the server returns an HTML file along with the assets that it contains.
 
-However, an SPA does not work that way. No matter which page a visitor goes to, the whole application is sent to the visitor's browser first. Then, the application will determine which parts of the UI to render based on the url path. In Angular, the logic to decide what to render is handled by a module called **router**.
+However, an SPA does not work that way. No matter which page a visitor goes to, the whole application is sent to the visitor's browser first. Then, the application will determine which parts of the UI to render based on the url path. In Angular, the logic to decide what to render is handled by a **router**.
 
 ## Using routing module
 
 ### Project Setup
 
-Let's create a new project named \`routing-demo\` to demonstrate how routing works. This time, we will let the Angular CLI generate the default routing setup for us:
+Let's create a new project named \`routing-demo\` to demonstrate how routing works. This time, we will let the Angular CLI generate the default routing setup for us with \`--routing=true\`:
 
 \`\`\`
 ng new routing-demo --routing=true --style=css
@@ -37,7 +37,7 @@ export class AppRoutingModule { }
 
 Here's what we need to know about the \`AppRoutingModule\`:
 
-1. It sets up the routes (think of them as paths) in the \`imports\` array. It uses the \`routes\` array and \`RoutingModule\` provided by Angular
+1. It sets up the routes (think of them as paths) in the \`imports\` array. It uses the \`routes\` array (to be defined by us) and \`RoutingModule\` (provided by Angular)
 2. The \`RoutingModule\` provides all sorts of tools we need for routing
 3. The \`AppRoutingModule\` exports the \`RoutingModule\`
 
@@ -103,11 +103,11 @@ const routes: Routes = [
 ];  
 \`\`\`
 
-Both objects are of the \`Route\` type, which you can read more in [the official documentation](https://angular.io/api/router/Route).  A \`Route\` object must have the \`path\` property, which specifies the url path the router should monitor.
+Both objects are of the \`Route\` type, which you can read more about in [the official documentation](https://angular.io/api/router/Route).  A \`Route\` object must have the \`path\` property, which specifies the url path the router should monitor.
 
-For example, the path \`home\`  tells the router to look for path that begins with \`home\`. If we serve the application on port 4200, then the base url of our application will be \`http://localhost:4200/\`. So, the path \`home\` means \`http://localhost:4200/home\`.
+For example, the path \`home\`  tells the router to look for any path that begins with \`home\`. If we serve the application on port 4200, then the base url of our application will be \`http://localhost:4200/\`. So, the path \`home\` means \`http://localhost:4200/home\`.
 
-So we tell our router to look for the path \`http://localhost:4200/home\`. When a visitor goes to that path, we want the router to render things specific to the page. For that, we specified the \`component\` property for rendering a particular component.
+So we tell our router to look for the path \`http://localhost:4200/home\`. When a visitor goes to that path, we want the router to render things specific to that page. For that, we specified the \`component\` property for rendering a particular component.
 
 After setting up the routes, we also need to integrate the router into our template. Let's replace \`app.component.html\` with the following:
 
@@ -144,9 +144,9 @@ In the above, we added the line:
 
 The empty path is denoted by \`path: ''\`. 
 
-We also need to set the \`pathMatch\` to \`'full'\` because Angular will think we want to match all possible routes otherwise.  Typically, we would leave the \`pathMatch\` property to its default, which is \`'prefix'\`. *\`pathMatch: 'full'\` is necessary to the empty route since an empty path is a prefix of any URL.*
+We also need to set the \`pathMatch\` to \`'full'\` because otherwise, Angular will think we want to match all possible routes.  Typically, we would leave the \`pathMatch\` property to its default, which is \`pathMatch: 'prefix'\`. We have to set *\`pathMatch: 'full'\` here since an empty path is a prefix of any URL.*
 
-Finally, we specified the \`redirectTo\` property to \`home\`. That means when the empty route is visited, redirect the visitor to the \`home\` route instead.
+Finally, we specified the \`redirectTo\` property to \`home\`. That means when the empty route is visited, the router would redirect the visitor to the \`home\` route instead.
 
 Now, if we go to \`localhost:4200\` again, we should be redirected to \`localhost:4200/home\`.
 
@@ -255,7 +255,7 @@ Let's replace \`app.component.html\` with the \`navbar\` and \`router-outlet\`:
 <router-outlet></router-outlet>
 \`\`\`
 
-Let's also add the link to \`product/list\` and some styling in \`navbar.component.ts\`:
+Let's also add a link to \`product/list\` and some styling in \`navbar.component.ts\`:
 
 \`\`\`typescript
 @Component({  
@@ -312,7 +312,7 @@ export class ProductListingComponent implements OnInit {
   
   readonly products: product[] = [  
    { id: 1, name: 'water bottle', description: 'this is a big water bottle', price: 5},  
-  { id: 2, name: 'flashlight', description: 'this is a bright flashlight!', price: 3}  
+   { id: 2, name: 'flashlight', description: 'this is a bright flashlight!', price: 3}  
   ];  
   
  constructor() { }  
