@@ -12,11 +12,13 @@ Which is basically the same as below:
 <p>{{'hello world!'.toUpperCase()}}</p>
 \`\`\`
 
-So, why do we prefer using pipes instead of regular functions in the template? The main benefit of using pipes is readability. Imagine that we also need to transform the above value with a function like \`transformXtoY\`. If we use another pipe, then we can chain them into a nice format:
+So, why do we prefer using pipes instead of regular functions in the template? One main benefit of using pipes is readability. Imagine that we also need to transform the above value with a function like \`transformXtoY\`. If we use another pipe, then we can chain them into a nice format:
 
 \`\`\`html
 <p>{{'hello world!' | uppercase | transformXToY}}</p>
 \`\`\`
+
+Another benefit is clearer separation of concerns. Extracting the transformation logic from a component to a pipe helps keep the component code clean and light.
 
 ## Using percent pipe
 
