@@ -93,7 +93,7 @@ export class ChapterListingService {
 					sections: [
 						"How pipes work",
 						"Using percent pipe",
-						"Creating our own percent pipe"
+						"Creating a custom pipe"
 					]
 				}
 			]
