@@ -130,7 +130,7 @@ export class ChapterListingService {
 					title: "Using Services",
 					sections: [
 						"How services work",
-						"Concept of Dependency Injection",
+						"Concept of dependency injection",
 						"Creating a counter service"
 					]
 				},

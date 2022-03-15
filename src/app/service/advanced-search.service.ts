@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {
+	ChapterListingService
+} from './chapter-listing.service';
+import {
 	ch1P1Markdown
 } from '../article/ch1-p1/ch1-p1.markdown';
 import {
@@ -30,11 +33,11 @@ import {
 	ch4P1Markdown
 } from '../article/ch4-p1/ch4-p1.markdown';
 import {
-	ChapterListingService
-} from './chapter-listing.service';
-import {
 	ch4P2Markdown
 } from '../article/ch4-p2/ch4-p2.markdown';
+import {
+	ch5P1Markdown
+} from '../article/ch5-p1/ch5-p1.markdown';
 
 @Injectable({
 	providedIn: 'root'
@@ -51,7 +54,8 @@ export class AdvancedSearchService {
 		ch3p3: ch3P3Markdown,
 		ch3p4: ch3P4Markdown,
 		ch4p1: ch4P1Markdown,
-		ch4p2: ch4P2Markdown
+		ch4p2: ch4P2Markdown,
+		ch5p1: ch5P1Markdown
 	};
 
 	private _listing = this._chapterListingService.getListing();
