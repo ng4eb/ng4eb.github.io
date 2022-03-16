@@ -38,6 +38,9 @@ import {
 import {
 	ch5P1Markdown
 } from '../article/ch5-p1/ch5-p1.markdown';
+import {
+	ch5P2Markdown
+} from '../article/ch5-p2/ch5-p2.markdown';
 
 @Injectable({
 	providedIn: 'root'
@@ -55,7 +58,8 @@ export class AdvancedSearchService {
 		ch3p4: ch3P4Markdown,
 		ch4p1: ch4P1Markdown,
 		ch4p2: ch4P2Markdown,
-		ch5p1: ch5P1Markdown
+		ch5p1: ch5P1Markdown,
+		ch5P2: ch5P2Markdown
 	};
 
 	private _listing = this._chapterListingService.getListing();

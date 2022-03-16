@@ -61,10 +61,15 @@ p, ul, ol, pre {
 pre {
   width: 100%;
   padding: size.$space-8;
+  margin-bottom: size.$space-26 !important;
   background: var(--grey-ee-33);
   border: 1px solid #cccccc;
   border-radius: 5px;
   overflow-x: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: size.$space-32 !important;
+  }
 }
 
 code {
