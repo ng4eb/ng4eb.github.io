@@ -13,7 +13,7 @@ An **observable** is an object from the RxJS library. It is used for asynchronou
 async fetchSomething() {
   try {
 \tconst response = await fetch(someUrl);
-\t// callbacks below handling different cases based on returned code
+\t// put callbacks below for handling different cases based on returned code
 \tswitch (response.data.code) {
 \t\tcase 0:
 \t\t\t// callback for handling case 0 here
@@ -26,9 +26,9 @@ async fetchSomething() {
 }
 \`\`\`
 
-In the above,  an \`async\` function \`fetchSomething\` is declared. Inside an \`async\` function, we can use the \`await\` keyword in front of a promise. Since the \`fetch\` function returns a promise, we can use \`await\` in front of it. 
+In the above,  note that the function \`fetchSomething\` is marked with the \`async\` keyword. In an \`async\` function, we can use the \`await\` keyword in front of a promise. Since the \`fetch\` function is a promise, we can use \`await\` in front of it. 
 
-When using \`await\`, the code in the \`async\` function block will wait until the awaited promise is *fulfilled*. Based on the returned value, we can carry out different callbacks below the promise to handle different cases.
+Using \`await\` will cause the code in the \`async\` function block to wait for the awaited promise to be *fulfilled*. Once fulfilled, based on the returned value, we can carry out different actions to handle different cases.
 
 ### Introduction to Observables
 
@@ -40,13 +40,15 @@ And a promise is defined as:
 
 > A **Promise** is a computation that may (or may not) eventually return a single value.
 
-Therefore, a major difference between them is that *a promise will always only return a single value (if fulfilled), whereas an observable can return more than one*. 
+As shown in the definitions, a major difference between them is that *a promise will always only return a single value (if fulfilled), whereas an observable can return more than one*. 
 
-This makes observables shine when handling a stream of data. We can use an observable to listen to the data stream and keep the front-end updated accordingly. This is commonly referred to **the pub-sub pattern**:
+This makes observables shine in handling a stream of data. We can use an observable to listen to the data stream and keep the front-end updated. This is commonly referred to **the pub-sub pattern**:
 
 ![pub-sub pattern concept](assets/images/ch5/pub_sub_pattern.png)
 
-In the pub-sub pattern, the **publisher** is in charge of outputting data. On the other hand, the **subscriber** reacts to the data based on the changes it observes. When we use an observable, we are telling the program to keep looking for changes in the emitted data. When a change is observed, we can instruct the program to react to it (for example, to update the UI).
+In the pub-sub pattern, the **publisher** (e.g. server) is in charge of outputting data. On the other hand, the **subscriber** reacts to the data based on the changes it observes. 
+
+When we use an observable, we are telling the program to keep looking for changes in the emitted data. When a change is observed, we can instruct the program to react to it (for example, to update the UI).
 
 Another difference is that an observable is *lazily-evaluated*. After an observable is created, it won't be evaluated until it is *subscribed*. In other words, only if we *subscribe* to an observable, would the observable code execute.
 
@@ -84,9 +86,14 @@ export class PoolService {
 
 We will first modify the \`_points\` property. Currently, it holds a number type value. We will turn it into an observable. Precisely ,we will convert it to a \`BehaviorSubject\`.
 
-A \`BehaviorSubject\` is a special type of observable. Here are some of its characteristics: First, we need to create it with an initial value. When we subscribe to it, it will return the latest value to us, so we will at least get one value. We can use its \`getValue\`  method to retrieve its value synchronously, and we can update its value by calling its \`next\` method.
+A \`BehaviorSubject\` is a special type of observable. It has some important characteristics: 
 
-\`BehaviorSubject\` works very well with components because the latter always wants at least one latest value. So, more often than not, we will use \`BehaviorSubject\` to create our own observables in Angular.
+1. it has to be created with an initial value
+2. when we subscribe to it, it will return the latest value, so we will at least get one value
+3. we can use its \`getValue\`  method to retrieve its current value synchronously
+4. we can update its value by calling its \`next\` method
+
+\`BehaviorSubject\` works very well with components because the latter always wants at least one latest value (for display). So, more often than not, we will use \`BehaviorSubject\` to create our own observables in Angular.
 
 Let's change the \`_points\` variable now:
 
@@ -100,9 +107,11 @@ The \`BehaviorSubject\` class comes from the \`rxjs\` package, so we need to imp
 import { BehaviorSubject } from 'rxjs';
 \`\`\`
 
-Note that we renamed the variable to \`_points$\`. For observables, a common naming convention is to add the dollar sign suffix \`$\`. We created a \`BehaviorSubject\` by using the \`new\` keyword in front of the \`BehaviorSubject\` class, which requires a generic type. Since we are dealing with the \`number\` type, we specified the type to \`number\`. Then, we provided an initial value of \`10\` as an argument. Without an initial value, we will get an error.
+Note that we renamed the variable to \`_points$\`. A common convention for naming observables is to add the dollar sign suffix \`$\`. 
 
-We also need to change the implementation of the getter \`points\`:
+We created a \`BehaviorSubject\` by using the \`new\` keyword in front of the \`BehaviorSubject\` class, which requires a generic type. Since we are dealing with the \`number\` type, we specified the generic type to \`number\`. Then, we provided an initial value of \`10\` as an argument. Without the initial value, we will get an error.
+
+Next, let's change the implementation of the getter \`points\`:
 
 \`\`\`typescript
 get points(): number {
@@ -112,7 +121,7 @@ get points(): number {
 
 By using the \`getValue\` method on \`_points$\`, we can still get the value we want in a synchronous manner.
 
-Next, we will add a new getter \`point$\` to return an observable:
+Let's also add a new getter \`point$\` to return an observable:
 
 \`\`\`typescript
 get points$() {
@@ -120,7 +129,7 @@ get points$() {
 }
 \`\`\`
 
-Again, we added the \`$\` suffix to mark that it is an observable. Note that we used the \`asObservable\` method above. That's because other components or services which consume it from outside do not have to know that they are getting a \`BehaviorSubject\`. By using \`asObservable\`, we make sure that whoever uses it will treat it as a regular observable.
+Note that we used the \`asObservable\` method in the getter. That's because other components or services which consume it from outside should not know that they are getting a \`BehaviorSubject\`. By using \`asObservable\`, we make sure that whoever uses it will treat it as a regular observable.
 
 Finally, let's change the implementation of \`incrementPool\` and \`decrementPool\`:
 
