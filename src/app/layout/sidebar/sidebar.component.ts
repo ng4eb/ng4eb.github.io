@@ -12,7 +12,7 @@ import {LayoutService} from '../../service/layout.service';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {
 	ChapterListingService
-} from '../../service/chapter-listing.service';
+} from '../../service/chapter-listing/chapter-listing.service';
 import {
 	debounceTime,
 	distinctUntilChanged,
