@@ -21,7 +21,7 @@ import {
 } from 'rxjs';
 import {
 	AdvancedSearchService
-} from '../../service/advanced-search.service';
+} from '../../service/advanced-search/advanced-search.service';
 import {Router} from '@angular/router';
 
 @Component({

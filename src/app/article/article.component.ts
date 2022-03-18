@@ -11,7 +11,7 @@ import {
 import {RoutingService} from '../service/routing.service';
 import {
 	ChapterListingService, navigationPart
-} from '../service/chapter-listing.service';
+} from '../service/chapter-listing/chapter-listing.service';
 import {filter, Subscription} from 'rxjs';
 import {
 	faAngleLeft,
