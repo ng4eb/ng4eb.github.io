@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {filter, map} from 'rxjs';
 import {
 	AdvancedSearchService
-} from '../service/advanced-search.service';
+} from '../service/advanced-search/advanced-search.service';
 
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import {LayoutService} from '../service/layout.service';

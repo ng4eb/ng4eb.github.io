@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {
 	ChapterListingService
-} from '../service/chapter-listing.service';
+} from '../service/chapter-listing/chapter-listing.service';
 import {
 	IsPlatformBrowserService
 } from '../service/is-platform-browser.service';
