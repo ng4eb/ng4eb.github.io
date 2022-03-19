@@ -37,9 +37,6 @@ import {
 import {
 	ch5P2Markdown
 } from '../../article/ch5-p2/ch5-p2.markdown';
-import {
-	ch6P1Markdown
-} from '../../article/ch6-p1/ch6-p1.markdown';
 
 export const markdowns = {
 	ch1p1: ch1P1Markdown,
@@ -54,8 +51,7 @@ export const markdowns = {
 	ch4p1: ch4P1Markdown,
 	ch4p2: ch4P2Markdown,
 	ch5p1: ch5P1Markdown,
-	ch5p2: ch5P2Markdown,
-	ch6p1: ch6P1Markdown
+	ch5p2: ch5P2Markdown
 }
 
 export type mdKey = keyof typeof markdowns;
