@@ -12,7 +12,7 @@ export class LayoutService {
 	private _isOverlayOpen$ = new BehaviorSubject(false);
 	private _isAdvancedSearchOpen$ = new BehaviorSubject(false);
 	private _isSidebarOpen$ = new BehaviorSubject(true);
-	private _darkTheme$ = new BehaviorSubject(this._isPlatformBrowser && localStorage.getItem('darkTheme') === 'true' ? true : false);
+	private _darkTheme$ = new BehaviorSubject(this._isPlatformBrowser && localStorage.getItem('darkTheme') === 'true');
 
 
 	constructor(private _isPlateFormBrowserService: IsPlatformBrowserService) {
@@ -54,11 +54,11 @@ export class LayoutService {
 		}
 	}
 
-	scrollToTop() {
+scrollToTop(isSmooth = true) {
 		if (this._isPlatformBrowser) {
 			window.scrollTo({
 				top: 0,
-				behavior: 'smooth'
+				behavior: isSmooth ? 'smooth' : 'auto'
 			});
 		}
 	}
