@@ -7,6 +7,8 @@ Commonly, we think of two-way bindings with the terms **model** and **view**. Th
 
 ![Concept of two way bindings](assets/images/ch6/two_way_binding_concept.png)
 
+As we will see below, template-driven forms use two-way bindings through the use of property binding (with brackets \`[]\`), event binding (with parentheses \`()\`), and the directive \`ngModel\`. We will apply all these directly in the template.
+
 ## Using ngModel
 
 In this section, we will learn to use the \`ngModel\` directive to build a template-driven form. 
@@ -138,9 +140,9 @@ Now, let's add \`ngModel\` to \`reg-form.component.html\`:
 
 We added \`ngModel\` to every \`input\` tag. Note that \`ngModel\` will only work with inputs that have the \`name\` properties specified.
 
-Also, we added \`#regForm="ngForm"\` and \`(ngSubmit)="onSubmit(regForm)"\`. Let's first talk about the former. 
+Also, we added \`#regForm="ngForm"\` and \`(ngSubmit)="onSubmit(regForm)"\` in the form tag. Let's first talk about the former. 
 
-As mentioned, \`FormsModule\`  attaches the \`ngForm\` directive to all forms. With \`ngForm\`, we can access the status of a form by using a **template reference variable**. A template reference variable is declared inside a tag with a hash symbol \`#\`, followed by a name we pick. You can read more about it in [the documentation](https://angular.io/guide/template-reference-variables).
+As mentioned, \`FormsModule\`  attaches the \`ngForm\` directive to all form elements. With \`ngForm\`, we can access the status of a form by using a **template reference variable**. A template reference variable is declared inside a tag with a hash symbol \`#\`, followed by a name we pick. You can read more about it in [the documentation](https://angular.io/guide/template-reference-variables).
 
  In our case, we declared the template reference variable \`regForm\` on the \`form\` element.
  
@@ -220,7 +222,7 @@ Now, if we type in invalid values in each input field and submit the form, we wi
 
 ![invalid text](assets/images/ch6/template_form_demo_5.png)
 
-If we check the console and click into the \`controls\` property, we would see there is an \`error\` object in each input, which shows the error that the input contains:
+If we check the console and expand the \`controls\` property, we would see there is an \`error\` object in each input, which shows the error that the input contains:
 
 - \`accountName\`:
 ![accountName error](assets/images/ch6/template_form_demo_6.png)
@@ -235,9 +237,10 @@ If we check the console and click into the \`controls\` property, we would see t
 ![password error](assets/images/ch6/template_form_demo_9.png)
 
 ### Adding Error Styles
-Now, let's also add some styles to our input fields for indicating when there is an invalid value.
 
-For that, we can use the CSS classes Angular gives to the inputs (which use \`ngModel\`) based on their status:
+Now, let's add some styles to our input fields for indicating when there is an invalid value.
+
+For that, we can use the CSS classes Angular applies to the inputs (with \`ngModel\`) based on their status:
 
 - \`ng-untouched\`: when an input is not visited
 - \`ng-touched\`: when an input has been visited
@@ -348,7 +351,7 @@ First, in the input tag for \`accountName\`, we used \`[(ngModel)]\`. Note that 
 
 We also added a new button that would trigger the \`clearAccountName\` method when clicked.
 
-If we now change the value of the account name input, and then click the reset button, we will see the value is reset to \`bob123\`:
+If we now change the value of the account name input, and then click the reset button, we will see the value be reset to \`bob123\`:
 
 ![reset value for accountName](assets/images/ch6/template_form_demo_12.png)
 
