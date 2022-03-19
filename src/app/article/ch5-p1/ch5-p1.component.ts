@@ -13,7 +13,7 @@ import { ch5P1Markdown } from './ch5-p1.markdown';
 @Component({
   selector: 'app-ch5-p1',
   template: `
-    <markdown [data]="markdown"
+    <markdown [data]="ch5P1Markdown"
               (ready)="onLoad($event)"
               #md>
     </markdown>
@@ -24,7 +24,7 @@ import { ch5P1Markdown } from './ch5-p1.markdown';
 })
 export class Ch5P1Component implements OnInit {
   @ViewChildren('md') md: any;
-  markdown = ch5P1Markdown;
+  ch5P1Markdown = ch5P1Markdown;
 
   constructor(
       private _onLoadMdService: OnLoadMdService,

@@ -25,7 +25,6 @@ import {
 	OnLoadMdService
 } from '../service/on-load-md.service';
 import mediumZoom from 'medium-zoom';
-import {LayoutService} from '../service/layout.service';
 
 @Component({
 	selector: 'app-article',
@@ -68,7 +67,6 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 		private _chapterListingService: ChapterListingService,
 		private _isPlatformBrowserService: IsPlatformBrowserService,
 		private _onLoadMdService: OnLoadMdService,
-		private _layoutService: LayoutService,
 		private _cdr: ChangeDetectorRef,
 	) {
 	}
@@ -86,11 +84,6 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 				}
 			}
 		}
-	}
-
-	clickNavigationLink(index: number | null) {
-		this._layoutService.scrollToTop(false);
-		this.setToExpand(index);
 	}
 
 	setToExpand(index: number | null) {
