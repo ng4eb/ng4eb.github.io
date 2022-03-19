@@ -13,7 +13,7 @@ import { ch3P3Markdown } from './ch3-p3.markdown';
 @Component({
   selector: 'app-ch3-p3',
   template: `
-    <markdown [data]="ch3P3Markdown"
+    <markdown [data]="markdown"
               (ready)="onLoad($event)"
               #md>
     </markdown>
@@ -24,7 +24,7 @@ import { ch3P3Markdown } from './ch3-p3.markdown';
 })
 export class Ch3P3Component implements OnInit {
   @ViewChildren('md') md: any;
-  ch3P3Markdown = ch3P3Markdown;
+  markdown = ch3P3Markdown;
 
   constructor(
       private _onLoadMdService: OnLoadMdService,
