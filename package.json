@@ -10,7 +10,7 @@
     "dev:ssr": "ng run ng4eb-revamp:serve-ssr",
     "serve:ssr": "node dist/ng4eb-revamp/server/main.js",
     "build:ssr": "ng build && ng run ng4eb-revamp:server",
-    "prerender": "ng run ng4eb-revamp:prerender",
+    "prerender": "ng run ng4eb-revamp:prerender --routes-file routes.txt",
     "serve:prerender": "npx ts-node --project tsconfig.ssr-preview.json ssr-preview.ts",
     "copy": "cp _redirects dist/ng4eb-revamp/browser"
   },

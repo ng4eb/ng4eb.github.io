@@ -1,23 +1,37 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {
+	RouterModule,
+	Routes,
+	UrlSegment
+} from '@angular/router';
 import {ArticleComponent} from './article.component';
-import {Ch1P1Component} from './ch1-p1/ch1-p1.component';
 import {
 	NotFoundComponent
 } from '../shared/not-found/not-found.component';
-import {Ch1P2Component} from './ch1-p2/ch1-p2.component';
-import {Ch2P1Component} from './ch2-p1/ch2-p1.component';
-import {Ch2P2Component} from './ch2-p2/ch2-p2.component';
-import {Ch2P3Component} from './ch2-p3/ch2-p3.component';
-import {Ch3P1Component} from './ch3-p1/ch3-p1.component';
-import {Ch3P2Component} from './ch3-p2/ch3-p2.component';
-import {Ch3P3Component} from './ch3-p3/ch3-p3.component';
-import {Ch3P4Component} from './ch3-p4/ch3-p4.component';
-import {Ch4P1Component} from './ch4-p1/ch4-p1.component';
-import {Ch4P2Component} from './ch4-p2/ch4-p2.component';
-import {Ch5P1Component} from './ch5-p1/ch5-p1.component';
-import {Ch5P2Component} from './ch5-p2/ch5-p2.component';
-import {Ch6P1Component} from './ch6-p1/ch6-p1.component';
+import {
+	ChapterComponent
+} from './chapter.component';
+import {
+	ChapterResolver
+} from '../resolver/chapter.resolver';
+
+const chapters = [
+	'ch1p1', 'ch1p2',
+	'ch2p1', 'ch2p2', 'ch2p3',
+	'ch3p1', 'ch3p2', 'ch3p3', 'ch3p4',
+	'ch4p1', 'ch4p2',
+	'ch5p1', 'ch5p2',
+	'ch6p1'
+]
+const chapterRouteMatcher = (url: UrlSegment[]) => {
+	if (url.length === 2) {
+		const path = url[0].path + url[1].path;
+		if (chapters.includes(path)) {
+			return {consumed: url};
+		}
+	}
+	return null;
+}
 
 const routes: Routes = [
 	{
@@ -25,60 +39,9 @@ const routes: Routes = [
 		component: ArticleComponent,
 		children: [
 			{
-				path: 'ch1/p1',
-				component: Ch1P1Component
-			},
-			{
-				path: 'ch1/p2',
-				component: Ch1P2Component
-			},
-			{
-				path: 'ch2/p1',
-				component: Ch2P1Component
-			},
-			{
-				path: 'ch2/p2',
-				component: Ch2P2Component
-			},
-			{
-				path: 'ch2/p3',
-				component: Ch2P3Component
-			},
-			{
-				path: 'ch3/p1',
-				component: Ch3P1Component
-			},
-			{
-				path: 'ch3/p2',
-				component: Ch3P2Component
-			},
-			{
-				path: 'ch3/p3',
-				component: Ch3P3Component
-			},
-			{
-				path: 'ch3/p4',
-				component: Ch3P4Component
-			},
-			{
-				path: 'ch4/p1',
-				component: Ch4P1Component
-			},
-			{
-				path: 'ch4/p2',
-				component: Ch4P2Component
-			},
-			{
-				path: 'ch5/p1',
-				component: Ch5P1Component
-			},
-			{
-				path: 'ch5/p2',
-				component: Ch5P2Component
-			},
-			{
-				path: 'ch6/p1',
-				component: Ch6P1Component
+				matcher: chapterRouteMatcher,
+				component: ChapterComponent,
+				resolve: {chapter: ChapterResolver}
 			},
 			{
 				path: '**',
