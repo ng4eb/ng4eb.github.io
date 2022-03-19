@@ -1,0 +1,16 @@
+/book/ch1/p1
+/book/ch1/p2
+/book/ch2/p1
+/book/ch2/p2
+/book/ch2/p3
+/book/ch3/p1
+/book/ch3/p2
+/book/ch3/p3
+/book/ch3/p4
+/book/ch4/p1
+/book/ch4/p2
+/book/ch5/p1
+/book/ch5/p2
+/book/ch6/p1
+/book/ch6/p2
+/book/ch6/p3
