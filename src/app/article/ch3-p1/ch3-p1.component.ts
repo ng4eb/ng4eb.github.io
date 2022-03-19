@@ -13,7 +13,7 @@ import {SeoService} from '../../service/seo.service';
 @Component({
 	selector: 'app-ch3-p1',
 	template: `
-        <markdown [data]="ch3P1Markdown"
+        <markdown [data]="markdown"
                   (ready)="onLoad($event)"
                   #md>
         </markdown>
@@ -23,7 +23,7 @@ import {SeoService} from '../../service/seo.service';
 })
 export class Ch3P1Component implements OnInit {
 	@ViewChildren('md') md: any;
-	ch3P1Markdown = ch3P1Markdown;
+	markdown = ch3P1Markdown;
 
 	constructor(
 		private _onLoadMdService: OnLoadMdService,

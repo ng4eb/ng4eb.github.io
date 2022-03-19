@@ -23,4 +23,24 @@
     <div id="article-content">
         <router-outlet></router-outlet>
     </div>
+    <footer class="article-footer">
+        <nav class="article-navigation">
+            <a *ngIf="navigation.prev.path"
+               class="article-navigation__prev"
+               [routerLink]="navigation.prev.path"
+               (click)="clickNavigationLink(navigation.prev.index)"
+            >
+                <fa-icon [icon]="faAngleLeft"></fa-icon>
+                {{navigation.prev.title}}
+            </a>
+            <a *ngIf="navigation.next.path"
+               class="article-navigation__next"
+               [routerLink]="navigation.next.path"
+               (click)="clickNavigationLink(navigation.next.index)"
+            >
+                {{navigation.next.title}}
+                <fa-icon [icon]="faAngleRight"></fa-icon>
+            </a>
+        </nav>
+    </footer>
 </article>
