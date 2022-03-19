@@ -8,7 +8,7 @@ import {
 import {
 	chapterListing
 } from '../chapter-listing/chapter-listing';
-import {markdowns} from './markdowns';
+import {markdowns} from '../../article/markdowns';
 
 
 describe('advanced search', () => {

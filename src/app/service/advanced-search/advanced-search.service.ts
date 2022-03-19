@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {
 	ChapterListingService
 } from '../chapter-listing/chapter-listing.service';
-import {markdowns, mdKey} from './markdowns';
+import {markdowns, mdKey} from '../../article/markdowns';
 
 @Injectable({
 	providedIn: 'root'
