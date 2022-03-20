@@ -33,7 +33,7 @@ input {
 }
 
 a {
-  color: var(--grey-66-cc);
+  color: var(--yellow-89-c9);
   transition: all 0.1s;
   &:hover {
     color: var(--grey-44-aa);
@@ -102,6 +102,9 @@ blockquote {
 
 .md-img {
   object-fit: scale-down;
+  &:hover {
+    box-shadow: 0 0 10px 1px var(--grey-66-cc);
+  }
 }
 
 .h2-anchor {
