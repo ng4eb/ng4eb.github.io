@@ -83,7 +83,6 @@ blockquote {
   padding: size.$space-16 size.$space-12 size.$space-4 size.$space-48;
   margin: size.$space-12 auto;
   background: var(--grey-ee-33);
-  z-index: var(--z-negative-1);
   &::before {
     content: '❝';
     position: absolute;

@@ -16,6 +16,7 @@
   @include mixin.adventPro;
   background: var(--grey-44);
   color: var(--white);
+  z-index: var(--z-10);
 
   &__menu {
     position: fixed;
