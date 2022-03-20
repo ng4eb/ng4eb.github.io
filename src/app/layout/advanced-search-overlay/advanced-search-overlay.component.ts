@@ -93,7 +93,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 						}
 					}),
 					filter(Boolean),
-					debounceTime(500),
+					debounceTime(200),
 					distinctUntilChanged(),
 					tap((_event: KeyboardEvent) => {
 						this.queryString = this._query.nativeElement.value.toLowerCase();
@@ -104,7 +104,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 							setTimeout(() => {
 								this.isSearching = false;
 								this._cdr.detectChanges();
-							}, 1000)
+							}, 300)
 						}
 					})
 				)
