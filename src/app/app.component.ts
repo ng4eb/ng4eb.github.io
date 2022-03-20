@@ -13,8 +13,12 @@ import {isPlatformBrowser} from '@angular/common';
 
 @Component({
 	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
+	template: `
+        <ngx-loading-bar [includeSpinner]="false" color="#BC0000" height="3px"></ngx-loading-bar>
+        <app-layout>
+            <router-outlet></router-outlet>
+        </app-layout>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
