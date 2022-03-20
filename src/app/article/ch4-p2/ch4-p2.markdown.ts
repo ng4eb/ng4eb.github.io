@@ -383,4 +383,79 @@ Congratulations! You have now learned how to create, configure and apply a resol
 
 You may also check out the code for this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-resolver-demo).
 
+## Using Url Matcher
+
+Url matchers are custom functions for matching urls. We use them to make a route accept multiple urls. 
+
+Different from using a url parameter like \`:id\` which would accept alls sorts of parameters, a url matcher can restrict the match to particular urls. So, we can use it to match a set of urls, or urls of a particular pattern.
+
+For example, a restaurant may have a different menu every day. Instead of matching \`menu/:day\`, which would match \`menu/monday\` but also \`menu/gibberish\`, we can use a url matcher to restrict the match to \`menu/monday\`, \`menu/tuesday\`, \`menu/wednesday\`, etc.
+
+### Project Setup
+
+Let's create a new project called \`url-matcher-demo\`:
+
+\`\`\`
+ng new url-matcher-demo --routing=true --style=css
+\`\`\`
+
+First. generate two new components named \`menu\` and \`not-found\` respectively:
+
+\`\`\`
+ng g c menu -s -t
+ng g c not-found -s -t
+\`\`\`
+
+We can now add the \`menu\` route to the \`routes\` array in \`app-routing.module.ts\`:
+
+\`\`\`typescript
+const routes: Routes = [  
+   {  
+      path: 'menu', children: [  
+         {matcher: dayMatcher, component: MenuComponent},  
+\t\t {path: '**', component: NotFoundComponent}  
+      ]  
+   },  
+];
+\`\`\`
+
+In the first child route of \`menu\`, we used \`matcher: dayMatcher\`. If the matcher matches, the \`MenuComponent\` will be rendered. For other routes, the \`NotFoundComponent\` will be rendered instead.
+
+Let's now define the url matcher \`dayMatcher\` above \`routes\` in \`app-routing.module.ts\`:
+
+\`\`\`typescript
+const dayMatcher: UrlMatcher = (url: UrlSegment[]) => {  
+  const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];  
+  if (url.length === 1 && days.includes(url[0].path)) {  
+    return {consumed: url};  
+  }  
+  return null;  
+}
+\`\`\`
+
+The \`dayMatcher\` function has to be the \`UrlMatcher\` type. It takes in an argument of type \`UrlSegment[]\`. A \`UrlSegment\` object contains two properties - \`path\` and \`parameter\` properties. You can learn more about it in [the documentation](https://angular.io/api/router/UrlSegment).
+
+Inside the function, we declared and defined the \`days\` array. The array contains all the day strings.
+
+Then, we checked if the \`UrlSegment\` array contains only one member. We also checked if the \`path\` of the \`UrlSegment\` is included in the \`days\` array. If so, we would return a \`UrlMatchResult\` object, which has the form \`{consume: UrlSegment[]}\`. Otherwise, we would return \`null\` instead.
+
+A \`UrlMatcher\` function returns either a \`UrlMatchResult\` object or \`null\`. Returning a \`UrlMatchResult\` object means a successful match. In the above, the conditions for a successful match are:
+
+1. there is only one \`UrlSegment\` - so only one \`something\` in \`menu/something\`. The \`menu\` segment is not counted because it is already taken out in the parent route
+2. the path of the \`UrlSegment\` has to be \`monday\`, \`tuesday\`, \`wednesday\`, \`thursday\`, \`friday\`, \`saturday\`, or \`sunday\`
+
+In other words, only the paths \`menu/monday\`, \`menu/tuesday\`, \`menu/wednesday\`, \`menu/thursday\`, \`menu/firday\`, \`menu/saturday\` and \`menu/sunday\` will be matched in the child route to render \`MenuComponent\`.
+
+Now, if we go to the path \`menu/monday\`, we should see the \`MenuComponent\`:
+
+![url matcher matches successfully](assets/images/ch4/url_matcher_demo_1.png)
+
+If we go to \`menu/gibberish\` instead, we would see the \`NotFoundComponent\`:
+
+![url matcher does not match](assets/images/ch4/url_matcher_demo_2.png)
+
+Great! You have learned how to configure and use a url matcher!
+
+The code for this demo can be found on [Stackblitz](https://stackblitz.com/edit/ng4eb-url-matcher-demo).
+
 `;

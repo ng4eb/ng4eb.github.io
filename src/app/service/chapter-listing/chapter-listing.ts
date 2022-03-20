@@ -100,7 +100,8 @@ export const chapterListing =  [
 				sections: [
 					"Lazy-loading a module",
 					"Implementing an authentication router guard",
-					"Using resolvers"
+					"Using resolvers",
+					"Using url matcher"
 				]
 			}
 		]
