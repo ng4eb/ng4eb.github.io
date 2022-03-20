@@ -370,6 +370,8 @@ const routes: Routes = [
 ];
 \`\`\`
 
+Note the colon symbol \`:\` in \`:productId\`. It specifies that \`productId\` is a parameter.  For example, if someone goes to \`product/123\`, the route \`product/:productId\` will be matched, and the value \`123\` will map to \`productId\`.  We will see how we can extract the parameter later.
+
 After saving the changes, we can see that our page is already working:
 
 ![product listing child route working](/assets/images/ch4/child_routes_demo_1.png)
@@ -435,6 +437,40 @@ const routes: Routes = [
 Now, we should also see the wrapper around both the \`product-listing\` and \`product-detail\` components!
 
 ![product page wrapper working](/assets/images/ch4/child_routes_demo_3.png)
+
+### Getting the Url Parameter
+
+In the product detail page, we can extract and show the url parameter \`:productId\` by using \`ActivatedRoute\`. Let's edit \`product-detail.component.ts\`:
+
+\`\`\`typescript
+import {Component, OnInit} from '@angular/core';  
+import {ActivatedRoute} from '@angular/router';  
+  
+@Component({  
+ selector: 'app-product-detail',  
+ template: \`  
+  <p> product-detail with product id {{productId}} works! </p> 
+ \`,  
+ styles: [],  
+})  
+export class ProductDetailComponent implements OnInit {  
+  productId = this._route.snapshot.paramMap.get('productId');  
+  
+  constructor(private _route: ActivatedRoute) {  
+  }  
+  
+  ngOnInit(): void {
+  }  
+}
+\`\`\`
+
+To get back the parameter value \`productId\`, we need to inject the \`ActivatedRoute\` dependency into the component class. 
+
+We use its \`snapshot\` property to get the current route information. It has a \`paramMap\` property which we can use to get all the parameter mappings in the url. Since we are interested in the \`productId\` parameter, we can get it via the getter \`get\` and pass in \`productId\` as the argument.
+
+We then stored it into a variable \`productId\`, which we used in the template. Now, if we go to the route \`/product/1\`, we should see the value \`1\` is correctly extracted:
+
+![extracting url parameter productId](assets/images/ch4/url_parameter_extraction.png)
 
 Congratulations! You have learned how to use and configure child routes in Angular.
 
