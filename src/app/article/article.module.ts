@@ -18,7 +18,7 @@ import {
 @NgModule({
 	declarations: [
 		ArticleComponent,
-		ChapterComponent
+		ChapterComponent,
 	],
 	imports: [
 		CommonModule,

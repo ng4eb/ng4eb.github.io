@@ -144,7 +144,8 @@ export const chapterListing =  [
 				title: "Using Reactive Forms",
 				sections: [
 					"How reactive forms work",
-					"Using FormControl & FormBuilder"
+					"Using FormControl & FormGroup",
+					"Using FormBuilder"
 				]
 			},
 			{
