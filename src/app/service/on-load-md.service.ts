@@ -35,9 +35,8 @@ export class OnLoadMdService {
     );
     if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.location.hash) {
       const hash = window.location.hash.split('#')[1];
-      window.location.hash = hash + '#';
       setTimeout(() => {
-        window.location.hash = hash;
+          document.getElementById(hash)?.scrollIntoView({ block: 'start' });
       });
     }
   }

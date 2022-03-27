@@ -6,7 +6,7 @@ A *reactive* form uses TypeScript for building the form logic. In terms of **vie
 
 When should we use reactive forms over template-driven forms?  For simple forms such as a login form, template-driven forms are easier to set up. However, for complex forms like a survey, we should consider building reactive forms as they provide us with many efficient APIs to handle different scenarios and write custom logic.
 
-As we will see, we can build complex reactive forms efficiently using \`FormControl\` with \`FormGroup\` or \`FormBuilder\`.
+As we will see, we can build complex reactive forms efficiently using \`FormControl\` with \`FormGroup\`, or \`FormBuilder\`.
 
 ## Using FormControl & FormGroup
 
