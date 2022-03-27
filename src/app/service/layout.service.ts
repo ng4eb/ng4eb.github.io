@@ -54,7 +54,7 @@ export class LayoutService {
 		}
 	}
 
-scrollToTop(isSmooth = true) {
+	scrollToTop(isSmooth = true) {
 		if (this._isPlatformBrowser) {
 			window.scrollTo({
 				top: 0,

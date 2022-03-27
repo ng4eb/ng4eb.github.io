@@ -14,6 +14,7 @@ import {ch4P2Seo} from './ch4-p2/ch4-p2.seo';
 import {ch5P1Seo} from './ch5-p1/ch5-p1.seo';
 import {ch5P2Seo} from './ch5-p2/ch5-p2.seo';
 import {ch6P1Seo} from './ch6-p1/ch6-p1.seo';
+import {ch6P2Seo} from './ch6-p2/ch6-p2.seo';
 
 export const seos: Record<mdKey, SEOConfig> = {
 	ch1p1: ch1P1Seo,
@@ -30,4 +31,5 @@ export const seos: Record<mdKey, SEOConfig> = {
 	ch5p1: ch5P1Seo,
 	ch5p2: ch5P2Seo,
 	ch6p1: ch6P1Seo,
+	ch6p2: ch6P2Seo,
 }
