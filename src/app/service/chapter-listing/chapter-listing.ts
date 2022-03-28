@@ -151,8 +151,8 @@ export const chapterListing =  [
 			{
 				title: "HTTP Client",
 				sections: [
-					"Configuring HTTP Client",
-					"Fetching random activities from external api"
+					"What is HTTP Client",
+					"HTTP requests to external API"
 				]
 			}
 		]
