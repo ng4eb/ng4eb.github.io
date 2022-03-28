@@ -13,7 +13,7 @@ To use the HTTP Client, we need to import the \`HttpClientModule\` in our applic
 ng new http-client-demo --routing=false --style=css
 \`\`\`
 
-Let's import the \`HttpClientModule\` in \`app.module.ts\`:
+Let's now import the \`HttpClientModule\` in \`app.module.ts\`:
 
 \`\`\`typescript
 import {NgModule} from '@angular/core';  
@@ -37,7 +37,7 @@ export class AppModule {
 }
 \`\`\`
 
-After we have imported the \`HttpClientModule\`, we can use *dependency injection* to inject \`HttpClient\` into any component class which belongs to the \`AppModule\`.
+After we have imported the \`HttpClientModule\`, we can use *dependency injection* to inject \`HttpClient\` into any component class that belongs to the \`AppModule\`.
 
 For example, we may create a new component named \`try-http-client\` and use the \`HttpClient\` in it:
 
@@ -112,7 +112,7 @@ export class TryHttpClientComponent implements OnInit {
 
 In the above, we injected the \`HttpClient\` into the private \`http\` variable. Then, during the \`OnInit\` lifecycle phase of this component, we would console log the \`http\` and its **CRUD** methods - \`post\` for **C**reate, \`get\` for **R**ead, \`put\` & \`patch\` for **U**pdate, and \`delete\` for **D**elete.
 
-In each of these methods, we need to pass in the endpoint url of the server. For example, suppose we have a task management server at the base url \`https://task-management.com/api\`. We want to use the API endpoint \`task\`, then we would pass the url \`https://task-management.com/api/task\`.
+In each of these methods, we need to pass in the endpoint url of the server. For example, suppose we have a task management server at the base url \`https://task-management.com/api\`. If we want to use the API endpoint \`task\`, then we would pass the url \`https://task-management.com/api/task\`.
 
 Each method can also accept an optional object where we can pass configurations like \`headers\` and \`params\`. Here's the full argument type which you can also find in [the documentation](https://angular.io/api/common/http/HttpClient#options):
 
