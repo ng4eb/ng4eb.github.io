@@ -53,7 +53,7 @@ export class FaqComponent implements OnInit {
 				"Here are some great and free resources that I recommend for learning more about Angular (in no particular order):",
 				`<ul>
 <li><a href="https://youtu.be/3dHNOWTI7H8" target="_blank">Angular Crash Course</a> - Youtube Video by <a href="https://www.traversymedia.com/" target="_blank">Traversy Media</a><br />(Great for picking up the practical side of Angular basics)</li>
-<li><a href="https://testing-angular.com/" target="_blank">Testing Angular</a> - Ebook by <a href="https://molily.de/" target="_blank">molily</a><br />(Great for learning about testing in depth after mastering the Angular basics)</li>
+<li><a href="https://testing-angular.com/" target="_blank">Testing Angular</a> - Ebook by <a href="https://molily.de/" target="_blank">molily</a><br />(Great for learning about testing in depth after mastering the basics of Angular)</li>
 <li><a href="https://discord.com/invite/angular" target="_blank">Angular Community</a> - Discord</a><br />  (One of the best places to ask questions about Angular)</li>
 <li><a href="https://youtu.be/Ata9cSC2WpM" target="_blank">Angular in 100 Seconds</a> - Youtube Video by <a href="https://fireship.io/" target="_blank">fireship</a><br />(A short video which sums up some great features of Angular)</li>
 </ul>
