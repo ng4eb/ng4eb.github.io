@@ -9,6 +9,7 @@ import {
 	IsPlatformBrowserService
 } from '../../service/is-platform-browser.service';
 import {
+	filter,
 	fromEvent,
 	Observable,
 	Subscription,
@@ -75,6 +76,10 @@ export class LayoutComponent implements OnInit {
 			);
 
 		this._sub = this.mousehold$
+			.pipe(filter((e) =>
+				e.touches[0].target.tagName !== 'PRE' &&
+				e.touches[0].target.tagName !== 'CODE'
+			))
 			.subscribe((e) => {
 				if (
 					this.isFirstMove &&
