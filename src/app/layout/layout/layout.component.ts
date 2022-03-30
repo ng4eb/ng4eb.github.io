@@ -76,7 +76,11 @@ export class LayoutComponent implements OnInit {
 
 		this._sub = this.mousehold$
 			.subscribe((e) => {
-				if (this.isFirstMove && window.getSelection()?.toString() === '' && Math.abs(this.y - e.touches[0].clientY) < 1) {
+				if (
+					this.isFirstMove &&
+					window.getSelection()?.toString() === '' &&
+					Math.abs(this.y - e.touches[0].clientY) < 2.5
+				) {
 					this._layoutService.setSliding(true);
 					this.detectXMovement(e.touches[0].clientX);
 				} else if (
@@ -84,7 +88,7 @@ export class LayoutComponent implements OnInit {
 					&& window.getSelection()?.toString() === ''
 				) {
 					if (Math.abs(this.y - e.touches[0].clientY) < 5) {
-						this.smoothScore++;
+						this.smoothScore+=1.5;
 						this.detectXMovement(e.touches[0].clientX);
 					} else if (this.smoothScore >= 1) {
 						this.smoothScore--;

@@ -114,7 +114,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 				.subscribe(
 					(v) => {
 						if (!this._layoutService.getIsMenuOpen() && v > 0) {
-							if (v < 50) {
+							if (v < 100) {
 								this._renderer.setStyle(this.menu.nativeElement, 'left', `${v - 315}px`);
 							} else {
 								this._renderer.removeStyle(this.menu.nativeElement, 'left');
@@ -123,7 +123,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 						} else if (!this._layoutService.getIsMenuOpen() && v <= 0) {
 							this._renderer.removeStyle(this.menu.nativeElement, 'left');
 						} else if (this._layoutService.getIsMenuOpen() && v < 0) {
-							if (v > -30) {
+							if (v > -70) {
 								this._renderer.setStyle(this.menu.nativeElement, 'left', `${v}px`);
 							} else {
 								this._renderer.removeStyle(this.menu.nativeElement, 'left');
