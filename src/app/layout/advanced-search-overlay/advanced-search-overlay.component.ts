@@ -82,6 +82,13 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 		if (!this._hasRegisteredQuery && this._query) {
 			this._querySubscription = (fromEvent(this._query.nativeElement, 'keyup') as Observable<KeyboardEvent>)
 				.pipe(
+					filter(
+						(event: KeyboardEvent) =>
+							event.keyCode != 38 && // arrow up
+							event.keyCode != 40 && // arrow down
+							event.keyCode != 37 && // arrow left
+							event.keyCode != 39 // arrow right
+					),
 					tap((event: KeyboardEvent) => {
 						// if esc is pressed
 						if (event.keyCode == 27) {
