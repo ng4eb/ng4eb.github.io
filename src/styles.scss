@@ -33,7 +33,7 @@ input {
 }
 
 a {
-  color: var(--yellow-89-c9);
+  color: var(--grey-33-cc);
   transition: all 0.1s;
   &:hover {
     color: var(--grey-44-aa);
@@ -66,6 +66,9 @@ pre {
   border: 1px solid #cccccc;
   border-radius: 5px;
   overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: size.$space-32 !important;
@@ -73,7 +76,7 @@ pre {
 }
 
 code {
-  font-family: Inconsolata, monospace;
+  font-family: 'Fira Code', Inconsolata, monospace;
   font-size: 0.8em !important;
   color: var(--black-white);
 }
@@ -103,7 +106,7 @@ blockquote {
 .md-img {
   object-fit: scale-down;
   &:hover {
-    box-shadow: 0 0 10px 1px var(--grey-66-cc);
+    box-shadow: 0 0 5px 0.3px var(--grey-66-cc);
   }
 }
 
