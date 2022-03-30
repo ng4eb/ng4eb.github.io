@@ -38,13 +38,13 @@ export class FaqComponent implements OnInit {
 		howToSupport: {
 			title: "How to support this project?",
 			paragraphs: [
-				"The best way to support this project is to contribute to the <a href=\"https://github.com\" target=\"_blank\">Github project</a>. In addition, you can star it on Github and share it with your friends who are interested in learning Angular!"
+				"The best way to support this project is to contribute to the <a href=\"https://github.com/ng4eb/ng4eb-revamp\" target=\"_blank\">Github project</a>. In addition, you can star it on Github and share it with your friends who are interested in learning Angular!"
 			]
 		},
 		contribution: {
 			title: "How may I contribute?",
 			paragraphs: [
-				"To contribute to <a href=\"https://github.com\" target=\"_blank\">this project</a>, you can raise Github issues for problems, bugs, and feature requests. You are also welcome to open pull requests for any issues you find!"
+				"To contribute to <a href=\"https://github.com/ng4eb/ng4eb-revamp\" target=\"_blank\">this project</a>, you can raise Github issues for problems, bugs, and feature requests. You are also welcome to open pull requests for any issues you find!"
 			]
 		},
 		resources: {
