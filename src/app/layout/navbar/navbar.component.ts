@@ -1,11 +1,16 @@
 import {
 	AfterViewChecked,
-	ChangeDetectionStrategy, ChangeDetectorRef,
-	Component, ElementRef, OnDestroy,
-	OnInit, ViewChild
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	ElementRef,
+	OnDestroy,
+	OnInit,
+	Renderer2,
+	ViewChild
 } from '@angular/core';
 import {
-	BehaviorSubject,
 	debounceTime,
 	distinctUntilChanged,
 	filter,
@@ -23,6 +28,9 @@ import {Router} from '@angular/router';
 import {
 	RoutingService
 } from '../../service/routing.service';
+import {
+	IsPlatformBrowserService
+} from '../../service/is-platform-browser.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -30,24 +38,28 @@ import {
 	styleUrls: ['./navbar.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
 	queryString = '';
 	faSearch = faSearch;
-	isMenuOpen$ = new BehaviorSubject(false);
+	isMenuOpen$ = this._layoutService.getIsMenuOpen$();
 	currentPosition$ = this._chapterListingService.getCurrentPosition$();
 	chapterListing = this._chapterListingService.getListing();
 	url = this._router.url;
+	@ViewChild('menu') menu!: ElementRef;
 	private _hasRegisteredQuery = false;
 	private _querySubscription?: Subscription;
 	private _path$ = this._routingService.getPath$();
 	private _subscription!: Subscription;
+	private _subscription2!: Subscription;
 
 	constructor(
 		private _chapterListingService: ChapterListingService,
 		private _layoutService: LayoutService,
 		private _routingService: RoutingService,
+		private _isPlatformBrowserService: IsPlatformBrowserService,
 		private _router: Router,
-		private _cdr: ChangeDetectorRef
+		private _cdr: ChangeDetectorRef,
+		private _renderer: Renderer2
 	) {
 	}
 
@@ -60,18 +72,18 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	};
 
 	toggleMenuOpen() {
-		this.isMenuOpen$.next(!this.isMenuOpen$.value);
+		this._layoutService.toggleMenuOpen();
 	}
 
 	closeMenu() {
-		this.isMenuOpen$.next(false);
+		this._layoutService.setMenuOpen(false);
 	}
 
 	goFullSearch() {
 		if (this.queryString) {
 			this._router.navigate(
 				['/search'],
-				{ queryParams: { query: this.queryString } }
+				{queryParams: {query: this.queryString}}
 			);
 			this.toggleMenuOpen();
 			this._layoutService.scrollToTop();
@@ -94,6 +106,35 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 			this.url = path || this.url;
 			this._cdr.detectChanges();
 		});
+	}
+
+	ngAfterViewInit() {
+		if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+			this._subscription2 = this._layoutService.getSlidingDistance$()
+				.subscribe(
+					(v) => {
+						if (!this._layoutService.getIsMenuOpen() && v > 0) {
+							if (v < 50) {
+								this._renderer.setStyle(this.menu.nativeElement, 'left', `${v - 315}px`);
+							} else {
+								this._renderer.removeStyle(this.menu.nativeElement, 'left');
+								this._layoutService.setMenuOpen(true);
+							}
+						} else if (!this._layoutService.getIsMenuOpen() && v <= 0) {
+							this._renderer.removeStyle(this.menu.nativeElement, 'left');
+						} else if (this._layoutService.getIsMenuOpen() && v < 0) {
+							if (v > -30) {
+								this._renderer.setStyle(this.menu.nativeElement, 'left', `${v}px`);
+							} else {
+								this._renderer.removeStyle(this.menu.nativeElement, 'left');
+								this._layoutService.setMenuOpen(false);
+							}
+						} else if (this._layoutService.getIsMenuOpen() && v >= 0) {
+							this._renderer.removeStyle(this.menu.nativeElement, 'left');
+						}
+					}
+				);
+		}
 	}
 
 	ngAfterViewChecked() {
@@ -123,6 +164,9 @@ export class NavbarComponent implements OnInit, AfterViewChecked, OnDestroy {
 			this._querySubscription = undefined;
 		}
 		this._subscription.unsubscribe();
+		if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+			this._subscription2.unsubscribe();
+		}
 	}
 
 }

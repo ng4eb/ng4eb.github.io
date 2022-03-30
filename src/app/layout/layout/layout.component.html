@@ -7,6 +7,7 @@
     <div class="middle">
         <app-sidebar></app-sidebar>
         <div id="content" class="content" [class.expanded]="isSidebarOpen$ | async">
+            <div class="overlay mobile-only" (click)="closeMenu()" *ngIf="isMenuOpen$ | async"></div>
             <ng-content></ng-content>
         </div>
     </div>

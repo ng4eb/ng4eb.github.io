@@ -7,14 +7,14 @@
     </div>
     <span class="site-title">
         <a routerLink="/" (click)="closeMenu()">
-            <app-logo width="30px"></app-logo>
+            <app-logo width="26px"></app-logo>
             <span>ng4eb</span>
         </a>
     </span>
     <div class="outer-icon-container outer-icon-container--round">
         <app-theme-switch></app-theme-switch>
     </div>
-    <div class="navbar__menu" *ngIf="isMenuOpen$ | async">
+    <div #menu class="navbar__menu" [class.navbar__menu--open]="isMenuOpen$ | async">
         <div class="search-bar-container">
             <fa-icon (click)="goFullSearch()"
                     [icon]="faSearch"
