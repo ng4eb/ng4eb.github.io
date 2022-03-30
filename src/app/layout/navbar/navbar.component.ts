@@ -87,6 +87,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 			);
 			this.toggleMenuOpen();
 			this._layoutService.scrollToTop();
+			this._layoutService.setMenuOpen(false);
 		}
 	}
 
@@ -141,6 +142,13 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 		if (!this._hasRegisteredQuery && this._query) {
 			this._querySubscription = (fromEvent(this._query.nativeElement, 'keyup') as Observable<KeyboardEvent>)
 				.pipe(
+					filter(
+						(event: KeyboardEvent) =>
+							event.keyCode != 38 && // arrow up
+							event.keyCode != 40 && // arrow down
+							event.keyCode != 37 && // arrow left
+							event.keyCode != 39 // arrow right
+					),
 					tap((event: KeyboardEvent) => {
 						// if enter is pressed
 						if (event.keyCode == 13) {
@@ -148,7 +156,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 						}
 					}),
 					filter(Boolean),
-					debounceTime(500),
+					debounceTime(300),
 					distinctUntilChanged(),
 					tap((_event: KeyboardEvent) => {
 						this.queryString = this._query.nativeElement.value.toLowerCase();
