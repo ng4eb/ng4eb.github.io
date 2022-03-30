@@ -12,7 +12,7 @@
   justify-content: space-between;
   flex-shrink: 0;
   height: size.$navbar-height;
-  font-size: function.rem(36px);
+  font-size: function.rem(28px);
   @include mixin.adventPro;
   background: var(--grey-44);
   color: var(--white);
@@ -21,13 +21,18 @@
   &__menu {
     position: fixed;
     top: size.$navbar-height;
-    left: 0;
-    right: 0;
+    left: calc(-#{size.$navbar-menu-width});
     bottom: 0;
     height: calc(100vh - #{size.$navbar-height});
+    width: size.$navbar-menu-width;
+    max-width: 100%;
     padding-bottom: size.$space-48;
     overflow-y: scroll;
     background: var(--grey-ee-33);
+    transition: left 0.3s;
+    &--open {
+      left: 0;
+    }
   }
 }
 
@@ -48,8 +53,8 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: function.rem(30px);
-  height: function.rem(22px);
+  width: function.rem(24px);
+  height: function.rem(18px);
 }
 
 @mixin menu-icon {
@@ -89,7 +94,7 @@
 .site-title a {
   display: flex;
   color: var(--white);
-  font-size: function.rem(30px);
+  font-size: function.rem(24px);
   @include mixin.adventPro;
   text-decoration: none;
   & > *:not(:last-child) {

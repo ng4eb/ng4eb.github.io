@@ -12,10 +12,28 @@ export class LayoutService {
 	private _isOverlayOpen$ = new BehaviorSubject(false);
 	private _isAdvancedSearchOpen$ = new BehaviorSubject(false);
 	private _isSidebarOpen$ = new BehaviorSubject(true);
+	private _isMenuOpen$ = new BehaviorSubject(false);
+	private _isSliding$ = new BehaviorSubject(false);
 	private _darkTheme$ = new BehaviorSubject(this._isPlatformBrowser && localStorage.getItem('darkTheme') === 'true');
+	private slidedDistance$ = new BehaviorSubject(0);
 
 
 	constructor(private _isPlateFormBrowserService: IsPlatformBrowserService) {
+	}
+
+	detectSliding(movement: number) {
+		const currDist = this.slidedDistance$.getValue();
+		if (currDist < 315 && currDist > -315) {
+			this.slidedDistance$.next(currDist + movement);
+		}
+	}
+
+	getSlidingDistance$(): Observable<number> {
+		return this.slidedDistance$;
+	}
+
+	resetSlidingDistance() {
+		this.slidedDistance$.next(0);
 	}
 
 	getIsSidebarOpen$(): Observable<boolean> {
@@ -32,6 +50,34 @@ export class LayoutService {
 
 	setOverlayOpen(value: boolean) {
 		this._isOverlayOpen$.next(value);
+	}
+
+	getIsMenuOpen(): boolean {
+		return this._isMenuOpen$.getValue();
+	}
+
+	getIsMenuOpen$(): Observable<boolean> {
+		return this._isMenuOpen$;
+	}
+
+	setMenuOpen(value: boolean) {
+		this._isMenuOpen$.next(value);
+	}
+
+	toggleMenuOpen() {
+		this.setMenuOpen(!this._isMenuOpen$.value);
+	}
+
+	getIsSliding$(): Observable<boolean> {
+		return this._isSliding$;
+	}
+
+	setSliding(value: boolean) {
+		this._isSliding$.next(value);
+	}
+
+	getIsSliding(): boolean {
+		return this._isSliding$.getValue();
 	}
 
 	getIsAdvacnedSearchOpen$(): Observable<boolean> {
