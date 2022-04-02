@@ -87,14 +87,6 @@ export class ChapterListingService {
 		}
 	}
 
-	onClickHashTagLink(hash: string) {
-		setTimeout(() => {
-			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
-				document.getElementById(hash)?.scrollIntoView();
-			}
-		}, 100)
-	}
-
 	getCurrentPosition$(): Observable<number> {
 		return this._currentPosition$;
 	}
