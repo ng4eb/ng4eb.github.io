@@ -1,0 +1,111 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+@mixin separator {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--grey-66-cc);
+  }
+}
+
+.toc {
+  width: 100%;
+  max-width: size.$page-max-width;
+  padding: size.$space-32 size.$space-16;
+  margin-left: auto;
+  margin-right: auto;
+  &__header {
+    @include separator;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    &__chapter-boxes {
+      display: flex;
+      align-items: center;
+      font-size: function.rem(12px);
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: size.$space-4;
+        line-height: 1;
+        border: 1px solid var(--grey-66-cc);
+        text-decoration: none;
+        &:not(:last-child) {
+          margin-right: size.$space-8;
+        }
+      }
+    }
+  }
+  &__content {
+    &__chapter {
+      @include separator;
+      padding-bottom: size.$space-8;
+      h2 {
+        font-size: function.rem(18px);
+        border: none;
+        text-align: left;
+        margin-bottom: size.$space-16;
+      }
+      p {
+        font-style: italic;
+        font-size: function.rem(14px);
+      }
+      h3 {
+        font-size: function.rem(16px);
+      }
+      h4 {
+        font-size: function.rem(15px);
+        a {
+          text-decoration: none;
+        }
+      }
+      h3, h4 {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.go-back {
+  margin-bottom: size.$space-8;
+  a {
+    color: var(--grey-66-cc);
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .toc {
+    padding-top: size.$space-64;
+    font-size: function.rem(20px);
+    &__header {
+      &__chapter-boxes {
+        font-size: function.rem(18px);
+      }
+    }
+    &__content {
+      &__chapter {
+        h2 {
+          font-size: function.rem(24px);
+        }
+        p {
+          font-size: function.rem(18px);
+        }
+        h3 {
+          font-size: function.rem(20px);
+        }
+        h4 {
+          font-size: function.rem(18px);
+        }
+      }
+    }
+  }
+}

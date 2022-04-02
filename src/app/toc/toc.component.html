@@ -1,0 +1,42 @@
+<section class="toc">
+    <div class="go-back">
+        <a routerLink="/">
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+            Go Back to Homepage
+        </a>
+    </div>
+    <header class="toc__header">
+        <h1>Table of Contents</h1>
+        <div class="toc__header__chapter-boxes">
+            <a *ngFor="let chapter of chapterListing"
+               (click)="onClickHashTagLink('ch' + chapter.ch)"
+               routerLink="/toc" [fragment]="'ch' + chapter.ch">
+                {{chapter.ch}}
+            </a>
+        </div>
+    </header>
+    <main class="toc__content">
+        <div [id]="'ch' + chapter.ch" class="toc__content__chapter" *ngFor="let chapter of chapterListing">
+            <h2>Chapter {{chapter.ch}} - {{chapter.title}}</h2>
+            <p>{{chapterDesc['ch' + chapter.ch]}}</p>
+            <ul>
+                <li *ngFor="let part of chapter.parts, index as i">
+                    <h3>
+                        <a [routerLink]="['/book/ch' + chapter.ch, 'p' + (i+1)]" (click)="scrollToTop()">
+                            Part {{i + 1}} - {{part.title}}
+                        </a>
+                    </h3>
+                    <ul>
+                        <li *ngFor="let section of part.sections, index as j">
+                            <h4>
+                                <a [routerLink]="['/book/ch' + chapter.ch, 'p' + (i+1)]" [fragment]="j+1+''">
+                                    Section {{j + 1}} - {{section}}
+                                </a>
+                            </h4>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </main>
+</section>

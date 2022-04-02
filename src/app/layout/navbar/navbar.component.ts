@@ -98,7 +98,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterViewChecked,
 	}
 
 	onClickHashTagLink(hash: string) {
-		this._chapterListingService.onClickHashTagLink(hash);
+		this._layoutService.onClickHashTagLink(hash);
 		this.toggleMenuOpen();
 	}
 
