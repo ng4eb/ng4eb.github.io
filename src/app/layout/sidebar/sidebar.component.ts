@@ -78,7 +78,7 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	onClickHashTagLink(hash: string) {
-		this._chapterListingService.onClickHashTagLink(hash);
+		this._layoutService.onClickHashTagLink(hash);
 	}
 
 	scrollToTop() {

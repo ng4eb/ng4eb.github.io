@@ -8,7 +8,7 @@ import {
 	providedIn: 'root'
 })
 export class LayoutService {
-	private _isPlatformBrowser = this._isPlateFormBrowserService.getIsPlatformBrowser();
+	private _isPlatformBrowser = this._isPlatformBrowserService.getIsPlatformBrowser();
 	private _isOverlayOpen$ = new BehaviorSubject(false);
 	private _isAdvancedSearchOpen$ = new BehaviorSubject(false);
 	private _isSidebarOpen$ = new BehaviorSubject(true);
@@ -18,7 +18,7 @@ export class LayoutService {
 	private slidedDistance$ = new BehaviorSubject(0);
 
 
-	constructor(private _isPlateFormBrowserService: IsPlatformBrowserService) {
+	constructor(private _isPlatformBrowserService: IsPlatformBrowserService) {
 	}
 
 	detectSliding(movement: number) {
@@ -107,5 +107,13 @@ export class LayoutService {
 				behavior: isSmooth ? 'smooth' : 'auto'
 			});
 		}
+	}
+
+	onClickHashTagLink(hash: string) {
+		setTimeout(() => {
+			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+				document.getElementById(hash)?.scrollIntoView();
+			}
+		}, 100)
 	}
 }
