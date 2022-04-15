@@ -141,7 +141,7 @@ Let's use the component in \`app.component.html\`:
 
 Now, if we open the console, we should see the following logs:
 
-![console logging http client](assets/images/ch6/http_client_console_log.png)
+![console logging http client](assets/images/ch6/http_client_console_log.jpg)
 
 As we can see, all the Http methods of the \`HttpClient\` return an observable. That means we can subscribe to it for retrieving the server's response.
 
@@ -217,7 +217,7 @@ After passing the api url to the \`get\` method, we also subscribed to it. In th
 
 Then, in the template, we simply displayed the \`catFact\` message in a \`p\` tag. Now, our page should show a new random cat fact on every refresh:
 
-![demo of http client get](assets/images/ch6/http_client_demo.png)
+![demo of http client get](assets/images/ch6/http_client_demo.jpg)
 
 Awesome! You have learned the basics of HTTP Client in Angular!
 

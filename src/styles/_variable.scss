@@ -9,6 +9,8 @@
   --grey-33-cc: #333333;
   --grey-44-aa: #444444;
   --grey-44-cc: #444444;
+  --grey-22-44: #222222;
+  --grey-44-22: #444444;
   --grey-22: #222222;
   --grey-44: #444444;
   --grey-55: #555555;
@@ -33,7 +35,7 @@
 }
 
 [data-theme="dark"] {
-  --white-black: #001408;
+  --white-black: #171b1f;
   --black-white: #FFFFFF;
   --grey-fe-44-75: rgba(68, 68, 68, 0.75);
   --grey-ee-33: #333333;
@@ -42,6 +44,8 @@
   --grey-44-aa: #AAAAAA;
   --grey-44-cc: #CCCCCC;
   --grey-66-cc: #CCCCCC;
+  --grey-22-44: #444444;
+  --grey-44-22: #222222;
   --blue-e0-00: #004165;
   --blue-00-e0: #E0EDF2;
   --blue-df-24: rgba(36, 149, 149, 0.15);

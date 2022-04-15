@@ -5,7 +5,7 @@ A *template*-driven form uses directives in the template for its core logic. Spe
 
 Commonly, we think of two-way bindings with the terms **model** and **view**. The **model** refers to the data in the component class in TypeScript, and the **view** represents the template:
 
-![Concept of two way bindings](assets/images/ch6/two_way_binding_concept.png)
+![Concept of two way bindings](assets/images/ch6/two_way_binding_concept.jpg)
 
 As we will see below, template-driven forms use two-way bindings through the use of property binding (with brackets \`[]\`), event binding (with parentheses \`()\`), and the directive \`ngModel\`. We will apply all these directly in the template.
 
@@ -90,7 +90,7 @@ button {
 
 This is what we should see on the page:
 
-![reg-form demo 1](assets/images/ch6/template_form_demo_1.png)
+![reg-form demo 1](assets/images/ch6/template_form_demo_1.jpg)
 
 
 ### Adding ngModel
@@ -182,17 +182,17 @@ For now, we are going to log the \`form\` object and the values \`form.value\` t
 
 Now, we can type something into the form, submit it, and see what we get in the console:
 
-![console after form submission](assets/images/ch6/template_form_demo_2.png)
+![console after form submission](assets/images/ch6/template_form_demo_2.jpg)
 
 The \`form\` object includes all sorts of properties that describe the status of the form. The most useful information to us resides in the \`form: FormGroup\`  property. Let's expand it and see what we get:
 
-![form object inspection](assets/images/ch6/template_form_demo_3.png)
+![form object inspection](assets/images/ch6/template_form_demo_3.jpg)
 
  We see properties like \`controls\`, \`status\` and \`value\`. They are very handy for interacting with the form. In particular, \`controls\` gives us more fine-grained control over the individual inputs, \`status\` tells us if the form is valid, and \`value\` gives the input values in the form.
 
 Let's have a closer look at the \`value\` property now:
 
-![value object inspection](assets/images/ch6/template_form_demo_4.png)
+![value object inspection](assets/images/ch6/template_form_demo_4.jpg)
 
 With \`value\`, we can get back an object of the input data in the form, where the keys correspond to the \`name\` properties we give to the \`input\` tags, and the values are what the user typed into the form.
 
@@ -220,21 +220,21 @@ Finally, we added a paragraph tag at the end. It will only be rendered when the 
 
 Now, if we type in invalid values in each input field and submit the form, we will see the \`INVALID\` text showing at the bottom:
 
-![invalid text](assets/images/ch6/template_form_demo_5.png)
+![invalid text](assets/images/ch6/template_form_demo_5.jpg)
 
 If we check the console and expand the \`controls\` property, we would see there is an \`error\` object in each input, which shows the error that the input contains:
 
 - \`accountName\`:
-![accountName error](assets/images/ch6/template_form_demo_6.png)
+![accountName error](assets/images/ch6/template_form_demo_6.jpg)
 
 - \`email\`:
-![email error](assets/images/ch6/template_form_demo_7.png)
+![email error](assets/images/ch6/template_form_demo_7.jpg)
 
 - \`fullName\`:
-![fullName error](assets/images/ch6/template_form_demo_8.png)
+![fullName error](assets/images/ch6/template_form_demo_8.jpg)
 
 - \`password\`:
-![password error](assets/images/ch6/template_form_demo_9.png)
+![password error](assets/images/ch6/template_form_demo_9.jpg)
 
 ### Adding Error Styles
 
@@ -258,7 +258,7 @@ input.ng-touched.ng-invalid.ng-dirty {
 \`\`\`
 
 Now, if we try to type in invalid values in the inputs, we will get a thick border in deep pink as visual feedback:
-![error feedback styling](assets/images/ch6/template_form_demo_10.png)
+![error feedback styling](assets/images/ch6/template_form_demo_10.jpg)
 
 ### Adding Default Values - Binding Model to View
 
@@ -279,7 +279,7 @@ For example, we can add a default value of \`helloworld@example.com\`  to the em
 
 With the help of \`[]\`, we can pass the string \`'helloworld@example.com'\` as the value. We can put this string inside the TypeScript component class too if we want. Now, the email field should have a default value as we refresh the page:
 
-![default value for email](assets/images/ch6/template_form_demo_11.png)
+![default value for email](assets/images/ch6/template_form_demo_11.jpg)
 
 ### Storing Values in TypeScript - Binding View to Model
 
@@ -353,7 +353,7 @@ We also added a new button that would trigger the \`clearAccountName\` method wh
 
 If we now change the value of the account name input, and then click the reset button, we will see the value be reset to \`bob123\`:
 
-![reset value for accountName](assets/images/ch6/template_form_demo_12.png)
+![reset value for accountName](assets/images/ch6/template_form_demo_12.jpg)
 
 Great! Now you have learned the basics of template-driven forms in Angular!
 

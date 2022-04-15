@@ -31,7 +31,7 @@ export class FaqComponent implements OnInit {
 		whyThisBook: {
 			title: "Why this book?",
 			paragraphs: [
-				"This book aims to introduce Angular to an audience who already know the basics of HTML, CSS and TypeScript. It is written in simple English. It does not attempt to cover everything as it strives to explain the underlying concepts in Angular in a concise manner.",
+				"This book aims to introduce Angular to an audience who already know the basics of HTML, CSS and TypeScript. It is written in simple English. It does not attempt to cover everything in Angular, but it strives to explain the underlying concepts in Angular in a concise manner.",
 				"If you would like to master the basics of Angular with a short and easy-to-understand book, then you are in the right place."
 			]
 		},

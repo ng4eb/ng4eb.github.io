@@ -44,7 +44,7 @@ As shown in the definitions, a major difference between them is that *a promise 
 
 This makes observables shine in handling a stream of data. We can use an observable to listen to the data stream and keep the front-end updated. This is commonly referred to **the pub-sub pattern**:
 
-![pub-sub pattern concept](assets/images/ch5/pub_sub_pattern.png)
+![pub-sub pattern concept](assets/images/ch5/pub_sub_pattern.jpg)
 
 In the pub-sub pattern, the **publisher** (e.g. server) is in charge of outputting data. On the other hand, the **subscriber** reacts to the data based on the changes it observes. 
 

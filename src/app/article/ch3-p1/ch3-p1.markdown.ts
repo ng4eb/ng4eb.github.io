@@ -9,7 +9,7 @@ A component is a building block of the UI, i.e., a standalone unit that can be r
 
 When we use \`ng generate component\`, the Angular CLI generates four files for us - a template file (HTML), a stylesheet file (CSS/SCSS/SASS/LESS), a component logic file (TypeScript), and a testing file (TypeScript). 
 
-![component structure](/assets/images/ch3/component_structure.png)
+![component structure](/assets/images/ch3/component_structure.jpg)
 
 The template is generated and injected into the DOM dynamically by Angular.
 
@@ -21,7 +21,7 @@ The logic file is responsible of two things. One, it gathers the template and st
 
 Components are registered in modules. Modules are made up of components, services and other modules:
 
-![component inside module](/assets/images/ch3/component_inside_module.png)
+![component inside module](/assets/images/ch3/component_inside_module.jpg)
 
 The app module is the *root module* that Angular uses to get the information for building the application. We will soon see how all these things come together.
 
@@ -45,7 +45,7 @@ ng serve --port=12345
 
 We should see Angular's default content on localhost:12345:
 
-![default page](/assets/images/ch3/default_content.png)
+![default page](/assets/images/ch3/default_content.jpg)
 
 To get a blank page, simply remove everything in \`app.component.html\`. 
 
@@ -270,7 +270,7 @@ Let's tackle the first problem, which is closely related to the second one.
 
 For emitting a new count value from a child component to the parent, we will use the \`@Output\` decorator.  \`@Output\` is based on events:
 
-![component output flow](/assets/images/ch3/component_output.png)
+![component output flow](/assets/images/ch3/component_output.jpg)
 
 Since the child component does not contain the parent, it cannot send data directly via properties. Instead, the child will emit an event to which the parent can listen. 
 

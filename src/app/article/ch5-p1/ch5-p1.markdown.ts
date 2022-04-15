@@ -20,7 +20,7 @@ The **service** layer is responsible for two main duties:
 
 Below is a diagram that illustrates the above two points:
 
-![the service layer's duties](assets/images/ch5/service_layer.png)
+![the service layer's duties](assets/images/ch5/service_layer.jpg)
 
 For example, if we want to fetch data from a server used in one or more components, we can put the data fetching logic inside a service.
 
@@ -56,15 +56,15 @@ const aService = new AService(bService);
 this.someService = new SomeService(aService);
 \`\`\`
 
-As we keep instantiating classes like this, the application will become unnecessarily big, harder to read, test and maintain. That's not ideal.
+As we keep instantiating classes like this, the application will become unnecessarily big, hard to read, test and maintain. That's not ideal.
 
-To avoid the above issue, Angular uses a technique called **dependency injection**.
+To avoid these issues, Angular uses a technique called **dependency injection**.
 
 ### How Dependency Injection Works
 
 Angular wraps our app inside a dependency injection container. The container will be in charge of handling the dependencies for us. 
 
-As we have seen, a service is decorated by the \`@Injector\` decorator. Angular will mark those classes with the decorator with *token ids*. We can think of those ids as keys in a key-value mapping, where the values are the dependency instances.
+As we have seen, a service is decorated by the \`@Injector\` decorator. Angular will mark those classes with the decorator with some *token ids*. We can think of those ids as keys in a key-value mapping, where the values are the dependency instances.
 
 Then, when we *inject* a service into a component, Angular will find if an instance of this dependency has been created in the mapping through its token id. If yes, simply return the instance. If not, Angular will create the instance.
 
@@ -224,7 +224,7 @@ In the template, we used \`poolService.points\` for getting the total points in 
 
 If we serve the application, we should be able to increment and decrement the counts of Alice and Bob. Also, we cannot increase either of their counts anymore if the pool runs out of points:
 
-![counter service demo page](assets/images/ch5/counter_service_demo.png)
+![counter service demo page](assets/images/ch5/counter_service_demo.jpg)
 
 Nice job! You have learned how to create and use services in Angular!
 

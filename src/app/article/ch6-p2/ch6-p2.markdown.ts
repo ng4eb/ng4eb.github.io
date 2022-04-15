@@ -2,7 +2,7 @@ export const ch6P2Markdown = `
 ## How reactive forms work
 A *reactive* form uses TypeScript for building the form logic. In terms of **view** (template) and **model** (component class), we say a reactive form is *model-driven*.
 
-![Reactive Form Concept](assets/images/ch6/reactive_form_concept.png)
+![Reactive Form Concept](assets/images/ch6/reactive_form_concept.jpg)
 
 When should we use reactive forms over template-driven forms?  For simple forms such as a login form, template-driven forms are easier to set up. However, for complex forms like a survey, we should consider building reactive forms as they provide us with many efficient APIs to handle different scenarios and write custom logic.
 
@@ -18,7 +18,7 @@ ng new reactive-form-demo --routing=false --style=css
 
 We are going to build a survey that contains two sections. The first section is "personal information" where the user will be asked to provider their name, sex, date of birth, and address. The second section is "company information". They will be asked to give the company name, role, and monthly salary:
 
-![Survey Structure Overview](assets/images/ch6/reactive_form_demo_overview.png)
+![Survey Structure Overview](assets/images/ch6/reactive_form_demo_overview.jpg)
 
 ## Using FormControl & FormBuilder
 
@@ -240,7 +240,7 @@ label {
 
 Now, our page should look like this:
 
-![Reactive form demo 1](assets/images/ch6/reactive_form_demo_1.png)
+![Reactive form demo 1](assets/images/ch6/reactive_form_demo_1.jpg)
 
 ### Adding Default Values & Options
 
@@ -269,7 +269,7 @@ form = new FormGroup({
 
 Now we should see the two fields of our form have default values:
 
-![Reactive form demo 2](assets/images/ch6/reactive_form_demo_2.png)
+![Reactive form demo 2](assets/images/ch6/reactive_form_demo_2.jpg)
 
 Next, let's provide a list of options for the \`country\` field. Suppose our survey participants come from the below 20 countries:
 
@@ -372,7 +372,7 @@ Next, modify \`survey.component.html\`:
 
 Now we should be able to select a country from a dropdown:
 
-![Reactive form demo 3](assets/images/ch6/reactive_form_demo_3.png)
+![Reactive form demo 3](assets/images/ch6/reactive_form_demo_3.jpg)
 
 ### Adding Validation
 Now that the basis of our form is ready, we should add some validation rules. In a reactive form, we put those rules in TypeScript. Specifically, we will put them as the second argument for \`FormControl\`.  This is reflected in the constructor's signature of \`FormControl\`:
@@ -476,7 +476,7 @@ form = new FormGroup({
 
 If we submit the form with an age below 18, we could see the error message in the \`form\` object:
 
-![Reactive form demo 4](assets/images/ch6/reactive_form_demo_4.png)
+![Reactive form demo 4](assets/images/ch6/reactive_form_demo_4.jpg)
 
 ### Error Handling
 
@@ -496,7 +496,7 @@ This border styling will be triggered when the user has edited the input with in
 
 If we try to submit the form with the default empty values, we should see a bunch of pink borders:
 
-![Reactive form demo 5](assets/images/ch6/reactive_form_demo_5.png)
+![Reactive form demo 5](assets/images/ch6/reactive_form_demo_5.jpg)
 
 Let's focus on the \`dateOfBirth\` field. Suppose we also want to display an error message below it. What we can do is get the error message from the \`form\` object, and display it in the template:
 
@@ -520,7 +520,7 @@ Let's also add some styling to the \`err-msg\` class:
 
 Now, if a user's age is below 18, the form will show the error message below the \`dateOfBirth\` field:
 
-![Reactive form demo 6](assets/images/ch6/reactive_form_demo_6.png)
+![Reactive form demo 6](assets/images/ch6/reactive_form_demo_6.jpg)
 
 Great! Now you have learned the basics of building reactive forms with \`FormGroup\` and \`FormControl\`. You can check out the demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-reactive-form-demo).
 
