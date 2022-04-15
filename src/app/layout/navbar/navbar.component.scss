@@ -14,7 +14,7 @@
   height: size.$navbar-height;
   font-size: function.rem(28px);
   @include mixin.adventPro;
-  background: var(--grey-44);
+  background: var(--grey-44-22);
   color: var(--white);
   z-index: var(--z-10);
 

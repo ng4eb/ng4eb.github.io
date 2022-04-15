@@ -17,7 +17,7 @@
       display: flex;
       width: 100%;
       height: size.$collapse-sidebar-width;
-      background: var(--grey-44);
+      background: var(--grey-44-22);
 
       .site-title {
         display: none;
@@ -27,7 +27,8 @@
 
   &.expanded {
     width: size.$sidebar-width;
-    background: var(--grey-ee-33);
+    background: var(--white-black);
+    border-right: 0.5px solid var(--grey-22-44);
 
     .sidebar__content {
       width: size.$sidebar-width;
@@ -59,12 +60,13 @@
 }
 
 .menu-icon-container {
+  @include mixin.primary-desktop-icon;
   position: relative;
   display: grid;
   place-items: center;
   width: size.$collapse-sidebar-width;
   height: size.$collapse-sidebar-width;
-  @include mixin.primary-desktop-icon;
+  background: var(--grey-44-22);
 }
 
 $menu-icon-width: function.rem(30px);

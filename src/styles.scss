@@ -17,13 +17,13 @@ body {
 }
 
 h1, h2, h3, p, ul, ol {
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 p {
-  font-size: function.rem(18px);
+  font-size: function.rem(19px);
   @media screen and (min-width: 1200px) {
-    font-size: function.rem(20px);
+    font-size: function.rem(21px);
   }
 }
 

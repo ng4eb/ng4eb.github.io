@@ -7,7 +7,7 @@ In Angular, **directives** are used to change the appearance or behaviour of exi
 2. attribute directives
 3. structural directives
 
-![types of directives](/assets/images/ch3/directives.png)
+![types of directives](/assets/images/ch3/directives.jpg)
 
 We have explored components in the previous part. They are a special extension of directives with a template for building UI blocks. The other two kinds of directives don't come with a template, and so they are not used for generating the UI. However, they are handy for attaching behavior and structural attributes to an existing component or element.
 
@@ -169,7 +169,7 @@ Then, we can test the decorator by using it in \`app.component.html\`:
 
 And voila! You should see some random text colors on the screen:
 
-![random text colors](/assets/images/ch3/random_colors.png)
+![random text colors](/assets/images/ch3/random_colors.jpg)
 
 You can also check out the code for this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-random-color-directive-demo).
 `

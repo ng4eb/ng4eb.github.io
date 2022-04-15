@@ -47,7 +47,7 @@ Let's apply the \`percent\` pipe inside \`app.component.html\`:
 
 We will see \`35%\` on the webpage:
 
-![35% percent pipe](/assets/images/ch3/percent_pipe_1.png)
+![35% percent pipe](/assets/images/ch3/percent_pipe_1.jpg)
 
 Now, the \`digitsInfo\` option for the \`percent\` pipe has the below format:
 
@@ -64,7 +64,7 @@ As \`minFractionDigits\` and \`maxFractionDigits\` are 0, we will not see any de
 <p>{{0.35 | percent:'1.1-1'}}</p>
 \`\`\`
 
-![35.0% percent pipe](/assets/images/ch3/percent_pipe_2.png)
+![35.0% percent pipe](/assets/images/ch3/percent_pipe_2.jpg)
 
 Let's also try to provide a locale option. For example, if we want to use the French way to express the percentage, we can provide the  \`fr\` option:
 
@@ -75,7 +75,7 @@ Let's also try to provide a locale option. For example, if we want to use the Fr
 
 If we save and go to the page, we will not see the percentage. Instead, we will see an error in the console telling us that the locale data for \`fr\` is missing:
 
-![missing data for locale fr](/assets/images/ch3/missing_fr_locale.png)
+![missing data for locale fr](/assets/images/ch3/missing_fr_locale.jpg)
 
 To fix this, we need to add the below three lines inside \`app.module.ts\`:
 
@@ -87,7 +87,7 @@ registerLocaleData(localeFr);
 
 The above provides the locale data for the locale \`fr\`. Now, we should see the French expression of the percentage:
 
-![35,0% percent pipe](/assets/images/ch3/percent_pipe_3.png)
+![35,0% percent pipe](/assets/images/ch3/percent_pipe_3.jpg)
 
 Great! You now have learned how to use a built-in pipe.
 
@@ -217,11 +217,11 @@ Now, we can use this pipe. Let's modify \`app.component.html\`:
 
 We will see the number displayed as English numerals on the page:
 
-![custom English to number pipe](/assets/images/ch3/custom_pipe.png)
+![custom English to number pipe](/assets/images/ch3/custom_pipe.jpg)
 
 What if we change the input value from a \`number\`  to \`string\`? In that case, the application will not compile because it does not match the type specified in the pipe:
 
-![custom pipe wrong type error](/assets/images/ch3/pipe_wrong_type_error.png)
+![custom pipe wrong type error](/assets/images/ch3/pipe_wrong_type_error.jpg)
 
 Congratulations! Now you have learned how to implement a custom pipe in Angular! 
 

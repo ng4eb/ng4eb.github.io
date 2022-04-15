@@ -23,11 +23,13 @@
     margin-bottom: size.$space-8;
     font-size: 1.6em;
   }
-  &__desc,
+  &__desc {
+    font-size: 1em;
+  }
   &__intro,
   &__links,
   {
-    font-size: 1em;
+    font-size: 0.9em;
   }
   &__desc {
     margin-bottom: size.$space-8;
@@ -60,13 +62,14 @@
     font-size: function.rem(20px);
     &__title {
       font-size: 1em;
+      justify-content: center;
     }
     &__desc {
       font-size: 0.8em;
     }
     &__intro,
     &__links {
-      font-size: 0.8em;
+      font-size: 0.7em;
     }
     &__container {
       max-width: function.rem(840px);
@@ -74,15 +77,18 @@
       background: var(--grey-fe-44-75);
       transition: all 0.3s ease;
       &:hover {
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
         backdrop-filter: blur(10px);
       }
+    }
+    &__cta {
+      text-align: center;
     }
   }
   .square {
     position: absolute;
     background: var(--grey-ee-33);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     opacity: 0.5;
     z-index: var(--z-negative-1);
     &--1 {
@@ -120,7 +126,7 @@
     }
     &__intro,
     &__links {
-      font-size: 0.9em;
+      font-size: 0.85em;
     }
       &__container {
       padding: size.$space-16 size.$space-48;
