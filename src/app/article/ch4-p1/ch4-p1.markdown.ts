@@ -2,7 +2,7 @@ export const ch4P1Markdown = `
 ## How routing works
 *Routing is to have a router in our app to render different components based on the page requested (i.e., based on the url path):*
 
-![basic concept of routing](/assets/images/ch4/routing_concept.png)
+![basic concept of routing](/assets/images/ch4/routing_concept.jpg)
 
 ### Why Router Is Needed
 
@@ -120,7 +120,7 @@ We added \`<app-navbar></app-navbar>\` because both the \`home\` and \`about\` p
 
 Now, if we go to the \`home\` path, we should see both \`navbar works!\` and \`greeting works!\`, and on the \`about\` path, we will see \`navbar works!\` and \`about-us works!\`.
 
-![basic setup success](/assets/images/ch4/routing_demo_1.png)
+![basic setup success](/assets/images/ch4/routing_demo_1.jpg)
 
 ### Redirecting & Links
 
@@ -189,13 +189,13 @@ Pay attention to how links are declared in the template:
 
 Note the use of the \`routerLink\` property instead of \`href\` inside an anchor tag. The \`routerLink\` property comes from the \`RouterModule\`. It allows us to declare internal links. \`routerLink\` allows the router to know where the visitor is going and control what components to render. In other words, the page does not need to refresh to get updated, hence making our app an SPA:
 
-![routerlink setup](/assets/images/ch4/routing_demo_2.png)
+![routerlink setup](/assets/images/ch4/routing_demo_2.jpg)
 
 ### Not Found Page
 
 What if a visitor goes to a route that does not exist? For example, if a visitor goes to \`localhost:4200/hello\`, what will happen? In that case, there will be an error in the console:
 
-![route not found error](/assets/images/ch4/routing_demo_not_found_error.png)
+![route not found error](/assets/images/ch4/routing_demo_not_found_error.jpg)
 
 To fix this, we can create a fallback page for matching all the non-existing routes. Typically, that would be a not-found page component. So, let's create it now:
 
@@ -222,7 +222,7 @@ In the above, we added the line:
 
 When we set \`path\` to \`'**'\` , it means to match all routes that are not listed above it. So, it will match all routes that are not \`home\`, \`about\`, or the empty route. So, the router would render the \`NotFoundPageComponent\` if we go to \`localhost:4200/hello\` now:
 
-![route not found page](/assets/images/ch4/routing_demo_not_found_page.png)
+![route not found page](/assets/images/ch4/routing_demo_not_found_page.jpg)
 
 Congratulations! Now you have learned the basics of routing in Angular.
 
@@ -232,7 +232,7 @@ You can check out the code of this demo on [Stackblitz](https://stackblitz.com/e
 
 What are child routes? Let's think of an e-commerce site where we have a product listing page under the \`product/list\` route, and a product detail page under the \`product/:productId\` route. These pages are using child routes of the \`product\` route:
 
-![basic child routes concept](/assets/images/ch4/child_routes_concept.png)
+![basic child routes concept](/assets/images/ch4/child_routes_concept.jpg)
 
 Let's create a new project named \`child-routes-demo\` to see child routes in practice:
 
@@ -374,9 +374,9 @@ Note the colon symbol \`:\` in \`:productId\`. It specifies that \`productId\` i
 
 After saving the changes, we can see that our page is already working:
 
-![product listing child route working](/assets/images/ch4/child_routes_demo_1.png)
+![product listing child route working](/assets/images/ch4/child_routes_demo_1.jpg)
 
-![product detail child route working](/assets/images/ch4/child_routes_demo_2.png)
+![product detail child route working](/assets/images/ch4/child_routes_demo_2.jpg)
 
 The \`children\` property is where we specify the child routes. Although we did not specify any component at the \`path: 'product'\` level, we could do so. For example, we can set up a \`product-page\` wrapper for both the \`product-listing\` and \`product-detail\` components.
 
@@ -436,7 +436,7 @@ const routes: Routes = [
 
 Now, we should also see the wrapper around both the \`product-listing\` and \`product-detail\` components!
 
-![product page wrapper working](/assets/images/ch4/child_routes_demo_3.png)
+![product page wrapper working](/assets/images/ch4/child_routes_demo_3.jpg)
 
 ### Getting the Url Parameter
 
@@ -470,7 +470,7 @@ We use its \`snapshot\` property to get the current route information. It has a 
 
 We then stored it into a variable \`productId\`, which we used in the template. Now, if we go to the route \`/product/1\`, we should see the value \`1\` is correctly extracted:
 
-![extracting url parameter productId](assets/images/ch4/url_parameter_extraction.png)
+![extracting url parameter productId](assets/images/ch4/url_parameter_extraction.jpg)
 
 Congratulations! You have learned how to use and configure child routes in Angular.
 

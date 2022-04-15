@@ -18,11 +18,11 @@ For the first question, we may answer no by typing in \`N\` and hitting enter.
 
 For the second question, we will choose CSS (the default option).
 
-![ng new command answering questions](/assets/images/ch2/ng_new.png)
+![ng new command answering questions](/assets/images/ch2/ng_new.jpg)
 
 The Angular CLI would then generate a new project named \`my-dummy-application\` in the current directory. When Angular generates the project, it also automatically installs the dependencies for you:
 
-![automatic dependencies installtion](/assets/images/ch2/ng_new_installation.png)
+![automatic dependencies installtion](/assets/images/ch2/ng_new_installation.jpg)
 
 If you would like to skip the installation due to slow network or some other reasons, you can add the \`--skip-install\` flag behind the \`ng new\` command. We will still get the same \`package.json\` file. Afterwards, you can run \`npm install\` in the project anytime to install back the dependencies.
 
@@ -43,17 +43,17 @@ We will generate a component named \`dummy\` for the \`my-dummy-application\` pr
 ng generate component dummy
 \`\`\`
 
-![ng generate component](/assets/images/ch2/ng_generate_component.png)
+![ng generate component](/assets/images/ch2/ng_generate_component.jpg)
 
 In the command, \`generate\` has an abbreviation \`g\` and \`component\` has an abbreviation \`c\`. So, we can also run \`ng g c dummy\` to generate a component named \`dummy\`. Since we have generated the \`dummy\` component, we won't be able to create the component of the same name again:
 
-![ng g c](/assets/images/ch2/ng_g_c.png)
+![ng g c](/assets/images/ch2/ng_g_c.jpg)
 
 In the command, \`generate\` is the main command, and both \`component\` and \`dummy\` are its arguments. The first argument \`component\` is a **schematic** in Angular. **Schematics** are generators in Angular, most of which we would use to generate code, and some can also refactor and move existing files. If we head over to the schematics folder in the [Github repository of Angular](https://github.com/angular/angular-cli/tree/master/packages/schematics/angular), we can find a collection of built-in schematics and their descriptions in the \`README.md\` file.
 
 We can also get the list of available schematics by the command \`ng generate --help\`:
 
-![list of available schematics](/assets/images/ch2/ng_schematics_list.png)
+![list of available schematics](/assets/images/ch2/ng_schematics_list.jpg)
 
 The second argument is the **name/path** of the component to be created. In the above example, \`dummy\` is the name we give to the new component.
 

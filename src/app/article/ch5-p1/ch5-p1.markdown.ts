@@ -20,7 +20,7 @@ The **service** layer is responsible for two main duties:
 
 Below is a diagram that illustrates the above two points:
 
-![the service layer's duties](assets/images/ch5/service_layer.png)
+![the service layer's duties](assets/images/ch5/service_layer.jpg)
 
 For example, if we want to fetch data from a server used in one or more components, we can put the data fetching logic inside a service.
 
@@ -224,7 +224,7 @@ In the template, we used \`poolService.points\` for getting the total points in 
 
 If we serve the application, we should be able to increment and decrement the counts of Alice and Bob. Also, we cannot increase either of their counts anymore if the pool runs out of points:
 
-![counter service demo page](assets/images/ch5/counter_service_demo.png)
+![counter service demo page](assets/images/ch5/counter_service_demo.jpg)
 
 Nice job! You have learned how to create and use services in Angular!
 

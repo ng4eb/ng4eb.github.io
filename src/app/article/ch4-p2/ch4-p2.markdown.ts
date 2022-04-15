@@ -61,11 +61,11 @@ Now, the lazy-loaded module is fully set up. One last thing to do before we test
 
 Now, we can go to \`localhost:4200\` (assumed we serve the project to port 4200), we should see the link. If we open the devtools and go to the network tab, we should see these \`JavaScript\` downloaded initially:
 
-![Lazy loaded demo - empty path](assets/images/ch4/lazy_loaded_1.png)
+![Lazy loaded demo - empty path](assets/images/ch4/lazy_loaded_1.jpg)
 
 Now, if we click the link to \`localhost:4200/feature-a\`, the code for the lazy-loaded module will be downloaded, which will be reflected in the network tab:
 
-![Lazy loaded demo - feature a path](assets/images/ch4/lazy_loaded_2.png)
+![Lazy loaded demo - feature a path](assets/images/ch4/lazy_loaded_2.jpg)
 
 Congratulations! Now you have learned how to lazy-load a module in Angular.
 
@@ -74,7 +74,7 @@ You can also check out the code on [Stackblitz](https://stackblitz.com/edit/ng4e
 ## Implementing an authentication router guard
 In this section, we will learn how to block unauthenticated access to a route in Angular. The big idea is to implement a **guard**, which we can think of as a boolean test on whether a visitor is authenticated. If the result is *true*, we grant the access to the route. Otherwise, deny the access and redirect the visitor to some other page.
 
-![router guard concept](assets/images/ch4/router_guard_concept.png)
+![router guard concept](assets/images/ch4/router_guard_concept.jpg)
 
 ### Project Setup
 
@@ -207,11 +207,11 @@ Finally, let's add a link and router-outlet to \`app.component.html\`:
 
 Now, on the application page, if we click the link for the first time, we'd be redirected to \`/login-route\`:
 
-![router guard login-route](assets/images/ch4/router_guard_demo_1.png)
+![router guard login-route](assets/images/ch4/router_guard_demo_1.jpg)
 
 Then, if we click the link again, we'd be able to get to \`/protected-route\`:
 
-![router guard protected-route](assets/images/ch4/router_guard_demo_2.png)
+![router guard protected-route](assets/images/ch4/router_guard_demo_2.jpg)
 
 Awesome! Now you have learned how to create and use an authentication guard in Angular!
 
@@ -377,7 +377,7 @@ Let's finally add a link and \`router-outlet\` to \`app.component.html\`:
 
  Now, let's serve the application to any port you like. If we go to the empty route (e.g. \`lcoalhost:4200/\`) and click the link, we will experience a 3-second delay before landing on the \`/bigdata\` route:
 
-![resolver demo bigdata page](assets/images/ch4/resolver_demo.png)
+![resolver demo bigdata page](assets/images/ch4/resolver_demo.jpg)
 
 Congratulations! You have now learned how to create, configure and apply a resolver!
 
@@ -448,11 +448,11 @@ In other words, only the paths \`menu/monday\`, \`menu/tuesday\`, \`menu/wednesd
 
 Now, if we go to the path \`menu/monday\`, we should see the \`MenuComponent\`:
 
-![url matcher matches successfully](assets/images/ch4/url_matcher_demo_1.png)
+![url matcher matches successfully](assets/images/ch4/url_matcher_demo_1.jpg)
 
 If we go to \`menu/gibberish\` instead, we would see the \`NotFoundComponent\`:
 
-![url matcher does not match](assets/images/ch4/url_matcher_demo_2.png)
+![url matcher does not match](assets/images/ch4/url_matcher_demo_2.jpg)
 
 Great! You have learned how to configure and use a url matcher!
 

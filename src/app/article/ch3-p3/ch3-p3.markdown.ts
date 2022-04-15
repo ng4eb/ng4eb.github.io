@@ -4,7 +4,7 @@ export const ch3P3Markdown = `
 
 Just like every story has a beginning, a middle, and an end, a component instance has a lifecycle as it is being created, updated and destroyed. In Angular, there are eight lifecycle events in total:
 
-![eight lifecycle events](/assets/images/ch3/8_lifecycle_events.png)
+![eight lifecycle events](/assets/images/ch3/8_lifecycle_events.jpg)
 
 A component lifecycle typically starts with the \`OnChanges\` or \`OnInit\` event, and from there goes through the events clockwise, until it ends with \`OnDestory\`. 
 
@@ -223,7 +223,7 @@ Finally, let's replace \`app.component.html\` with the below one-liner:
 
 The page should be blank. If we inspect it with the element inspector, we should see the below structure:
 
-![inspecting structure](/assets/images/ch3/inspecting_setup.png)
+![inspecting structure](/assets/images/ch3/inspecting_setup.jpg)
 
 ### Working with the ngOnInit hook
 
@@ -279,7 +279,7 @@ ngOnInit(): void {
 
 Now, if we serve the application and open the developer's console, we should see the below:
 
-![ngOnInit hooks in the console](/assets/images/ch3/console_ngoninit.png)
+![ngOnInit hooks in the console](/assets/images/ch3/console_ngoninit.jpg)
 
 The order of initialization should be no surprise to us. The first component to initialize is \`A\` followed by \`X\`, \`B\`, and finally the most nested \`C\`.
 
@@ -306,7 +306,7 @@ export class AComponent implements OnInit {
 
 Now, the console should show the following:
 
-![ngOnInit hooks with B and X swapped](/assets/images/ch3/console_ngoninit_2.png)
+![ngOnInit hooks with B and X swapped](/assets/images/ch3/console_ngoninit_2.jpg)
 
 The reason why \`X\` is initialized before \`C\` is that nest components will only initialize after the components of the parent level have been initialized.
 
@@ -396,11 +396,11 @@ export class AComponent implements OnInit {
 
 Besides providing the \`boundInput\` value, we also created a button and a method to change it. Below is what we will see from the console after we save the changes:
 
-![ngOnChanges hooks in the console](/assets/images/ch3/console_ngonchanges.png)
+![ngOnChanges hooks in the console](/assets/images/ch3/console_ngonchanges.jpg)
 
 We can see the \`changes\` object tells us the \`currentValue\` , \`previousValue\`, and whether it is the first change. If we click the button to change \`boundInput\` value, \`ngOnChanges\` will fire again:
 
-![ngOnChanges hooks fired after bound input changed](/assets/images/ch3/console_ngonchanges_2.png)
+![ngOnChanges hooks fired after bound input changed](/assets/images/ch3/console_ngonchanges_2.jpg)
 
 ### Working with ngDoCheck
 
@@ -440,7 +440,7 @@ In the above, we made \`AComponent\` implement \`DoCheck\`. Then, inside the cla
 
 Then, we should see the below in the console:
 
-![ngDoCheck hooks in the console](/assets/images/ch3/console_ngdocheck.png)
+![ngDoCheck hooks in the console](/assets/images/ch3/console_ngdocheck.jpg)
 
 As we expect, \`DoCheck\` will happen immediately after \`OnInit\` when a component initializes. The curious fact that \`DoCheck\`  fires twice for each component initially is due to the internal implementation of Angular engine, mainly to ensure that all changes are reflected correctly.
 
@@ -516,7 +516,7 @@ export class AComponent implements OnInit,
 
 If we check the console after updating all four components, we should see the following results:
 
-![other hooks in the console](assets/images/ch3/console_other_hooks.png)
+![other hooks in the console](assets/images/ch3/console_other_hooks.jpg)
 
 Pay attention to when these events happen at different times for all components. For \`A\`  component, as it is the root of all other components, it will go through the \`AfterCotentInit\` and \`AfterContentChecked\` events first. However, it is the last to go through \`AfterViewInit\` and \`AfterViewChecked\` because it has to wait until all other subviews nested in it become ready.
 
@@ -647,7 +647,7 @@ export class AComponent implements OnInit,
 
 In the above, we added a button to attach/detach the \`X\` component using the directive \`*ngIf\`. If we go to the webpage and click the button once, we should see that the \`ngOnDestroy\`  hook has fired:
 
-![ngOnDestroy hooks in console](/assets/images/ch3/console_ngondestroy.png)
+![ngOnDestroy hooks in console](/assets/images/ch3/console_ngondestroy.jpg)
 
 Awesome! Now we have seen how to use lifecycle hooks in Angular.
 
