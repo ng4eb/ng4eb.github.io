@@ -1,0 +1,32 @@
+<details
+        [open]="i === (toExpand$ | async)"
+        #details
+>
+    <summary
+            [class.highlight]="titleMatched(chapter.title)">
+        Ch{{chapter.ch}}
+        - {{chapter.title}}</summary>
+    <ol class="chapter-listing__parts">
+        <li *ngFor="let part of chapter.parts; let j = index">
+            <a [class.highlight]="titleMatched(part.title)"
+               [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]"
+               (click)="scrollToTop()"
+            >
+                P{{j + 1}} - {{part.title}}
+            </a>
+            <ol class="chapter-listing__sections"
+                *ngIf="part.sections">
+                <li *ngFor="let section of part.sections; let k = index">
+                    <a [class.current]="url.startsWith('/book/ch' + chapter.ch + '/p' + (j+1)) && k === (currentPosition$ | async)"
+                       [class.highlight]="titleMatched(section)"
+                       [routerLink]="['/book/ch' + chapter.ch + '/p' + (j+1)]"
+                       [fragment]="'' + (k+1)"
+                       (click)="onClickHashTagLink('' + (k+1))"
+                    >
+                        {{section}}
+                    </a>
+                </li>
+            </ol>
+        </li>
+    </ol>
+</details>
