@@ -10,9 +10,10 @@ import {
 } from '@angular/core';
 import {RoutingService} from '../service/routing.service';
 import {
-	ChapterListingService, navigationPart
+	ChapterListingService,
+	navigationPart
 } from '../service/chapter-listing/chapter-listing.service';
-import {filter, Subscription} from 'rxjs';
+import {filter, Subject, takeUntil} from 'rxjs';
 import {
 	faAngleLeft,
 	faAngleRight
@@ -58,9 +59,10 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 	h2Elements: Element[] = [];
 	private _zoom: any;
 	private _path$ = this._routingService.getPath$();
-	private _subscription!: Subscription;
-	private _subscription2!: Subscription;
-	private _subscription3!: Subscription;
+	private _destroy$ = new Subject<boolean>();
+	// private _subscription!: Subscription;
+	// private _subscription2!: Subscription;
+	// private _subscription3!: Subscription;
 
 	constructor(
 		private _router: Router,
@@ -100,38 +102,44 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this._subscription = this._path$.subscribe((path) => {
-			this.url = path || this.url;
-			this.navigation = this._chapterListingService.getNavigation(this.url);
-		});
+		this._path$
+			.pipe(takeUntil(this._destroy$))
+			.subscribe((path) => {
+				this.url = path || this.url;
+				this.navigation = this._chapterListingService.getNavigation(this.url);
+			});
 	}
 
 	ngAfterViewInit() {
-		this._subscription2 = this._onLoadMdService.getH2Elements()
-			.pipe(filter(Boolean))
+		this._onLoadMdService.getH2Elements()
+			.pipe(
+				filter(Boolean),
+				takeUntil(this._destroy$)
+			)
 			.subscribe((elements) => {
 				this.h2Elements = elements;
 				this._cdr.detectChanges();
 			});
 
-		this._subscription3 = this._routingService.getPath$().subscribe(() => {
-			if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
-				if (!this._zoom) {
-					this._zoom = mediumZoom('.md-img', {background: '#222222'});
-				} else {
-					this._zoom.detach();
-					setTimeout(() => {
+		this._routingService.getPath$()
+			.pipe(takeUntil(this._destroy$))
+			.subscribe(() => {
+				if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+					if (!this._zoom) {
 						this._zoom = mediumZoom('.md-img', {background: '#222222'});
-					})
+					} else {
+						this._zoom.detach();
+						setTimeout(() => {
+							this._zoom = mediumZoom('.md-img', {background: '#222222'});
+						})
+					}
 				}
-			}
-		})
+			})
 	}
 
 	ngOnDestroy() {
-		this._subscription.unsubscribe();
-		this._subscription2.unsubscribe();
-		this._subscription3.unsubscribe();
+		this._destroy$.next(true);
+		this._destroy$.unsubscribe();
 	}
 
 }
