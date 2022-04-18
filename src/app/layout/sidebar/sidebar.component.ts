@@ -36,7 +36,6 @@ import {Router} from '@angular/router';
 export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	faSearch = faSearch;
 	isSidebarOpen$ = this._layoutService.getIsSidebarOpen$();
-	currentPosition$ = this._chapterListingService.getCurrentPosition$();
 	url = this._router.url;
 	chapterListing = this._chapterListingService.getListing();
 	toExpand$ = this._chapterListingService.getToExpand$();
@@ -72,7 +71,7 @@ export class SidebarComponent implements OnInit, AfterViewChecked, OnDestroy {
 	}
 
 	titleMatched(title: string) {
-		return this._filterQuery && title.toLowerCase().includes(
+		return !!this._filterQuery && title.toLowerCase().includes(
 			this._filterQuery
 		);
 	}

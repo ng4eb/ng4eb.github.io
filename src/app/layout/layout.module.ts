@@ -22,6 +22,7 @@ import {
 import {SharedModule} from '../shared/shared.module';
 import {NgxPrintModule} from 'ngx-print';
 import { LogoComponent } from './logo/logo.component';
+import { AccordionComponent } from './sidebar/accordion/accordion.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { LogoComponent } from './logo/logo.component';
 		OptionsWidgetComponent,
 		LayoutComponent,
 		AdvancedSearchOverlayComponent,
-  LogoComponent
+  LogoComponent,
+  AccordionComponent
 	],
 	exports: [
 		LayoutComponent
