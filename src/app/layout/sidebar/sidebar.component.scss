@@ -2,20 +2,32 @@
 @use '/src/styles/mixin';
 @use '/src/styles/size';
 
+@keyframes addBorderRight {
+  0% {
+    border-right: 0 solid var(--grey-22-44);
+  }
+  75% {
+    border-right: 0 solid var(--grey-22-44);
+  }
+  100% {
+    border-right: 0.5px solid var(--grey-22-44);
+  }
+}
+
 .sidebar {
-  width: size.$collapse-sidebar-width;
   height: 100%;
+  width: size.$collapse-sidebar-width;
+  transition: width 0.2s ease-in-out;
 
   &__content {
     position: fixed;
     top: 0;
     left: 0;
-    width: size.$collapse-sidebar-width;
     height: calc(100vh - #{size.$footer-height});
 
     &__head {
       display: flex;
-      width: 100%;
+      width: size.$collapse-sidebar-width;
       height: size.$collapse-sidebar-width;
       background: var(--grey-44-22);
 
@@ -29,11 +41,13 @@
     width: size.$sidebar-width;
     background: var(--white-black);
     border-right: 0.5px solid var(--grey-22-44);
+    animation: addBorderRight 0.3s linear;
 
     .sidebar__content {
       width: size.$sidebar-width;
 
       &__head {
+        width: size.$sidebar-width;
         .site-title {
           display: inline-grid;
           place-items: center;
