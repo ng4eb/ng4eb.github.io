@@ -1,4 +1,13 @@
-export const chapterListing =  [
+export interface IChapter {
+	ch: number;
+	title: string;
+	parts: {
+		title: string;
+		sections?: string[];
+	}[]
+}
+
+export const chapterListing: IChapter[] = [
 	// chapter 1
 	{
 		ch: 1,

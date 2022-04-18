@@ -1,0 +1,76 @@
+@use '/src/styles/size';
+
+ol {
+  list-style: none;
+  padding-left: size.$space-16;
+  margin-bottom: size.$space-4;
+}
+details {
+  & > summary {
+    list-style: none;
+    margin-top: size.$space-8;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background: var(--blue-e0-00);
+    }
+    &::marker {
+      content: "";
+    }
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::after {
+      display: inline-block;
+      content: '▶';
+      margin-left: size.$space-8;
+      font-size: 0.75em;
+      transition: transform 0.2s ease-out;
+    }
+  }
+  &[open] > summary {
+    &::after {
+      //content: '▼';
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.chapter-listing__parts {
+  font-size: 0.95em;
+  li {
+    padding: 1px;
+    margin: size.$space-4 0;
+    & > a:hover {
+      background: var(--blue-df-24);
+    }
+  }
+  a {
+    color: var(--grey-44-cc);
+    &:hover {
+      color: var(--grey-66-cc);
+    }
+  }
+}
+
+.chapter-listing__sections {
+  font-size: 0.975em;
+  li {
+    padding: 1px;
+    margin: size.$space-4 0;
+    & > a:hover {
+      background: var(--blue-df-24);
+    }
+  }
+  a {
+    text-decoration: none;
+    &.current {
+      color: var(--blue-00-e0);
+      text-decoration: underline;
+    }
+  }
+}
+
+.highlight {
+  background: rgba(223, 217, 43, 0.25);
+}
