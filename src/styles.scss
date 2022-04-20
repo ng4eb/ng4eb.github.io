@@ -43,7 +43,6 @@ a {
 h2 {
   margin: size.$space-16 0 size.$space-26;
   font-size: 1.4em;
-  text-align: center;
   border-bottom: 5px solid var(--grey-66-cc);
   &:not(:first-child) {
     margin-top: size.$space-32;
@@ -63,8 +62,8 @@ pre {
   padding: size.$space-8;
   margin-bottom: size.$space-26 !important;
   background: var(--grey-ee-33);
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+  border: 5px solid #cccccc;
+  border-radius: 0 !important;
   overflow-x: auto;
   &::-webkit-scrollbar {
     height: 8px;
@@ -105,9 +104,6 @@ blockquote {
 
 .md-img {
   object-fit: scale-down;
-  &:hover {
-    box-shadow: 0 0 5px 0.3px var(--grey-66-cc);
-  }
 }
 
 .h2-anchor {
@@ -151,7 +147,6 @@ blockquote {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--grey-aa);
-  border-radius: 5px;
 }
 
 /* Handle on hover */

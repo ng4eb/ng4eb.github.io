@@ -46,7 +46,9 @@ details {
     }
   }
   a {
+    font-weight: 700;
     color: var(--grey-44-cc);
+    text-decoration: none;
     &:hover {
       color: var(--grey-66-cc);
     }
@@ -63,7 +65,7 @@ details {
     }
   }
   a {
-    text-decoration: none;
+    font-weight: 400;
     &.current {
       color: var(--blue-00-e0);
       text-decoration: underline;

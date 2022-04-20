@@ -25,7 +25,6 @@
     &__bubble {
       min-width: function.rem(200px);
       padding: size.$space-16;
-      border-radius: 5px;
       background: var(--grey-ee-33);
       color: var(--grey-44-aa);
       &.done {

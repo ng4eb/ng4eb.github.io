@@ -8,20 +8,18 @@
 @media screen and (min-width: 768px) {
   .theme-switch {
     position: fixed;
-    top: 0;
+    top: 50%;
     right: 0;
     display: grid;
     place-items: center;
-    width: function.rem(147px);
-    height: function.rem(147px);
+    width: function.rem(55px);
+    height: function.rem(55px);
     font-size: 1em;
-    border-radius: 100vh;
-    transform: translate(60%, -60%);
+    transform: translateY(-150%);
+    border: 5px solid var(--grey-ee-33);
     @include mixin.primary-desktop-icon;
 
     fa-icon {
-      margin-top: 50%;
-      margin-right: 50%;
       font-size: 1.4em;
     }
   }
