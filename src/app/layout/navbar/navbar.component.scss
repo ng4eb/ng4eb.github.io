@@ -154,10 +154,16 @@
     margin-top: size.$space-8;
     margin-bottom: size.$space-4;
   }
+  &__parts {
+    a {
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
   &__sections {
     font-size: 0.9em;
     a {
-      text-decoration: none;
+      font-weight: 400;
       &.current {
         font-weight: 700;
         color: var(--blue-00-e0);

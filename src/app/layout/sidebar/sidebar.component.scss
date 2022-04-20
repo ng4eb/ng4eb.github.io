@@ -52,6 +52,7 @@
           display: inline-grid;
           place-items: center;
           flex-grow: 1;
+          font-weight: 600;
           a {
             display: inline-flex;
             color: var(--white);
@@ -66,6 +67,8 @@
       }
 
       &__body {
+        display: flex;
+        flex-direction: column;
         padding-left: size.$space-26;
         padding-right: size.$space-26;
       }
@@ -84,7 +87,7 @@
 }
 
 $menu-icon-width: function.rem(30px);
-$menu-icon-height: function.rem(2px);
+$menu-icon-height: function.rem(3px);
 
 @mixin menu-icon-size {
   width: $menu-icon-width;
@@ -171,8 +174,11 @@ $search-bar-height: function.rem(46px);
 }
 
 .advanced-search {
-  text-align: end;
-  text-decoration: underline;
+  align-self: end;
+  margin-top: function.rem(5px);
+  margin-bottom: function.rem(5px);
+  font-weight: 800;
+  font-style: italic;
   color: var(--grey-66-cc);
   cursor: pointer;
 }
