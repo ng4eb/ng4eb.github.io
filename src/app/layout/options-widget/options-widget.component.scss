@@ -4,33 +4,30 @@
 
 .options-widget {
   position: fixed;
-  bottom: 0;
+  top: 50%;
   right: 0;
   display: grid;
   place-items: center;
-  width: function.rem(147px);
-  height: function.rem(147px);
-  border-radius: 100vh;
-  transform: translate(60%, 60%);
+  width: function.rem(55px);
+  height: function.rem(55px);
+  transform: translateY(-50%);
+  border: 5px solid var(--grey-ee-33);
   @include mixin.primary-desktop-icon;
 
 
   fa-icon {
-    margin-bottom: 50%;
-    margin-right: 50%;
     font-size: 1.4em;
   }
 }
 
 .options {
   position: fixed;
-  right: function.rem(40px);
-  bottom: function.rem(55px);
+  right: function.rem(64px);
+  top: 45%;
   display: flex;
   flex-flow: column nowrap;
   width: function.rem(61px);
   padding: size.$space-8 size.$space-4;
-  border-radius: 5px;
   background: var(--grey-77);
 
   &__button {
@@ -38,7 +35,6 @@
     place-items: center;
     width: 100%;
     height: function.rem(48px);
-    border-radius: 5px;
     border: none;
     @include mixin.primary-desktop-icon;
     &:not(:last-child) {

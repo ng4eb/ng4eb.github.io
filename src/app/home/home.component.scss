@@ -12,46 +12,66 @@
   margin-right: auto;
   max-width: size.$page-max-width;
   font-size: function.rem(18px);
+
   &__angular-logo {
     width: function.rem(36px);
     height: auto;
-    margin-right: size.$space-8;
+
+    path {
+      fill: var(--black-white);
+    }
   }
-  &__title {
+
+  &__quick {
     display: flex;
     align-items: center;
+    margin-left: size.$space-16;
+    font-weight: 800;
+  }
+
+  &__quick-logo {
+    width: function.rem(24px);
+    height: auto;
+    margin-bottom: size.$space-12;
+    margin-right: size.$space-8;
+
+    path {
+      fill: var(--black-white);
+    }
+  }
+
+  &__title {
     margin-bottom: size.$space-8;
     font-size: 1.6em;
+    font-weight: 500;
+    text-align: start;
   }
+
   &__desc {
+    margin-bottom: size.$space-16;
     font-size: 1em;
-  }
-  &__intro,
-  &__links,
-  {
-    font-size: 0.9em;
-  }
-  &__desc {
-    margin-bottom: size.$space-8;
     font-weight: 200;
     font-style: italic;
   }
-  &__intro {
-    margin-bottom: size.$space-16;
-  }
+
   &__links {
     margin-bottom: size.$space-16;
+
     a {
       color: var(--grey-66-cc);
+
       &:hover {
         color: var(--grey-44-aa);
       }
     }
   }
+
   &__cta {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: italic;
+    text-align: end;
   }
+
   a {
     text-decoration: none;
   }
@@ -60,29 +80,32 @@
 @media screen and (min-width: 768px) {
   .homepage {
     font-size: function.rem(20px);
+
     &__title {
       font-size: 1em;
       justify-content: center;
     }
+
     &__desc {
       font-size: 0.8em;
     }
+
     &__intro,
     &__links {
       font-size: 0.7em;
     }
+
     &__container {
-      max-width: function.rem(840px);
+      max-width: function.rem(480px);
       padding: size.$space-16;
-      background: var(--grey-fe-44-75);
+      border: 5px solid var(--grey-22-88);
       transition: all 0.3s ease;
-      &:hover {
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(10px);
-      }
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
     }
     &__cta {
-      text-align: center;
+      font-size: 0.75em;
+      font-weight: 300;
     }
   }
   .square {
@@ -91,6 +114,7 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     opacity: 0.5;
     z-index: var(--z-negative-1);
+
     &--1 {
       left: 10%;
       top: 20%;
@@ -98,6 +122,7 @@
       height: 400px;
       transform: rotate(15deg);
     }
+
     &--2 {
       right: 20%;
       top: 5%;
@@ -105,6 +130,7 @@
       height: 275px;
       transform: rotate(43.05deg);
     }
+
     &--3 {
       right: 10%;
       bottom: 10%;
@@ -118,21 +144,28 @@
 @media screen and (min-width: 1200px) {
   .homepage {
     font-size: function.rem(22px);
+
     &__title {
-      font-size: 1.8em;
+      font-size: 1.5em;
     }
+
     &__desc {
-      font-size: 0.9em;
+      font-size: 0.8em;
     }
-    &__intro,
+
     &__links {
       font-size: 0.85em;
     }
-      &__container {
-      padding: size.$space-16 size.$space-48;
+
+    &__container {
+      padding: size.$space-32;
     }
+
     &__angular-logo {
       width: function.rem(48px);
+    }
+    &__quick-logo {
+      width: function.rem(32px);
     }
   }
 }
