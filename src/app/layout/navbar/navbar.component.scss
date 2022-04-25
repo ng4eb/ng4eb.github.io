@@ -17,6 +17,7 @@
   background: var(--grey-44-22);
   color: var(--white);
   z-index: var(--z-10);
+  box-shadow: 0 2px 4px var(--greyish-border);
 
   &__menu {
     position: fixed;
@@ -113,7 +114,7 @@
   margin-right: auto;
   padding: size.$space-8;
   font-size: function.rem(18px);
-  @include mixin.roboto;
+  @include mixin.quicksand;
   background: var(--grey-aa);
   color: var(--white);
 
@@ -143,7 +144,7 @@
   width: 80%;
   margin: size.$space-16 auto;
   font-size: function.rem(16px);
-  @include mixin.roboto;
+  @include mixin.quicksand;
   ol {
     list-style: none;
     padding-left: size.$space-8;

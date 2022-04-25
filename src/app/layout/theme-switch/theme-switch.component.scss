@@ -16,7 +16,7 @@
     height: function.rem(55px);
     font-size: 1em;
     transform: translateY(-150%);
-    border: 5px solid var(--grey-ee-33);
+    border: 2.5px solid var(--grey-ee-33);
     @include mixin.primary-desktop-icon;
 
     fa-icon {
