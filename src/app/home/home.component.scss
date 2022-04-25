@@ -82,8 +82,10 @@
     font-size: function.rem(20px);
 
     &__title {
-      font-size: 1em;
       justify-content: center;
+      font-size: 1em;
+      text-align: center;
+      text-shadow: 2px 2px 5px var(--greyish-border);
     }
 
     &__desc {
@@ -96,11 +98,10 @@
     }
 
     &__container {
-      max-width: function.rem(480px);
-      padding: size.$space-16;
-      border: 5px solid var(--grey-22-88);
+      max-width: function.rem(800px);
+      padding: size.$space-26 size.$space-48;
+      border-radius: 50px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
     }
     &__cta {
@@ -111,24 +112,24 @@
   .square {
     position: absolute;
     background: var(--grey-ee-33);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-    opacity: 0.5;
+    border-radius: 50px;
     z-index: var(--z-negative-1);
+    opacity: 0.4;
 
     &--1 {
-      left: 10%;
+      left: 20%;
       top: 20%;
-      width: 400px;
-      height: 400px;
-      transform: rotate(15deg);
+      width: 300px;
+      height: 300px;
+      transform: rotate(25deg);
     }
 
     &--2 {
       right: 20%;
-      top: 5%;
+      top: 0;
       width: 275px;
       height: 275px;
-      transform: rotate(43.05deg);
+      transform: rotate(48.05deg);
     }
 
     &--3 {

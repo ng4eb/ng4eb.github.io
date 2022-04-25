@@ -10,7 +10,7 @@ body {
 }
 
 body {
-  @include mixin.roboto;
+  @include mixin.quicksand;
   background: var(--white-black);
   color: var(--black-white);
   overflow-x: hidden;
@@ -18,6 +18,10 @@ body {
 
 h1, h2, h3, p, ul, ol {
   line-height: 1.7;
+}
+
+h1 {
+  font-weight: 100;
 }
 
 p {
@@ -43,7 +47,7 @@ a {
 h2 {
   margin: size.$space-16 0 size.$space-26;
   font-size: 1.4em;
-  border-bottom: 5px solid var(--grey-66-cc);
+  border-bottom: 2.5px solid var(--grey-66-cc);
   &:not(:first-child) {
     margin-top: size.$space-32;
   }
@@ -64,7 +68,7 @@ pre {
   padding: size.$space-8;
   margin-bottom: size.$space-26 !important;
   background: var(--grey-ee-33);
-  border: 5px solid #cccccc;
+  border: 2.5px solid #cccccc;
   border-radius: 0 !important;
   overflow-x: auto;
   &::-webkit-scrollbar {
@@ -138,7 +142,7 @@ blockquote {
 /* SCROLL BAR CUSTOMIZATION */
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12.5px;
 }
 
 /* Track */
