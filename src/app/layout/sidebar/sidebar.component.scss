@@ -4,13 +4,10 @@
 
 @keyframes addBorderRight {
   0% {
-    border-right: 0 solid var(--grey-22-44);
+    box-shadow: none;
   }
   75% {
-    border-right: 0 solid var(--grey-22-44);
-  }
-  100% {
-    border-right: 0.5px solid var(--grey-22-44);
+    box-shadow: 0 0 15px var(--greyish-border);
   }
 }
 
@@ -40,9 +37,8 @@
   &.expanded {
     width: size.$sidebar-width;
     background: var(--white-black);
-    border-right: 0.5px solid var(--grey-22-44);
     animation: addBorderRight 0.3s linear;
-
+    box-shadow: 0 0 15px var(--greyish-border);
     .sidebar__content {
       width: size.$sidebar-width;
 
@@ -52,7 +48,7 @@
           display: inline-grid;
           place-items: center;
           flex-grow: 1;
-          font-weight: 600;
+          font-weight: 300;
           a {
             display: inline-flex;
             color: var(--white);
@@ -177,7 +173,7 @@ $search-bar-height: function.rem(46px);
   align-self: end;
   margin-top: function.rem(5px);
   margin-bottom: function.rem(5px);
-  font-weight: 800;
+  font-weight: 500;
   font-style: italic;
   color: var(--grey-66-cc);
   cursor: pointer;

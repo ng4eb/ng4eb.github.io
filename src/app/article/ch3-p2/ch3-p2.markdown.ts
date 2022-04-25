@@ -30,20 +30,20 @@ ng new built-in-directive-demo --routing=false --style=css
 Let's remove everything in \`app.component.html\` and type in the following:
 
 \`\`\`html
-<p [ngStyle]="{color: 'green', fontSize: '3em'}">I am green and big because Angular says so!</p>  
+<p [ngStyle]="{color: 'green', fontSize: '3em'}">I am green and big because Angular says so!</p>
 <p [ngStyle]="{color: 'green', 'font-size': '3em'}">Another one!</p>
-<hr />  
-<p *ngIf="true">You can see me because ngIf is evaluated to true</p>  
-<p *ngIf="false">You can't see me because ngIf is evaluated to false</p>  
-<hr />  
-<p *ngFor="let fruit of ['orange', 'apple', 'banana']">  
- {{fruit}}  
+<hr />
+<p *ngIf="true">You can see me because ngIf is evaluated to true</p>
+<p *ngIf="false">You can't see me because ngIf is evaluated to false</p>
+<hr />
+<p *ngFor="let fruit of ['orange', 'apple', 'banana']">
+ {{fruit}}
 </p>
 \`\`\`
 
 ### ngStyle
 
-The attribute directive - \`ngStyle\` - is used to add dynamic styles to an element. Recall the square brackets \`[]\` are used for **property binding**. Under the hood, \`ngStyle\` attaches the \`ngStyle\` property to get the dynamic style values and apply them to the **host** element. 
+The attribute directive - \`ngStyle\` - is used to add dynamic styles to an element. Recall the square brackets \`[]\` are used for **property binding**. Under the hood, \`ngStyle\` attaches the \`ngStyle\` property to get the dynamic style values and apply them to the **host** element.
 
 As shown above, there are two ways of writing the style values. Either use camel case for the property names like \`fontSize\`, or use the original format by putting them in quotes , e.g., \`'font-size'\`.
 
@@ -55,7 +55,7 @@ It is a structural directive that toggles the presence of an element in the DOM.
 
 If we serve the application, we would see that the line \`<p *ngIf="false">You can't see me ...</p>\` is not on the page because it is not added to the DOM tree. That is because when \`*ngIf\` is evaluated to \`false\`, the **host** element is not added to the DOM.
 
-*Usually, ngIf is use with a dynamic boolean value from the TypeScript file*. We can then add a way to toggle the boolean value to attach or detach the host element as we wish.
+*Usually, ngIf is used with a dynamic boolean value from the TypeScript file*. We can then add a way to toggle the boolean value to attach or detach the host element as we wish.
 
 ### ngFor
 
@@ -66,8 +66,8 @@ The format\`*ngFor="let someItem of someItems"*\` is a special syntax. In \`let 
 *We can also get the index of the current item from ngFor* by using \`let i = index\`, where \`i\` can be any name. For example, we can type in:
 
 \`\`\`html
-<p *ngFor="let fruit of ['orange', 'apple', 'banana']; let i = index">  
- {{i}}. {{fruit}}  
+<p *ngFor="let fruit of ['orange', 'apple', 'banana']; let i = index">
+ {{i}}. {{fruit}}
 </p>
 \`\`\`
 
@@ -97,7 +97,7 @@ export class CustomDirective {
 }
 \`\`\`
 
-The structure of \`@Directive\` is almost identical to \`@Component\`. The only difference is that \`@Component\` requires either the property \`template\` or \`templateUrl\`. 
+The structure of \`@Directive\` is almost identical to \`@Component\`. The only difference is that \`@Component\` requires either the property \`template\` or \`templateUrl\`.
 
 Like \`@Component\`, \`@Director\` has a \`selector\` property. Typically, we would use \`[someName]\` for the \`selector\` . It is a special syntax to allow the directive to be attached as an attribute to a tag in the template.
 
@@ -120,23 +120,23 @@ There will be two new files in the app folder, named \`random-color.directive.ts
 Let's edit \`random-color.directive.ts\`:
 
 \`\`\`typescript
-import { Directive, HostBinding } from '@angular/core';  
-  
-@Directive({  
-   selector: '[appRandomColor]'  
-})  
-export class RandomColorDirective {  
-   @HostBinding('style.color') get color() {  
+import { Directive, HostBinding } from '@angular/core';
+
+@Directive({
+   selector: '[appRandomColor]'
+})
+export class RandomColorDirective {
+   @HostBinding('style.color') get color() {
         return 'red';
    }
-  
+
 }
 \`\`\`
 
 In the above, we added the portion:
 
 \`\`\`typescript
-@HostBinding('style.color') get color() {  
+@HostBinding('style.color') get color() {
      return 'red';
 }
 \`\`\`
@@ -150,7 +150,7 @@ You can read more about **HostBinding** in [the documentation](https://angular.i
 For generating a random color, we can use \`rgb\`, which accepts three integers of range between 0 and 255. Let's change the implementation now:
 
 \`\`\`typescript
-@HostBinding('style.color') get color() {  
+@HostBinding('style.color') get color() {
   // generate values of range 0 - 255
   const genRandom = () => Math.ceil(Math.random() * 255);
   return \`rgb(\${genRandom()}, \${genRandom()}, \${genRandom()})\`;
@@ -160,10 +160,10 @@ For generating a random color, we can use \`rgb\`, which accepts three integers 
 Then, we can test the decorator by using it in \`app.component.html\`:
 
 \`\`\`html
-<p appRandomColor>testing 1</p>  
-<p appRandomColor>testing 2</p>  
-<p appRandomColor>testing 3</p>  
-<p appRandomColor>testing 4</p>  
+<p appRandomColor>testing 1</p>
+<p appRandomColor>testing 2</p>
+<p appRandomColor>testing 3</p>
+<p appRandomColor>testing 4</p>
 <p appRandomColor>testing 5</p>
 \`\`\`
 

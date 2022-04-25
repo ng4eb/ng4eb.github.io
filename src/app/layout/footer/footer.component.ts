@@ -3,7 +3,7 @@ import {
 	Component,
 	OnInit
 } from '@angular/core';
-import {faHome} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faMap} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faAngular} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -14,6 +14,7 @@ import {faGithub, faAngular} from '@fortawesome/free-brands-svg-icons';
 })
 export class FooterComponent implements OnInit {
 	faHome = faHome;
+  faMap = faMap;
 	faGithub = faGithub;
 	faAngular = faAngular;
 
