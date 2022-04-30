@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ViewChildren, ChangeDetectorRef, OnDestroy
+  ViewChildren,
+  ChangeDetectorRef,
+  OnDestroy
 } from '@angular/core';
 import {markdowns, mdKey} from './markdowns';
 import {seos} from './seos';
@@ -28,40 +30,44 @@ import {
               #md>
     </markdown>
   `,
-  styles: [
-  ],
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChapterComponent implements OnInit, OnDestroy {
   @ViewChildren('md') md: any;
   markdown = markdowns[this._route.snapshot.data['chapter'] as mdKey];
   private _subscription!: Subscription;
+
   constructor(
-      private _route: ActivatedRoute,
-      private _onLoadMdService: OnLoadMdService,
-      private _seoService: SeoService,
-      private _routingService: RoutingService,
-      private _isPlatformBrowserService: IsPlatformBrowserService,
-      private _cdr: ChangeDetectorRef
+    private _route: ActivatedRoute,
+    private _onLoadMdService: OnLoadMdService,
+    private _seoService: SeoService,
+    private _routingService: RoutingService,
+    private _isPlatformBrowserService: IsPlatformBrowserService,
+    private _cdr: ChangeDetectorRef
   ) {
   }
 
   onLoad(_e: any) {
     setTimeout(() => {
-      this._onLoadMdService.onLoadMd(this.md);
+      const queryParams = this._route.snapshot.queryParamMap;
+      const query = queryParams.get('query') || '';
+      this._onLoadMdService.onLoadMd(this.md, query);
     })
   }
 
   ngOnInit(): void {
-    this._seoService.setSEO(seos[this._route.snapshot.data['chapter'] as mdKey]);
+    const mdKeyPath: mdKey = this._route.snapshot.data['chapter'];
+    this._seoService.setSEO(seos[mdKeyPath]);
     if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
       this._subscription = this._routingService.getPath$().subscribe((url: string) => {
         const latterHalf = url.split('ch')[1]; // remove /book/ch
         const latterHalfInSegments = latterHalf.split('/') // get [{chNum}, {rest}]
         const chapterNum = latterHalfInSegments[0];
         const partNum = latterHalfInSegments[1]
-            .replace('p', '')
-            .split('#')[0];
+          .replace('p', '')
+          .split('?')[0]
+          .split('#')[0];
         this.markdown = markdowns[`ch${chapterNum}p${partNum}` as mdKey];
         this._seoService.setSEO(seos[`ch${chapterNum}p${partNum}` as mdKey]);
         this._cdr.detectChanges();

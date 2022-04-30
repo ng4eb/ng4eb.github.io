@@ -13,12 +13,12 @@ import {
 	ChapterListingService,
 	navigationPart
 } from '../service/chapter-listing/chapter-listing.service';
-import {filter, Subject, takeUntil} from 'rxjs';
+import {BehaviorSubject, filter, Subject, takeUntil} from 'rxjs';
 import {
 	faAngleLeft,
 	faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {
 	IsPlatformBrowserService
 } from '../service/is-platform-browser.service';
@@ -57,14 +57,15 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 		}
 	}
 	h2Elements: Element[] = [];
+  queryElements: Element[] = [];
+  query?: string;
+  currQueryIndex$ = new BehaviorSubject(0);
 	private _zoom: any;
 	private _path$ = this._routingService.getPath$();
 	private _destroy$ = new Subject<boolean>();
-	// private _subscription!: Subscription;
-	// private _subscription2!: Subscription;
-	// private _subscription3!: Subscription;
 
 	constructor(
+    private _route: ActivatedRoute,
 		private _router: Router,
 		private _routingService: RoutingService,
 		private _chapterListingService: ChapterListingService,
@@ -90,6 +91,20 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 		}
 	}
 
+  prevQuery() {
+    const currIdx = this.currQueryIndex$.getValue();
+    if (currIdx <= 0) return;
+    this.queryElements[currIdx].classList.remove('active');
+    this.currQueryIndex$.next(currIdx - 1);
+  }
+
+  nextQuery() {
+    const currIdx = this.currQueryIndex$.getValue();
+    if (currIdx >= this.queryElements.length - 1) return;
+    this.queryElements[currIdx].classList.remove('active');
+    this.currQueryIndex$.next(currIdx + 1);
+  }
+
 	clickNavigationLink(index: number | null) {
 		this._layoutService.scrollToTop(false);
 		this.setToExpand(index);
@@ -108,7 +123,10 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 				this.url = path || this.url;
 				this.navigation = this._chapterListingService.getNavigation(this.url);
 			});
-	}
+
+    const queryParams = this._route.snapshot.queryParamMap;
+    this.query = queryParams.get('query') || '';
+  }
 
 	ngAfterViewInit() {
 		this._onLoadMdService.getH2Elements()
@@ -120,7 +138,26 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
 				this.h2Elements = elements;
 				this._cdr.detectChanges();
 			});
-
+    this._onLoadMdService.getQueryElements()
+      .pipe(
+        filter(Boolean),
+        takeUntil(this._destroy$)
+      )
+      .subscribe((elements) => {
+        this.queryElements = elements;
+        this.queryElements[0]?.scrollIntoView();
+        this.queryElements[0]?.classList.add('active');
+        this._cdr.detectChanges();
+      });
+    this.currQueryIndex$
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe((idx) => {
+        this.queryElements[idx]?.scrollIntoView();
+        this.queryElements[idx]?.classList.add('active');
+        this._cdr.detectChanges();
+      })
 		this._routingService.getPath$()
 			.pipe(takeUntil(this._destroy$))
 			.subscribe(() => {

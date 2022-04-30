@@ -11,6 +11,7 @@
             <li *ngFor="let result of searchResults">
                 <a
                         [routerLink]="result.url"
+                        [queryParams]="{query: result.query}"
                         (click)="scrollToTop()"
                 >{{result.title}}</a>
                 <p>

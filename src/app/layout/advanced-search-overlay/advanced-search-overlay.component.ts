@@ -34,7 +34,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 	queryString = '';
 	faSearch = faSearch;
 	faSpinner = faSpinner;
-	searchResults: {title: string, content: string, url: string}[] = [];
+	searchResults: {title: string, content: string, url: string, query?: string}[] = [];
 	isSearching = false;
 	private _hasRegisteredQuery = false;
 	private _querySubscription?: Subscription;
@@ -103,7 +103,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 					debounceTime(200),
 					distinctUntilChanged(),
 					tap((_event: KeyboardEvent) => {
-						this.queryString = this._query.nativeElement.value.toLowerCase();
+						this.queryString = this._query.nativeElement.value;
 						if (this.queryString) {
 							this.isSearching = true;
 							this._cdr.detectChanges();
