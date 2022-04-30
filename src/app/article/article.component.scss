@@ -38,6 +38,43 @@
     padding: size.$space-32 size.$space-16;
     font-size: function.rem(20px);
 
+    &-query {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex !important;
+      align-items: center;
+      padding: function.rem(4px) function.rem(4px) function.rem(4px) function.rem(10px);
+      border-bottom: 3px solid var(--greyish-border);
+      font-size: 0.75em;
+      background-color: var(--white-black);
+
+      * {
+        margin: 0 function.rem(5px);
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      &__chevron {
+        width: function.rem(24px);
+        height: function.rem(24px);
+        padding: function.rem(6px);
+        fill: var(--black-white);
+        &--down {
+          transform: rotateZ(180deg);
+        }
+        &.disabled {
+          fill: var(--grey-44-aa);
+          cursor: not-allowed;
+        }
+        &:not(.disabled):hover {
+          fill: var(--white-black);
+          background: var(--black-white);
+        }
+      }
+    }
+
     &-navigation {
       flex-flow: row wrap;
       justify-content: space-between;

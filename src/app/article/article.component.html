@@ -1,46 +1,63 @@
 <article class="article" [appScrollTracker]="h2Elements">
-    <header class="article-header">
-        <nav class="article-navigation">
-            <a *ngIf="navigation.prev.path"
-               class="article-navigation__prev"
-               [routerLink]="navigation.prev.path"
-               (click)="setToExpand(navigation.prev.index)"
-            >
-                <fa-icon [icon]="faAngleLeft"></fa-icon>
-                {{navigation.prev.title}}
-            </a>
-            <a *ngIf="navigation.next.path"
-               class="article-navigation__next"
-               [routerLink]="navigation.next.path"
-               (click)="setToExpand(navigation.next.index)"
-            >
-                {{navigation.next.title}}
-                <fa-icon [icon]="faAngleRight"></fa-icon>
-            </a>
-        </nav>
-        <h1 class="chapter-title">{{navigation.title}}</h1>
-    </header>
-    <div id="article-content">
-        <router-outlet></router-outlet>
-    </div>
-    <footer class="article-footer">
-        <nav class="article-navigation">
-            <a *ngIf="navigation.prev.path"
-               class="article-navigation__prev"
-               [routerLink]="navigation.prev.path"
-               (click)="clickNavigationLink(navigation.prev.index)"
-            >
-                <fa-icon [icon]="faAngleLeft"></fa-icon>
-                {{navigation.prev.title}}
-            </a>
-            <a *ngIf="navigation.next.path"
-               class="article-navigation__next"
-               [routerLink]="navigation.next.path"
-               (click)="clickNavigationLink(navigation.next.index)"
-            >
-                {{navigation.next.title}}
-                <fa-icon [icon]="faAngleRight"></fa-icon>
-            </a>
-        </nav>
-    </footer>
+  <div class="article-query desktop-only" *ngIf="queryElements.length > 0">
+    {{(currQueryIndex$ | async)! + 1}} / {{queryElements.length}} <strong>{{query}}</strong> found
+    <svg class="article-query__chevron article-query__chevron--up"
+         [class.disabled]="(currQueryIndex$ | async)! === 0"
+         (click)="prevQuery()"
+         viewBox="0 0 11 6"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.5 0L11 5.26316L10.23 6L5.5 1.47368L0.77 6L0 5.26316L5.5 0Z"/>
+    </svg>
+    <svg class="article-query__chevron article-query__chevron--down"
+         [class.disabled]="(currQueryIndex$ | async)! >= queryElements.length - 1"
+         (click)="nextQuery()"
+         viewBox="0 0 11 6"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.5 0L11 5.26316L10.23 6L5.5 1.47368L0.77 6L0 5.26316L5.5 0Z"/>
+    </svg>
+  </div>
+  <header class="article-header">
+    <nav class="article-navigation">
+      <a *ngIf="navigation.prev.path"
+         class="article-navigation__prev"
+         [routerLink]="navigation.prev.path"
+         (click)="setToExpand(navigation.prev.index)"
+      >
+        <fa-icon [icon]="faAngleLeft"></fa-icon>
+        {{navigation.prev.title}}
+      </a>
+      <a *ngIf="navigation.next.path"
+         class="article-navigation__next"
+         [routerLink]="navigation.next.path"
+         (click)="setToExpand(navigation.next.index)"
+      >
+        {{navigation.next.title}}
+        <fa-icon [icon]="faAngleRight"></fa-icon>
+      </a>
+    </nav>
+    <h1 class="chapter-title">{{navigation.title}}</h1>
+  </header>
+  <div id="article-content">
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="article-footer">
+    <nav class="article-navigation">
+      <a *ngIf="navigation.prev.path"
+         class="article-navigation__prev"
+         [routerLink]="navigation.prev.path"
+         (click)="clickNavigationLink(navigation.prev.index)"
+      >
+        <fa-icon [icon]="faAngleLeft"></fa-icon>
+        {{navigation.prev.title}}
+      </a>
+      <a *ngIf="navigation.next.path"
+         class="article-navigation__next"
+         [routerLink]="navigation.next.path"
+         (click)="clickNavigationLink(navigation.next.index)"
+      >
+        {{navigation.next.title}}
+        <fa-icon [icon]="faAngleRight"></fa-icon>
+      </a>
+    </nav>
+  </footer>
 </article>

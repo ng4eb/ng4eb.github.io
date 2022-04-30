@@ -12,7 +12,7 @@ import {mdKey} from '../article/markdowns';
 })
 export class ChapterResolver implements Resolve<mdKey> {
 	resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<mdKey> {
-		const key = state.url.split('/book/')[1].split('#')[0].replace('/','');
+		const key = state.url.split('/book/')[1].split('?')[0].split('#')[0].replace('/','');
 		return of(key as mdKey);
 	}
 }
