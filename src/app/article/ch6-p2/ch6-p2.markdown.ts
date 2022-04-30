@@ -20,8 +20,6 @@ We are going to build a survey that contains two sections. The first section is 
 
 ![Survey Structure Overview](assets/images/ch6/reactive_form_demo_overview.jpg)
 
-## Using FormControl & FormBuilder
-
 ### Project Setup
 
 Let's create a new component named \`survey\`:
@@ -39,86 +37,86 @@ Then, let's display the \`survey\` component inside \`app.component.html\`:
 We will start by editing the \`survey.component.ts\` file since we will construct the logic of our reactive form in TypeScript. Before we do that, we need to import two built-in modules from Angular - one is \`FormsModule\`, and the other is \`ReactiveFormsModule\` - inside \`app.module.ts\`.
 
 \`\`\`typescript
-import {NgModule} from '@angular/core';  
-import {BrowserModule} from '@angular/platform-browser';  
-import {  
-  FormsModule,  
-  ReactiveFormsModule  
-} from '@angular/forms';  
-  
-import {AppComponent} from './app.component';  
-import {SurveyComponent} from './survey/survey.component';  
-  
-@NgModule({  
- declarations: [  
-   AppComponent,  
-   SurveyComponent  
- ],  
- imports: [  
-   BrowserModule, FormsModule, ReactiveFormsModule  
- ],  
- providers: [],  
- bootstrap: [AppComponent]  
-})  
-export class AppModule {  
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+
+import {AppComponent} from './app.component';
+import {SurveyComponent} from './survey/survey.component';
+
+@NgModule({
+ declarations: [
+   AppComponent,
+   SurveyComponent
+ ],
+ imports: [
+   BrowserModule, FormsModule, ReactiveFormsModule
+ ],
+ providers: [],
+ bootstrap: [AppComponent]
+})
+export class AppModule {
 }
 \`\`\`
 
 In \`survey.component.ts\`, we will define two form groups for the two sections, i.e., for the "Personal Information" and "Company Information" sections. We can call them \`personalInfo\` and \`companyInfo\` respectively. Then, these two form groups can be grouped together into one bigger form group which will represent the entire form.
 
 \`\`\`typescript
-import { Component, OnInit } from '@angular/core';  
-import { FormGroup } from '@angular/forms';  
-  
-@Component({  
- selector: 'app-survey',  
- templateUrl: './survey.component.html',  
- styleUrls: ['./survey.component.css']  
-})  
-export class SurveyComponent implements OnInit {  
-  form = new FormGroup({  
-    personalInfo: new FormGroup({}),  
-    companyInfo: new FormGroup({})  
-  })  
-  constructor() { }  
-  
-  ngOnInit(): void {  
-  }  
-  
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+@Component({
+ selector: 'app-survey',
+ templateUrl: './survey.component.html',
+ styleUrls: ['./survey.component.css']
+})
+export class SurveyComponent implements OnInit {
+  form = new FormGroup({
+    personalInfo: new FormGroup({}),
+    companyInfo: new FormGroup({})
+  })
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
 \`\`\`
 
 Inside \`personalInfo\` and \`companyInfo\`, we will use \`FormControl\` for controlling the individual input fields. Let's start with \`personalInfo\`. We will have \`FormControl\` for \`name\`,  \`sex\`, \`dateOfBirth\`  and \`email\`. For the \`address\`, we can use another \`FormGroup\` to contain three \`FormControl\` under the category: \`street\`, \`city\` and \`country\`:
 
 \`\`\`typescript
-import { Component, OnInit } from '@angular/core';  
-import { FormGroup, FormControl } from '@angular/forms';  
-  
-@Component({  
- selector: 'app-survey',  
- templateUrl: './survey.component.html',  
- styleUrls: ['./survey.component.css']  
-})  
-export class SurveyComponent implements OnInit {  
-  form = new FormGroup({  
-    personalInfo: new FormGroup({  
-      name: new FormControl(),  
-      sex: new FormControl(),  
-      dateOfBirth: new FormControl(),  
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+ selector: 'app-survey',
+ templateUrl: './survey.component.html',
+ styleUrls: ['./survey.component.css']
+})
+export class SurveyComponent implements OnInit {
+  form = new FormGroup({
+    personalInfo: new FormGroup({
+      name: new FormControl(),
+      sex: new FormControl(),
+      dateOfBirth: new FormControl(),
       email: new FormControl(),
-      address: new FormGroup({  
-        street: new FormControl(),  
-        city: new FormControl(),  
-        country: new FormControl()  
-      })  
-    }),  
-    companyInfo: new FormGroup({})  
-  })  
-  constructor() { }  
-  
-  ngOnInit(): void {  
-  }  
-  
+      address: new FormGroup({
+        street: new FormControl(),
+        city: new FormControl(),
+        country: new FormControl()
+      })
+    }),
+    companyInfo: new FormGroup({})
+  })
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
 \`\`\`
 
@@ -127,79 +125,79 @@ Note that reactive forms are not strongly typed in Angular 13 (see [this Github 
 Next, let's fill in \`companyInfo\`. We need to add \`companyName\`, \`role\` and \`monthlySalary\`:
 
 \`\`\`typescript
-export class SurveyComponent implements OnInit {  
-  form = new FormGroup({  
-    personalInfo: new FormGroup({  
-      name: new FormControl(),  
-      sex: new FormControl(),  
-      dateOfBirth: new FormControl(),  
+export class SurveyComponent implements OnInit {
+  form = new FormGroup({
+    personalInfo: new FormGroup({
+      name: new FormControl(),
+      sex: new FormControl(),
+      dateOfBirth: new FormControl(),
       email: new FormControl(),
-      address: new FormGroup({  
-        street: new FormControl(),  
-        city: new FormControl(),  
-        country: new FormControl()  
-      })  
-    }),  
-    companyInfo: new FormGroup({  
-      companyName: new FormControl(),  
-      role: new FormControl(),  
-      monthlySalary: new FormControl()  
-    })  
-  })  
-  constructor() { }  
-  
-  ngOnInit(): void {  
-  }  
-  
+      address: new FormGroup({
+        street: new FormControl(),
+        city: new FormControl(),
+        country: new FormControl()
+      })
+    }),
+    companyInfo: new FormGroup({
+      companyName: new FormControl(),
+      role: new FormControl(),
+      monthlySalary: new FormControl()
+    })
+  })
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
 \`\`\`
 
 Let's also add an \`onSubmit\` method which will simply console log the \`form\` object for now:
 
 \`\`\`typescript
-onSubmit() {  
-  console.log(this.form);  
+onSubmit() {
+  console.log(this.form);
 }
 \`\`\`
 
 Finally, let's construct the form in the template \`survey.component.html\`:
 
 \`\`\`html
-<form [formGroup]="form" (ngSubmit)="onSubmit()">  
-  <h1>A Big Survey!</h1>  
-    <fieldset formGroupName="personalInfo">  
-       <h2>Step 1: Personal Information</h2>  
-       <input formControlName="name" placeholder="Name" />  
-       <div>  
-         <label>  
-           <input type="radio" value="male" formControlName="sex" />  
-           <span>Male</span>  
-        </label>  
-        <label>  
-          <input type="radio" value="female" formControlName="sex" />  
-          <span>Female</span>  
-        </label>  
-        <label>  
-          <input type="radio" value="others" formControlName="sex" />  
-          <span>Others</span>  
-        </label>  
-      </div>  
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>A Big Survey!</h1>
+    <fieldset formGroupName="personalInfo">
+       <h2>Step 1: Personal Information</h2>
+       <input formControlName="name" placeholder="Name" />
+       <div>
+         <label>
+           <input type="radio" value="male" formControlName="sex" />
+           <span>Male</span>
+        </label>
+        <label>
+          <input type="radio" value="female" formControlName="sex" />
+          <span>Female</span>
+        </label>
+        <label>
+          <input type="radio" value="others" formControlName="sex" />
+          <span>Others</span>
+        </label>
+      </div>
       <input formControlName="email" />
-      <input formControlName="dateOfBirth" type="date" />  
-      <fieldset formGroupName="address">  
-        <h3>Address</h3>  
-        <input formControlName="street" placeholder="Street" />  
-        <input formControlName="city" placeholder="City" />  
-        <input formControlName="country" placeholder="Country" />  
-      </fieldset>  
-    </fieldset>  
-    <fieldset formGroupName="companyInfo">  
-      <h2>Step 2: Company Information</h2>  
-      <input formControlName="companyName" placeholder="Company Name" />  
-      <input formControlName="role" placeholder="Role" />  
-      <input formControlName="monthlySalary" placeholder="Monthly Salary" />  
-    </fieldset>  
-  <button>Submit</button>  
+      <input formControlName="dateOfBirth" type="date" />
+      <fieldset formGroupName="address">
+        <h3>Address</h3>
+        <input formControlName="street" placeholder="Street" />
+        <input formControlName="city" placeholder="City" />
+        <input formControlName="country" placeholder="Country" />
+      </fieldset>
+    </fieldset>
+    <fieldset formGroupName="companyInfo">
+      <h2>Step 2: Company Information</h2>
+      <input formControlName="companyName" placeholder="Company Name" />
+      <input formControlName="role" placeholder="Role" />
+      <input formControlName="monthlySalary" placeholder="Monthly Salary" />
+    </fieldset>
+  <button>Submit</button>
 </form>
 \`\`\`
 
@@ -208,33 +206,33 @@ As shown above, the template can access the \`form\` object via the \`formGroupN
 Let's also give the form some basic styling in \`survey.component.css\`:
 
 \`\`\`css
-form {  
-  max-width: 800px;  
-  margin: 0 auto;  
-}  
-  
-fieldset {  
-  display: flex;  
-  flex-direction: column;  
-  padding: 0;  
-  border: none;  
-}  
-  
-fieldset > * {  
-  margin-bottom: 12px;  
-}  
-  
-input {  
-  height: 20px;  
-}  
-  
-input[type = date] {  
-  max-width: 300px;  
-}  
-  
-label {  
-  display: inline-flex;  
-  align-items: center;  
+form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+}
+
+fieldset > * {
+  margin-bottom: 12px;
+}
+
+input {
+  height: 20px;
+}
+
+input[type = date] {
+  max-width: 300px;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
 }
 \`\`\`
 
@@ -247,23 +245,23 @@ Now, our page should look like this:
 Usually, we want to provide some default values to make a form easier to complete. For example, we can set the default value for \`sex\` to be \`male\`, and for \`dateOfBirth\`, \`1990-12-31\`. Doing so in a reactive form is a breeze. Simply add the default values in TypeScript:
 
 \`\`\`typescript
-form = new FormGroup({  
-  personalInfo: new FormGroup({  
-    name: new FormControl(),  
-    sex: new FormControl('male'),  
-    dateOfBirth: new FormControl('1990-12-31'),  
+form = new FormGroup({
+  personalInfo: new FormGroup({
+    name: new FormControl(),
+    sex: new FormControl('male'),
+    dateOfBirth: new FormControl('1990-12-31'),
     email: new FormControl(),
-    address: new FormGroup({  
-      street: new FormControl(),  
-      city: new FormControl(),  
-      country: new FormControl()  
-    })  
-  }),  
-  companyInfo: new FormGroup({  
-    companyName: new FormControl(),  
-    role: new FormControl(),  
-    monthlySalary: new FormControl()  
-  })  
+    address: new FormGroup({
+      street: new FormControl(),
+      city: new FormControl(),
+      country: new FormControl()
+    })
+  }),
+  companyInfo: new FormGroup({
+    companyName: new FormControl(),
+    role: new FormControl(),
+    monthlySalary: new FormControl()
+  })
 })
 \`\`\`
 
@@ -287,86 +285,86 @@ First, we should add this array to the component class. After that, we will repl
 Let's now add the array to \`survey.component.ts\`:
 
 \`\`\`typescript
-export class SurveyComponent implements OnInit {  
-  form = new FormGroup({  
-    personalInfo: new FormGroup({  
-      name: new FormControl(),  
-      sex: new FormControl('male'),  
-      dateOfBirth: new FormControl('1990-12-31'),  
+export class SurveyComponent implements OnInit {
+  form = new FormGroup({
+    personalInfo: new FormGroup({
+      name: new FormControl(),
+      sex: new FormControl('male'),
+      dateOfBirth: new FormControl('1990-12-31'),
       email: new FormControl(),
-      address: new FormGroup({  
-        street: new FormControl(),  
-        city: new FormControl(),  
-        country: new FormControl()  
-      })  
-    }),  
-    companyInfo: new FormGroup({  
-      companyName: new FormControl(),  
-      role: new FormControl(),  
-       monthlySalary: new FormControl()  
-    })  
-  })  
-    
-  countryList = [  
-    'Australia', 'Austria', 'Belgium', 'Brazil',  
-    'Canada', 'China', 'Egypt', 'Finland',  
-    'France', 'Germany', 'Greece', 'India',  
-    'Indonesia', 'Italy', 'Japan', 'Korea'  
-  ]  
-    
-  constructor() { }  
-  
-  onSubmit() {  
-    console.log(this.form);  
- }  
-  
-  ngOnInit(): void {  
-  }  
-  
+      address: new FormGroup({
+        street: new FormControl(),
+        city: new FormControl(),
+        country: new FormControl()
+      })
+    }),
+    companyInfo: new FormGroup({
+      companyName: new FormControl(),
+      role: new FormControl(),
+       monthlySalary: new FormControl()
+    })
+  })
+
+  countryList = [
+    'Australia', 'Austria', 'Belgium', 'Brazil',
+    'Canada', 'China', 'Egypt', 'Finland',
+    'France', 'Germany', 'Greece', 'India',
+    'Indonesia', 'Italy', 'Japan', 'Korea'
+  ]
+
+  constructor() { }
+
+  onSubmit() {
+    console.log(this.form);
+ }
+
+  ngOnInit(): void {
+  }
+
 }
 \`\`\`
 
 Next, modify \`survey.component.html\`:
 
 \`\`\`html
-<form [formGroup]="form" (ngSubmit)="onSubmit()">  
-  <h1>A Big Survey!</h1>  
-  <fieldset formGroupName="personalInfo">  
-    <h2>Step 1: Personal Information</h2>  
-    <input formControlName="name" placeholder="Name" />  
-    <div>  
-      <label>  
-        <input type="radio" value="male" formControlName="sex" />  
-        <span>Male</span>  
-      </label>  
-      <label>  
-        <input type="radio" value="female" formControlName="sex" />  
-        <span>Female</span>  
-      </label>  
-      <label>  
-        <input type="radio" value="others" formControlName="sex" />  
-        <span>Others</span>  
-      </label>  
-    </div>  
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>A Big Survey!</h1>
+  <fieldset formGroupName="personalInfo">
+    <h2>Step 1: Personal Information</h2>
+    <input formControlName="name" placeholder="Name" />
+    <div>
+      <label>
+        <input type="radio" value="male" formControlName="sex" />
+        <span>Male</span>
+      </label>
+      <label>
+        <input type="radio" value="female" formControlName="sex" />
+        <span>Female</span>
+      </label>
+      <label>
+        <input type="radio" value="others" formControlName="sex" />
+        <span>Others</span>
+      </label>
+    </div>
     <input formControlName="email" />
-    <input formControlName="dateOfBirth" type="date" />  
-    <fieldset formGroupName="address">  
-      <h3>Address</h3>  
-      <input formControlName="street" placeholder="Street" />  
-      <input formControlName="city" placeholder="City" />  
-      <label for="country">Country</label>  
-        <select id="country" formControlName="country">  
-          <option *ngFor="let country of countryList" [value]="country">{{country}}</option>  
+    <input formControlName="dateOfBirth" type="date" />
+    <fieldset formGroupName="address">
+      <h3>Address</h3>
+      <input formControlName="street" placeholder="Street" />
+      <input formControlName="city" placeholder="City" />
+      <label for="country">Country</label>
+        <select id="country" formControlName="country">
+          <option *ngFor="let country of countryList" [value]="country">{{country}}</option>
         </select>
-    </fieldset>  
-  </fieldset>  
-  <fieldset formGroupName="companyInfo">  
-    <h2>Step 2: Company Information</h2>  
-    <input formControlName="companyName" placeholder="Company Name" />  
-    <input formControlName="role" placeholder="Role" />  
-    <input formControlName="monthlySalary" placeholder="Monthly Salary" />  
-  </fieldset>  
-  <button>Submit</button>  
+    </fieldset>
+  </fieldset>
+  <fieldset formGroupName="companyInfo">
+    <h2>Step 2: Company Information</h2>
+    <input formControlName="companyName" placeholder="Company Name" />
+    <input formControlName="role" placeholder="Role" />
+    <input formControlName="monthlySalary" placeholder="Monthly Salary" />
+  </fieldset>
+  <button>Submit</button>
 </form>
 \`\`\`
 
@@ -386,29 +384,29 @@ As shown above, the second argument \`validatorOrOpts\` is the place where we ca
 Let's add some rules to \`survey.component.ts\`. We will start with the built-in rules first:
 
 \`\`\`typescript
-form = new FormGroup({  
-  personalInfo: new FormGroup({  
-    name: new FormControl(  
-       '',  
-       [Validators.required, Validators.minLength(2)]  
-    ),  
-    sex: new FormControl('male'),  
-    dateOfBirth: new FormControl('1990-12-31'),  
-    email: new FormControl(  
-       '',   
-       [Validators.required, Validators.email]  
-    ),  
-    address: new FormGroup({  
-      street: new FormControl('', Validators.required),  
-      city: new FormControl('', Validators.required),  
-      country: new FormControl('', Validators.required)  
-    })  
-  }),  
-  companyInfo: new FormGroup({  
-    companyName: new FormControl('', Validators.required),  
-    role: new FormControl('', Validators.required),  
-    monthlySalary: new FormControl('', Validators.required)  
-  })  
+form = new FormGroup({
+  personalInfo: new FormGroup({
+    name: new FormControl(
+       '',
+       [Validators.required, Validators.minLength(2)]
+    ),
+    sex: new FormControl('male'),
+    dateOfBirth: new FormControl('1990-12-31'),
+    email: new FormControl(
+       '',
+       [Validators.required, Validators.email]
+    ),
+    address: new FormGroup({
+      street: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required)
+    })
+  }),
+  companyInfo: new FormGroup({
+    companyName: new FormControl('', Validators.required),
+    role: new FormControl('', Validators.required),
+    monthlySalary: new FormControl('', Validators.required)
+  })
 })
 \`\`\`
 
@@ -421,21 +419,21 @@ Let's also add some custom validation. For a reactive form, all we need to do is
 For example, suppose we want our survey participants to be at least 18 years old. We can write a validator function to check whether their date of birth is at least 18 years from the current date. Let's write that function just below the \`onSubmit\` method in \`survey.component.ts\`:
 
 \`\`\`typescript
-checkAtLeastAge(age = 18): ValidatorFn {  
-  return (control: AbstractControl) => {  
-    const currDate = new Date();  
-    const [year, month, day] = control.value.split('-');  
-    /* find how many years have passed - 1 */  
-    let yearsOld = currDate.getFullYear() - parseInt(year) - 1;  
-    /* take birth month into account */  
-    const isBirthMonthPassed =  
-      parseInt(month) < currDate.getMonth() + 1 ||  
-      (parseInt(month) == currDate.getMonth() + 1 &&  
+checkAtLeastAge(age = 18): ValidatorFn {
+  return (control: AbstractControl) => {
+    const currDate = new Date();
+    const [year, month, day] = control.value.split('-');
+    /* find how many years have passed - 1 */
+    let yearsOld = currDate.getFullYear() - parseInt(year) - 1;
+    /* take birth month into account */
+    const isBirthMonthPassed =
+      parseInt(month) < currDate.getMonth() + 1 ||
+      (parseInt(month) == currDate.getMonth() + 1 &&
         parseInt(day) <= currDate.getDate());
-      isBirthMonthPassed && yearsOld++;  
-    /* if below age, return an error object */  
+      isBirthMonthPassed && yearsOld++;
+    /* if below age, return an error object */
     return yearsOld < age ? { ageRequirement: \`Age limit is \\\${age}. You are \\\${yearsOld} years old.\` } : null;
- }  
+ }
 }
 \`\`\`
 
@@ -448,29 +446,29 @@ Otherwise, we would return \`null\`, meaning no error.
 To use the validator, simply add it as the second argument for the \`dateOfBirth\` field:
 
 \`\`\`typescript
-form = new FormGroup({  
-  personalInfo: new FormGroup({  
-    name: new FormControl(  
-       '',  
-      [Validators.required, Validators.minLength(2)]  
-    ),  
-    sex: new FormControl('male'),  
-    dateOfBirth: new FormControl('1990-12-31', this.checkAtLeastAge()),  
-    email: new FormControl(  
-      '',  
-      [Validators.required, Validators.email]  
-    ),  
-    address: new FormGroup({  
-      street: new FormControl('', Validators.required),  
-      city: new FormControl('', Validators.required),  
-      country: new FormControl('', Validators.required)  
-    })  
-  }),  
-  companyInfo: new FormGroup({  
-    companyName: new FormControl('', Validators.required),  
-    role: new FormControl('', Validators.required),  
-    monthlySalary: new FormControl('', Validators.required)  
-  })  
+form = new FormGroup({
+  personalInfo: new FormGroup({
+    name: new FormControl(
+       '',
+      [Validators.required, Validators.minLength(2)]
+    ),
+    sex: new FormControl('male'),
+    dateOfBirth: new FormControl('1990-12-31', this.checkAtLeastAge()),
+    email: new FormControl(
+      '',
+      [Validators.required, Validators.email]
+    ),
+    address: new FormGroup({
+      street: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required)
+    })
+  }),
+  companyInfo: new FormGroup({
+    companyName: new FormControl('', Validators.required),
+    role: new FormControl('', Validators.required),
+    monthlySalary: new FormControl('', Validators.required)
+  })
 })
 \`\`\`
 
@@ -485,10 +483,10 @@ At this point, we can add some error handling to the form.
 First, let's add a thick pink border to the invalid fields with the following styles in \`survey.component.css\`:
 
 \`\`\`css
-form.ng-submitted input.ng-invalid,  
-form.ng-submitted select.ng-invalid,  
-input.ng-touched.ng-invalid.ng-dirty {  
-   border: 4px solid deeppink;  
+form.ng-submitted input.ng-invalid,
+form.ng-submitted select.ng-invalid,
+input.ng-touched.ng-invalid.ng-dirty {
+   border: 4px solid deeppink;
 }
 \`\`\`
 
@@ -501,9 +499,9 @@ If we try to submit the form with the default empty values, we should see a bunc
 Let's focus on the \`dateOfBirth\` field. Suppose we also want to display an error message below it. What we can do is get the error message from the \`form\` object, and display it in the template:
 
 \`\`\`html
-<input formControlName="dateOfBirth" type="date" />  
-<span class="err-msg">  
- {{form.get('personalInfo')?.get('dateOfBirth')?.getError('ageRequirement')}}  
+<input formControlName="dateOfBirth" type="date" />
+<span class="err-msg">
+ {{form.get('personalInfo')?.get('dateOfBirth')?.getError('ageRequirement')}}
 </span>
 \`\`\`
 
@@ -512,9 +510,9 @@ For getting the error objects, we can use the getter methods \`get\` and \`getEr
 Let's also add some styling to the \`err-msg\` class:
 
 \`\`\`css
-.err-msg {  
-  color: deeppink;  
-  font-size: 12px;  
+.err-msg {
+  color: deeppink;
+  font-size: 12px;
 }
 \`\`\`
 
@@ -526,7 +524,7 @@ Great! Now you have learned the basics of building reactive forms with \`FormGro
 
 ## Using FormBuilder
 
-While \`FormGroup\` and \`FormControl\` work, Angular provides us with an even easier way to build a reactive form with the \`FormBuilder\` API. 
+While \`FormGroup\` and \`FormControl\` work, Angular provides us with an even easier way to build a reactive form with the \`FormBuilder\` API.
 
 What is \`FormBuilder\`? Here's the definition from [the documentation](https://angular.io/api/forms/FormBuilder#description):
 
@@ -537,58 +535,58 @@ In this section, let's refactor the [previous demo](https://stackblitz.com/edit/
 To use the \`FormBuilder\` API, we will need to import the \`FormBuilder\` class from the \`@angular/forms\` package, and inject it into the component using *dependency injection*. Let's edit \`survey.component.ts\`:
 
 \`\`\`typescript
-import {Component, OnInit} from '@angular/core';  
-import {  
- AbstractControl, FormBuilder,  
- FormControl,  
- FormGroup,  
- ValidatorFn,  
- Validators  
-} from '@angular/forms';  
-  
-@Component({  
- selector: 'app-survey',  
- templateUrl: './survey.component.html',  
- styleUrls: ['./survey.component.css']  
-})  
-export class SurveyComponent implements OnInit {  
-   form = new FormGroup({...})  
-  
-   countryList = [...]  
-  
-   constructor(private fb: FormBuilder) {  
-   }  
-  
-   onSubmit() {...}  
-  
-   checkAtLeastAge(age = 18): ValidatorFn {...}  
-  
-   ngOnInit(): void {  
-   }  
-  
+import {Component, OnInit} from '@angular/core';
+import {
+ AbstractControl, FormBuilder,
+ FormControl,
+ FormGroup,
+ ValidatorFn,
+ Validators
+} from '@angular/forms';
+
+@Component({
+ selector: 'app-survey',
+ templateUrl: './survey.component.html',
+ styleUrls: ['./survey.component.css']
+})
+export class SurveyComponent implements OnInit {
+   form = new FormGroup({...})
+
+   countryList = [...]
+
+   constructor(private fb: FormBuilder) {
+   }
+
+   onSubmit() {...}
+
+   checkAtLeastAge(age = 18): ValidatorFn {...}
+
+   ngOnInit(): void {
+   }
+
 }
 \`\`\`
 
 Above, we injected the \`FormBuilder\` class into a private local variable named \`fb\`. Let's now use \`fb\` instead of \`FormGroup\` and \`FormControl\` inside the \`form\` object:
 
 \`\`\`typescript
-form = this.fb.group({  
-  personalInfo: this.fb.group({  
-    name: ['', [Validators.required, Validators.minLength(2)]],  
-    sex: ['male'],  
-    dateOfBirth: ['1990-12-31', this.checkAtLeastAge()],  
-    email: ['', [Validators.required, Validators.email]],  
-    address: this.fb.group({  
-      street: ['', Validators.required],  
-      city: ['', Validators.required],  
-      country: ['', Validators.required]  
-    })  
-  }),  
-  companyInfo: this.fb.group({  
-    companyName: ['', Validators.required],  
-    role: ['', Validators.required],  
-    monthlySalary: ['', Validators.required]  
-  })  
+form = this.fb.group({
+  personalInfo: this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(2)]],
+    sex: ['male'],
+    dateOfBirth: ['1990-12-31', this.checkAtLeastAge()],
+    email: ['', [Validators.required, Validators.email]],
+    address: this.fb.group({
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
+    })
+  }),
+  companyInfo: this.fb.group({
+    companyName: ['', Validators.required],
+    role: ['', Validators.required],
+    monthlySalary: ['', Validators.required]
+  })
 })
 \`\`\`
 

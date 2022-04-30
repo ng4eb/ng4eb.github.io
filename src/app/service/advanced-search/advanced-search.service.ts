@@ -30,7 +30,7 @@ export class AdvancedSearchService {
 		const keys = Object.keys(this._markdowns) as mdKey[];
 		for (let i = 0; i < keys.length; i++) {
 			if (max != undefined && max <= 0) break;
-			if (this._markdowns[keys[i]].toLowerCase().includes(query)) {
+			if (this._markdowns[keys[i]].toLowerCase().includes(query.toLowerCase())) {
 				resultKeys.push(keys[i]);
 				max != undefined && max--;
 			}
@@ -43,7 +43,8 @@ export class AdvancedSearchService {
 			results.push({
 				title: `Ch${preIndices[0]} - P${preIndices[1]} - ${this._listing[indices[0]].parts[indices[1]].title}`,
 				content: this._markdowns[key].substring(0, max == undefined ? 300 : 100).replace(/\n/g, ' ').replace(/#/g, '').trim() + '...',
-				url: `/book/ch${preIndices[0]}/p${preIndices[1]}`
+				url: `/book/ch${preIndices[0]}/p${preIndices[1]}`,
+        query
 			})
 		})
 		return results;

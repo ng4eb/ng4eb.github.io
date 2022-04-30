@@ -22,7 +22,7 @@ import {SeoService} from '../service/seo.service';
 export class SearchComponent implements OnInit {
 	faAngleLeft = faAngleLeft;
 	query = '';
-	searchResults: {title: string, content: string, url: string}[] = [];
+	searchResults: {title: string, content: string, url: string, query?: string}[] = [];
 
 	constructor(
 		private _route: ActivatedRoute,

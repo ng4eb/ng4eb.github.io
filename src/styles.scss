@@ -100,6 +100,15 @@ blockquote {
   }
 }
 
+span.query {
+  background-color: var(--grey-c0-44-35);
+  border: 2px solid var(--greyish-border);
+  &.active {
+    background-color: var(--grey-33-cc);
+    color: var(--white-black);
+  }
+}
+
 @media print {
   img {
     max-width: 40vw;
