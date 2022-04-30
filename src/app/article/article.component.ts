@@ -1,95 +1,95 @@
 import {
-	AfterViewInit,
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	HostListener,
-	OnDestroy,
-	OnInit,
-	ViewChildren
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChildren
 } from '@angular/core';
 import {RoutingService} from '../service/routing.service';
 import {
-	ChapterListingService,
-	navigationPart
+  ChapterListingService,
+  navigationPart
 } from '../service/chapter-listing/chapter-listing.service';
 import {BehaviorSubject, filter, Subject, takeUntil} from 'rxjs';
 import {
-	faAngleLeft,
-	faAngleRight
+  faAngleLeft,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, Router} from '@angular/router';
 import {
-	IsPlatformBrowserService
+  IsPlatformBrowserService
 } from '../service/is-platform-browser.service';
 import {
-	OnLoadMdService
+  OnLoadMdService
 } from '../service/on-load-md.service';
 import mediumZoom from 'medium-zoom';
 import {LayoutService} from '../service/layout.service';
 
 @Component({
-	selector: 'app-article',
-	templateUrl: './article.component.html',
-	styleUrls: ['./article.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChildren('md') md: any;
-	faAngleLeft = faAngleLeft;
-	faAngleRight = faAngleRight;
-	url = this._router.url;
-	navigation: {
-		title: string;
-		prev: navigationPart;
-		next: navigationPart;
-	} = {
-		title: '',
-		prev: {
-			title: '',
-			path: '',
-			index: null
-		},
-		next: {
-			title: '',
-			path: '',
-			index: null
-		}
-	}
-	h2Elements: Element[] = [];
+  @ViewChildren('md') md: any;
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
+  url = this._router.url;
+  navigation: {
+    title: string;
+    prev: navigationPart;
+    next: navigationPart;
+  } = {
+    title: '',
+    prev: {
+      title: '',
+      path: '',
+      index: null
+    },
+    next: {
+      title: '',
+      path: '',
+      index: null
+    }
+  }
+  h2Elements: Element[] = [];
   queryElements: Element[] = [];
   query?: string;
   currQueryIndex$ = new BehaviorSubject(0);
-	private _zoom: any;
-	private _path$ = this._routingService.getPath$();
-	private _destroy$ = new Subject<boolean>();
+  private _zoom: any;
+  private _path$ = this._routingService.getPath$();
+  private _destroy$ = new Subject<boolean>();
 
-	constructor(
+  constructor(
     private _route: ActivatedRoute,
-		private _router: Router,
-		private _routingService: RoutingService,
-		private _chapterListingService: ChapterListingService,
-		private _isPlatformBrowserService: IsPlatformBrowserService,
-		private _onLoadMdService: OnLoadMdService,
-		private _layoutService: LayoutService,
-		private _cdr: ChangeDetectorRef,
-	) {
-	}
+    private _router: Router,
+    private _routingService: RoutingService,
+    private _chapterListingService: ChapterListingService,
+    private _isPlatformBrowserService: IsPlatformBrowserService,
+    private _onLoadMdService: OnLoadMdService,
+    private _layoutService: LayoutService,
+    private _cdr: ChangeDetectorRef,
+  ) {
+  }
 
-	@HostListener('document:click', ['$event'])
-	public handleClickH2Anchor(event: Event) {
-		if (event.target instanceof HTMLAnchorElement) {
-			const element = event.target as HTMLAnchorElement;
-			if (element.className === 'h2-anchor') {
-				event.preventDefault();
-				const hash = element?.getAttribute('name');
-				if (hash) {
-					window.location.hash = hash;
-					element.scrollIntoView();
-				}
-			}
-		}
-	}
+  @HostListener('document:click', ['$event'])
+  public handleClickH2Anchor(event: Event) {
+    if (event.target instanceof HTMLAnchorElement) {
+      const element = event.target as HTMLAnchorElement;
+      if (element.className === 'h2-anchor') {
+        event.preventDefault();
+        const hash = element?.getAttribute('name');
+        if (hash) {
+          window.location.hash = hash;
+          element.scrollIntoView();
+        }
+      }
+    }
+  }
 
   prevQuery() {
     const currIdx = this.currQueryIndex$.getValue();
@@ -105,39 +105,45 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currQueryIndex$.next(currIdx + 1);
   }
 
-	clickNavigationLink(index: number | null) {
-		this._layoutService.scrollToTop(false);
-		this.setToExpand(index);
-	}
-
-	setToExpand(index: number | null) {
-		if (index !== null) {
-			this._chapterListingService.setToExpand(index);
-		}
-	}
-
-	ngOnInit(): void {
-		this._path$
-			.pipe(takeUntil(this._destroy$))
-			.subscribe((path) => {
-				this.url = path || this.url;
-				this.navigation = this._chapterListingService.getNavigation(this.url);
-			});
-
-    const queryParams = this._route.snapshot.queryParamMap;
-    this.query = queryParams.get('query') || '';
+  clickNavigationLink(index: number | null) {
+    this._layoutService.scrollToTop(false);
+    this.setToExpand(index);
   }
 
-	ngAfterViewInit() {
-		this._onLoadMdService.getH2Elements()
-			.pipe(
-				filter(Boolean),
-				takeUntil(this._destroy$)
-			)
-			.subscribe((elements) => {
-				this.h2Elements = elements;
-				this._cdr.detectChanges();
-			});
+  setToExpand(index: number | null) {
+    if (index !== null) {
+      this._chapterListingService.setToExpand(index);
+    }
+  }
+
+  ngOnInit(): void {
+    this._path$
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((path) => {
+        this.url = path || this.url;
+        this.navigation = this._chapterListingService.getNavigation(this.url);
+      });
+
+    this._route.queryParamMap
+      .pipe(
+        filter(Boolean),
+        takeUntil(this._destroy$)
+      )
+      .subscribe((paramMap) => {
+        this.query = paramMap.get('query') || '';
+      })
+  }
+
+  ngAfterViewInit() {
+    this._onLoadMdService.getH2Elements()
+      .pipe(
+        filter(Boolean),
+        takeUntil(this._destroy$)
+      )
+      .subscribe((elements) => {
+        this.h2Elements = elements;
+        this._cdr.detectChanges();
+      });
     this._onLoadMdService.getQueryElements()
       .pipe(
         filter(Boolean),
@@ -158,25 +164,25 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
         this.queryElements[idx]?.classList.add('active');
         this._cdr.detectChanges();
       })
-		this._routingService.getPath$()
-			.pipe(takeUntil(this._destroy$))
-			.subscribe(() => {
-				if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
-					if (!this._zoom) {
-						this._zoom = mediumZoom('.md-img', {background: '#222222'});
-					} else {
-						this._zoom.detach();
-						setTimeout(() => {
-							this._zoom = mediumZoom('.md-img', {background: '#222222'});
-						})
-					}
-				}
-			})
-	}
+    this._routingService.getPath$()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe(() => {
+        if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+          if (!this._zoom) {
+            this._zoom = mediumZoom('.md-img', {background: '#222222'});
+          } else {
+            this._zoom.detach();
+            setTimeout(() => {
+              this._zoom = mediumZoom('.md-img', {background: '#222222'});
+            })
+          }
+        }
+      })
+  }
 
-	ngOnDestroy() {
-		this._destroy$.next(true);
-		this._destroy$.unsubscribe();
-	}
+  ngOnDestroy() {
+    this._destroy$.next(true);
+    this._destroy$.unsubscribe();
+  }
 
 }
