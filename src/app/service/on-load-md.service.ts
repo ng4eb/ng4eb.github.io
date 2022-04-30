@@ -16,12 +16,11 @@ export class OnLoadMdService {
       private _isPlatformBrowserService: IsPlatformBrowserService
   ) { }
 
-  onLoadMd(md: any, query?: string) {
+  onLoadMd(md: any) {
       (md as QueryList<MarkdownComponent>).forEach((el) => {
           const arr = Array.from(el.element.nativeElement.children);
           let i = 1;
           this._h2Elements$.next([]);
-          let queryEls: Element[] = [];
           arr.forEach((child) => {
             if (child.tagName === 'H2') {
               this._h2Elements$.next([...this._h2Elements$.value, child]);
@@ -32,26 +31,7 @@ export class OnLoadMdService {
               }
               i++;
             }
-            if (query) {
-              const capQuery = query.charAt(0).toUpperCase() + query.toLowerCase().slice(1);
-              const lowerCaseQuery = query.toLowerCase();
-
-              if (child.innerHTML.includes(query)) {
-                child.innerHTML = child.innerHTML.split(query).join(`<span class='query'>${query}</span>`);
-              }
-              if (query !== capQuery && child.innerHTML.includes(capQuery)) {
-                child.innerHTML = child.innerHTML.split(capQuery).join(`<span class='query'>${capQuery}</span>`);
-              }
-              if (query !== lowerCaseQuery && child.innerHTML.includes(lowerCaseQuery)) {
-                child.innerHTML = child.innerHTML.split(lowerCaseQuery).join(`<span class='query'>${lowerCaseQuery}</span>`);
-              }
-              const _queryEls = child.querySelectorAll('span.query');
-              if (_queryEls.length > 0) {
-                queryEls = [...queryEls, ...Array.prototype.slice.call(_queryEls)]
-              }
-            }
           });
-          this._queryElements$.next(queryEls);
         }
     );
     if (this._isPlatformBrowserService.getIsPlatformBrowser() && window.location.hash) {
@@ -62,8 +42,38 @@ export class OnLoadMdService {
     }
   }
 
+  onLoadQuery(md: any, query?: string) {
+    let queryEls: Element[] = [];
+    (md as QueryList<MarkdownComponent>).forEach((el) => {
+      const arr = Array.from(el.element.nativeElement.children);
+      arr.forEach((child) => {
+        const oldQueryEls: Element[] = Array.prototype.slice.call(child.querySelectorAll('span.query'));
+        oldQueryEls.forEach((el) => {
+          el.outerHTML = el.innerHTML
+        })
+        if (query) {
+          const capQuery = query.charAt(0).toUpperCase() + query.toLowerCase().slice(1);
+          const lowerCaseQuery = query.toLowerCase();
+
+          if (child.innerHTML.includes(query)) {
+            child.innerHTML = child.innerHTML.split(query).join(`<span class='query'>${query}</span>`);
+          }
+          if (query !== capQuery && child.innerHTML.includes(capQuery)) {
+            child.innerHTML = child.innerHTML.split(capQuery).join(`<span class='query'>${capQuery}</span>`);
+          }
+          if (query !== lowerCaseQuery && child.innerHTML.includes(lowerCaseQuery)) {
+            child.innerHTML = child.innerHTML.split(lowerCaseQuery).join(`<span class='query'>${lowerCaseQuery}</span>`);
+          }
+        }
+        const _queryEls = child.querySelectorAll('span.query');
+        queryEls = [...queryEls, ...Array.prototype.slice.call(_queryEls)]
+      })
+    })
+    this._queryElements$.next(queryEls);
+  }
+
   getH2Elements(): Observable<Element[]> {
-      return this._h2Elements$.asObservable();
+    return this._h2Elements$.asObservable();
   }
 
   getQueryElements(): Observable<Element[]> {
