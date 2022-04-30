@@ -153,6 +153,7 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
         this.queryElements = elements;
         this.queryElements[0]?.scrollIntoView();
         this.queryElements[0]?.classList.add('active');
+        this.currQueryIndex$.next(0);
         this._cdr.detectChanges();
       });
     this.currQueryIndex$
