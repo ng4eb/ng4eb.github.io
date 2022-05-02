@@ -20,6 +20,8 @@ So, why do we prefer using pipes instead of regular functions in the template? O
 
 Another benefit is clearer separation of concerns. Extracting the transformation logic from a component to a pipe helps keep the component code clean and light.
 
+Finally, a pipe is more performant than using a method in the template. That's because a pipe will only rerun when the input value has changed. In contrast, a method in the template runs on every change detection, regardless of whether the input value has actually changed.
+
 ## Using percent pipe
 
 We will explore the built-in percent pipe in this section. Once we have learned how to use a pipe, we can look up other [built-in pipes](https://angular.io/guide/pipes) if we need them.
@@ -41,7 +43,7 @@ ng new percent-pipe-demo --routing=false --style=css
 Let's apply the \`percent\` pipe inside \`app.component.html\`:
 
 \`\`\`html
-<h1>percent pipe</h1>  
+<h1>percent pipe</h1>
 <p>{{0.35 | percent}}</p>
 \`\`\`
 
@@ -60,7 +62,7 @@ For \`percent\`, the default value of \`minIntegerDigits\` is 1, and both \`minF
 As \`minFractionDigits\` and \`maxFractionDigits\` are 0, we will not see any decimal point in the output. So, if we want to display one digit after the decimal point in the output, we can specify the \`digitsInfo\` option as below:
 
 \`\`\`html
-<h1>percent pipe</h1>  
+<h1>percent pipe</h1>
 <p>{{0.35 | percent:'1.1-1'}}</p>
 \`\`\`
 
@@ -69,7 +71,7 @@ As \`minFractionDigits\` and \`maxFractionDigits\` are 0, we will not see any de
 Let's also try to provide a locale option. For example, if we want to use the French way to express the percentage, we can provide the  \`fr\` option:
 
 \`\`\`html
-<h1>percent pipe</h1>  
+<h1>percent pipe</h1>
 <p>{{0.35 | percent:'1.1-1':'fr'}}</p>
 \`\`\`
 
@@ -80,8 +82,8 @@ If we save and go to the page, we will not see the percentage. Instead, we will 
 To fix this, we need to add the below three lines inside \`app.module.ts\`:
 
 \`\`\`typescript
-import { registerLocaleData } from '@angular/common';  
-import localeFr from '@angular/common/locales/fr';  
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
 \`\`\`
 
@@ -112,16 +114,16 @@ ng generate pipe num-to-eng --skip-tests
 The above will create a single file called \`num-to-eng.pipe.ts\`:
 
 \`\`\`typescript
-import { Pipe, PipeTransform } from '@angular/core';  
-  
-@Pipe({  
- name: 'numToEng'  
-})  
-export class NumToEngPipe implements PipeTransform {  
-  
- transform(value: unknown, ...args: unknown[]): unknown {  
- return null;  
- }  
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+ name: 'numToEng'
+})
+export class NumToEngPipe implements PipeTransform {
+
+ transform(value: unknown, ...args: unknown[]): unknown {
+ return null;
+ }
 }
 \`\`\`
 
@@ -130,8 +132,8 @@ As we can see, Angular uses the decorator \`@Pipe\`to transform a class into a p
 The pipe class implements the \`PipeTransform\` interface. Here's the source code of the interface:
 
 \`\`\`typescript
-export declare interface PipeTransform {  
- transform(value: any, ...args: any[]): any;  
+export declare interface PipeTransform {
+ transform(value: any, ...args: any[]): any;
 }
 \`\`\`
 
@@ -148,70 +150,70 @@ The \`transform\` method is where the transformation occurs.
 Let's add the transformation logic to \`num-to-eng.pipe.ts\`:
 
 \`\`\`typescript
-import {Pipe, PipeTransform} from '@angular/core';  
-  
-@Pipe({  
-   name: 'numToEng'  
-})  
-export class NumToEngPipe implements PipeTransform {  
-  private readonly _ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];  
-  private readonly _tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];  
-  private readonly _teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];  
-  
-  transform(value: number, ...args: unknown[]): string {  
-    return this._convert(value);  
-  }  
-  
-  private _convert_millions(num: number): string {  
-    if (num >= 1000000) {  
-      return this._convert_millions(Math.floor(num / 1000000)) + " million " + this._convert_thousands(num % 1000000);  
-    } else {  
-       return this._convert_thousands(num);  
-   }  
- }  
-  
-   private _convert_thousands(num: number): string {  
-     if (num >= 1000) {  
-       return this._convert_hundreds(Math.floor(num / 1000)) + " thousand " + this._convert_hundreds(num % 1000);  
-     } else {  
-       return this._convert_hundreds(num);  
-     }  
-   }  
-  
-   private _convert_hundreds(num: number): string {  
-     if (num > 99) {  
-       return this._ones[Math.floor(num / 100)] + " hundred " + this._convert_tens(num % 100);  
-     } else {  
-       return this._convert_tens(num);  
-     }  
-   }  
-  
-   private _convert_tens(num: number): string {  
-     if (num < 10) return this._ones[num];  
-     else if (num >= 10 && num < 20) return this._teens[num - 10];  
-     else {  
-       return this._tens[Math.floor(num / 10)] + " " + this._ones[num % 10];  
-     }  
-   }  
-  
-   private _convert(num: number): string {  
-     if (num === 0) return "zero";  
-     else return this._convert_millions(num);  
-   }  
-  
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({
+   name: 'numToEng'
+})
+export class NumToEngPipe implements PipeTransform {
+  private readonly _ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  private readonly _tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  private readonly _teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+  transform(value: number, ...args: unknown[]): string {
+    return this._convert(value);
+  }
+
+  private _convert_millions(num: number): string {
+    if (num >= 1000000) {
+      return this._convert_millions(Math.floor(num / 1000000)) + " million " + this._convert_thousands(num % 1000000);
+    } else {
+       return this._convert_thousands(num);
+   }
+ }
+
+   private _convert_thousands(num: number): string {
+     if (num >= 1000) {
+       return this._convert_hundreds(Math.floor(num / 1000)) + " thousand " + this._convert_hundreds(num % 1000);
+     } else {
+       return this._convert_hundreds(num);
+     }
+   }
+
+   private _convert_hundreds(num: number): string {
+     if (num > 99) {
+       return this._ones[Math.floor(num / 100)] + " hundred " + this._convert_tens(num % 100);
+     } else {
+       return this._convert_tens(num);
+     }
+   }
+
+   private _convert_tens(num: number): string {
+     if (num < 10) return this._ones[num];
+     else if (num >= 10 && num < 20) return this._teens[num - 10];
+     else {
+       return this._tens[Math.floor(num / 10)] + " " + this._ones[num % 10];
+     }
+   }
+
+   private _convert(num: number): string {
+     if (num === 0) return "zero";
+     else return this._convert_millions(num);
+   }
+
 }
 \`\`\`
 
-In the above, we added three private arrays containing English number words. 
+In the above, we added three private arrays containing English number words.
 
 We also added the conversion algorithm, which is divided into several private methods. We will not dive into the details of the algorithm. However, you may pause and examine the code if you want to.
 
-Besides, we altered the \`transform\` method. We specified that the input \`value\` argument should be of the \`number\` type, and that the method will return a string. Then, inside the \`transform\` method, we called the \`_convert\` method on \`value\`, which will return a string of English numerals. 
+Besides, we altered the \`transform\` method. We specified that the input \`value\` argument should be of the \`number\` type, and that the method will return a string. Then, inside the \`transform\` method, we called the \`_convert\` method on \`value\`, which will return a string of English numerals.
 
 Now, we can use this pipe. Let's modify \`app.component.html\`:
 
 \`\`\`html
-<h1>num-to-eng pipe</h1>  
+<h1>num-to-eng pipe</h1>
 <p>{{9999999 | numToEng }}</p>
 \`\`\`
 
@@ -223,7 +225,7 @@ What if we change the input value from a \`number\`  to \`string\`? In that case
 
 ![custom pipe wrong type error](/assets/images/ch3/pipe_wrong_type_error.jpg)
 
-Congratulations! Now you have learned how to implement a custom pipe in Angular! 
+Congratulations! Now you have learned how to implement a custom pipe in Angular!
 
 You can check out the code of this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-custom-pipe-demo).
 `
