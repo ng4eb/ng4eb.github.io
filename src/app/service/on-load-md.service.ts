@@ -55,13 +55,13 @@ export class OnLoadMdService {
           const capQuery = query.charAt(0).toUpperCase() + query.toLowerCase().slice(1);
           const lowerCaseQuery = query.toLowerCase();
 
-          if (child.innerHTML.includes(query)) {
+          if (child.textContent?.includes(query)) {
             child.innerHTML = child.innerHTML.split(query).join(`<span class='query'>${query}</span>`);
           }
-          if (query !== capQuery && child.innerHTML.includes(capQuery)) {
+          if (query !== capQuery && child.textContent?.includes(capQuery)) {
             child.innerHTML = child.innerHTML.split(capQuery).join(`<span class='query'>${capQuery}</span>`);
           }
-          if (query !== lowerCaseQuery && child.innerHTML.includes(lowerCaseQuery)) {
+          if (query !== lowerCaseQuery && child.textContent?.includes(lowerCaseQuery)) {
             child.innerHTML = child.innerHTML.split(lowerCaseQuery).join(`<span class='query'>${lowerCaseQuery}</span>`);
           }
         }

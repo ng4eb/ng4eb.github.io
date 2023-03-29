@@ -37,6 +37,7 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 	searchResults: {title: string, content: string, url: string, query?: string}[] = [];
 	isSearching = false;
 	private _hasRegisteredQuery = false;
+  private _markdownSubscription?: Subscription;
 	private _querySubscription?: Subscription;
 
 	constructor(
@@ -75,8 +76,11 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 		}
 	}
 
-	ngOnInit(): void {
-	}
+  ngOnInit() {
+    this._markdownSubscription = this._advancedSearchService.loadMarkdownFiles().subscribe(markdowns => {
+      this._advancedSearchService.markdowns = markdowns;
+    });
+  }
 
 	ngAfterViewChecked() {
 		if (!this._hasRegisteredQuery && this._query) {
@@ -124,6 +128,10 @@ export class AdvancedSearchOverlayComponent implements OnInit, AfterViewChecked,
 			this._querySubscription.unsubscribe();
 			this._querySubscription = undefined;
 		}
+    if (this._markdownSubscription) {
+      this._markdownSubscription.unsubscribe();
+      this._markdownSubscription = undefined;
+    }
 	}
 
 }

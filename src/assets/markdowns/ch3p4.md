@@ -1,93 +1,92 @@
-export const ch3P4Markdown = `
 ## How pipes work
-A **pipe** is a special function used in the template that outputs a transformed input value. Below is a self-explanatory example of the \`uppercase\` pipe:
+A **pipe** is a special function used in the template that outputs a transformed input value. Below is a self-explanatory example of the `uppercase` pipe:
 
-\`\`\`html
+```html
 <p>{{'hello world!' | uppercase}}</p>
-\`\`\`
+```
 
-Which is basically the same as below:
+This is the same as writing:
 
-\`\`\`html
+```html
 <p>{{'hello world!'.toUpperCase()}}</p>
-\`\`\`
+```
 
-So, why do we prefer using pipes instead of regular functions in the template? One main benefit of using pipes is readability. Imagine that we also need to transform the above value with a function like \`transformXtoY\`. If we use another pipe, then we can chain them into a nice format:
+So, why do we prefer using pipes instead of regular functions in the template? One main benefit of using pipes is readability. f we need to transform a value with a function like `transformXtoY`, using another pipe allows us to chain them into a nice format:
 
-\`\`\`html
+```html
 <p>{{'hello world!' | uppercase | transformXToY}}</p>
-\`\`\`
+```
 
 Another benefit is clearer separation of concerns. Extracting the transformation logic from a component to a pipe helps keep the component code clean and light.
 
 Finally, a pipe is more performant than using a method in the template. That's because a pipe will only rerun when the input value has changed. In contrast, a method in the template runs on every change detection, regardless of whether the input value has actually changed.
 
-## Using percent pipe
+## Using the percent pipe
 
 We will explore the built-in percent pipe in this section. Once we have learned how to use a pipe, we can look up other [built-in pipes](https://angular.io/guide/pipes) if we need them.
 
-The \`percent\` pipe transforms a number/string (e.g. \`0.35\`) to a percentage string (e.g. \`35%\`). Its syntax is shown below:
+The `percent` pipe transforms a number or string (e.g. `0.35`) to a percentage string (e.g. `35%`). Its syntax is shown below:
 
-\`\`\`html
+```html
 {{ value | percent [ : digitsInfo [ : locale]] }}
-\`\`\`
+```
 
-In the above, \`|\` is the pipe symbol, \`percent\` is the pipe, and \`[ : digitsInfo]\` and \`[ : locale]\` are both options that we can pass to the pipe.
+In the above, `|` is the pipe symbol, `percent` is the pipe, and `[ : digitsInfo]` and `[ : locale]` are both options that we can pass to the pipe.
 
-Let's create a new project named \`percent-pipe-demo\`:
+Let's create a new project named `percent-pipe-demo`:
 
-\`\`\`
+```
 ng new percent-pipe-demo --routing=false --style=css
-\`\`\`
+```
 
-Let's apply the \`percent\` pipe inside \`app.component.html\`:
+Let's apply the `percent` pipe inside `app.component.html`:
 
-\`\`\`html
+```html
 <h1>percent pipe</h1>
 <p>{{0.35 | percent}}</p>
-\`\`\`
+```
 
-We will see \`35%\` on the webpage:
+We will see `35%` on the webpage:
 
 ![35% percent pipe](/assets/images/ch3/percent_pipe_1.jpg)
 
-Now, the \`digitsInfo\` option for the \`percent\` pipe has the below format:
+Now, the `digitsInfo` option for the `percent` pipe has the below format:
 
-\`\`\`html
+```html
 {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}
-\`\`\`
+```
 
-For \`percent\`, the default value of \`minIntegerDigits\` is 1, and both \`minFractionDigits\` and \`maxFractionDigits\` are default to 0.
+For `percent`, the default value of `minIntegerDigits` is 1, and both `minFractionDigits` and `maxFractionDigits` are default to 0.
 
-As \`minFractionDigits\` and \`maxFractionDigits\` are 0, we will not see any decimal point in the output. So, if we want to display one digit after the decimal point in the output, we can specify the \`digitsInfo\` option as below:
+As `minFractionDigits` and `maxFractionDigits` are both 0, we will not see any decimal point in the output. So, if we want to display one digit after the decimal point in the output, we can specify the `digitsInfo` option as below:
 
-\`\`\`html
+```html
 <h1>percent pipe</h1>
 <p>{{0.35 | percent:'1.1-1'}}</p>
-\`\`\`
+```
 
 ![35.0% percent pipe](/assets/images/ch3/percent_pipe_2.jpg)
 
-Let's also try to provide a locale option. For example, if we want to use the French way to express the percentage, we can provide the  \`fr\` option:
+Let's also try to provide a locale option. For example, if we want to use the French way to express the percentage, we can provide the  `fr` option:
 
-\`\`\`html
+```html
 <h1>percent pipe</h1>
 <p>{{0.35 | percent:'1.1-1':'fr'}}</p>
-\`\`\`
+```
 
-If we save and go to the page, we will not see the percentage. Instead, we will see an error in the console telling us that the locale data for \`fr\` is missing:
+If we save and go to the page, we will not see the percentage. Instead, we will see an error in the console telling us that the locale data for `fr` is missing:
 
 ![missing data for locale fr](/assets/images/ch3/missing_fr_locale.jpg)
 
-To fix this, we need to add the below three lines inside \`app.module.ts\`:
+To fix this, we need to add the below three lines inside `app.module.ts`:
 
-\`\`\`typescript
+```typescript
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr);
-\`\`\`
+```
 
-The above provides the locale data for the locale \`fr\`. Now, we should see the French expression of the percentage:
+The above provides the locale data for the locale `fr`. Now, we should see the French expression of the percentage:
 
 ![35,0% percent pipe](/assets/images/ch3/percent_pipe_3.jpg)
 
@@ -99,21 +98,21 @@ You can check out the code for this demo on [Stackblitz](https://stackblitz.com/
 
 ### Project Setup
 
-In this section, we will create a custom pipe to convert numbers to English words. Let's create a new project named \`custom-pipe-demo\`:
+In this section, we will create a custom pipe to convert numbers to English words. Let's start by creating a new project named `custom-pipe-demo`:
 
-\`\`\`
+```bash
 ng new custom-pipe-demo --routing=false --style=css
-\`\`\`
+```
 
-Let's now create a pipe named \`num-to-eng\` with the below command:
+Next, we will create a pipe named `num-to-eng` using the below command:
 
-\`\`\`bash
+```bash
 ng generate pipe num-to-eng --skip-tests
-\`\`\`
+```
 
-The above will create a single file called \`num-to-eng.pipe.ts\`:
+The above creates a single file called `num-to-eng.pipe.ts` which will contain our custom pipe code:
 
-\`\`\`typescript
+```typescript
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -125,31 +124,31 @@ export class NumToEngPipe implements PipeTransform {
  return null;
  }
 }
-\`\`\`
+```
 
-As we can see, Angular uses the decorator \`@Pipe\`to transform a class into a pipe. Note that we must specify the \`name\` property. Also note that the pipe's name has to be in **lowerCamelCase**, so we can use \`numToEng\`, but not \`num-to-eng\`.
+As we can see, Angular uses the `@Pipe` decorator to transform a class into a pipe. We must specify the `name` property, which has to be in **lowerCamelCase**. We can use `numToEng`, but not `num-to-eng`.
 
-The pipe class implements the \`PipeTransform\` interface. Here's the source code of the interface:
+The pipe class implements the `PipeTransform` interface. Here's the source code of the interface:
 
-\`\`\`typescript
+```typescript
 export declare interface PipeTransform {
  transform(value: any, ...args: any[]): any;
 }
-\`\`\`
+```
 
-The \`PipeTransform\` interface enforces a class to implement a method named \`transform\`, which takes in an input value of \`any\` type, along with other optional arguments. This method corresponds to the pipe syntax which we have seen before:
+The `PipeTransform` interface enforces a class to implement a method named `transform`, which takes in an input value of `any` type, along with other optional arguments. This method corresponds to the pipe syntax which we have seen before:
 
-\`\`\`html
+```html
 {{ value | pipe[:...args] }}
-\`\`\`
+```
 
-The \`transform\` method is where the transformation occurs.
+The `transform` method is where the transformation occurs.
 
 ### Adding the Transformation Logic
 
-Let's add the transformation logic to \`num-to-eng.pipe.ts\`:
+Let's add the transformation logic to `num-to-eng.pipe.ts`:
 
-\`\`\`typescript
+```typescript
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
@@ -202,30 +201,29 @@ export class NumToEngPipe implements PipeTransform {
    }
 
 }
-\`\`\`
+```
 
-In the above, we added three private arrays containing English number words.
+We added three private arrays containing English number words.
 
-We also added the conversion algorithm, which is divided into several private methods. We will not dive into the details of the algorithm. However, you may pause and examine the code if you want to.
+We also added the conversion algorithm, which is divided into several private methods. We will not dive into the details of the algorithm. However, it is recommended that you pause and examine the code yourself.
 
-Besides, we altered the \`transform\` method. We specified that the input \`value\` argument should be of the \`number\` type, and that the method will return a string. Then, inside the \`transform\` method, we called the \`_convert\` method on \`value\`, which will return a string of English numerals.
+Besides, we altered the `transform` method. We specified the `number` type for the input `value` argument, and that the method will return a string. Additionally, inside the `transform` method, we called the `_convert` method on `value`, which returns a string of English numerals.
 
-Now, we can use this pipe. Let's modify \`app.component.html\`:
+Now, we can use this pipe. Let's modify `app.component.html`:
 
-\`\`\`html
+```html
 <h1>num-to-eng pipe</h1>
 <p>{{9999999 | numToEng }}</p>
-\`\`\`
+```
 
 We will see the number displayed as English numerals on the page:
 
 ![custom English to number pipe](/assets/images/ch3/custom_pipe.jpg)
 
-What if we change the input value from a \`number\`  to \`string\`? In that case, the application will not compile because it does not match the type specified in the pipe:
+What if we change the input value from a `number`  to `string`? In that case, the application will not compile because it does not match the type specified in the pipe:
 
 ![custom pipe wrong type error](/assets/images/ch3/pipe_wrong_type_error.jpg)
 
 Congratulations! Now you have learned how to implement a custom pipe in Angular!
 
 You can check out the code of this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-custom-pipe-demo).
-`

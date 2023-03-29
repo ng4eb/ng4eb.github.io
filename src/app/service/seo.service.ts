@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 
-export interface SEOConfig {
+export interface SeoConfig {
   title: string;
   description: string;
   keywords: string;
@@ -20,11 +20,12 @@ export interface SEOConfig {
 export class SeoService {
 
   constructor(
-      private _title: Title,
-      private _meta: Meta
-  ) { }
+    private _title: Title,
+    private _meta: Meta
+  ) {
+  }
 
-  setSEO(SEOConfig: SEOConfig) {
+  setSEO(SEOConfig: SeoConfig) {
     // basics
     this._title.setTitle(`${SEOConfig.title} - ng4eb`);
     this._meta.updateTag({name: 'description', content: SEOConfig.description});
@@ -34,8 +35,14 @@ export class SeoService {
     this._meta.updateTag({name: 'og:description', content: SEOConfig.description});
     this._meta.updateTag({name: 'og:url', content: `https://www.ng4eb.com${SEOConfig.path}`});
     SEOConfig.imageConfig && this._meta.updateTag({name: 'og:image', content: SEOConfig.imageConfig.image});
-    SEOConfig.imageConfig?.width && this._meta.updateTag({name: 'og:image:width', content: SEOConfig.imageConfig.width});
-    SEOConfig.imageConfig?.height && this._meta.updateTag({name: 'og:image:height', content: SEOConfig.imageConfig.height});
+    SEOConfig.imageConfig?.width && this._meta.updateTag({
+      name: 'og:image:width',
+      content: SEOConfig.imageConfig.width
+    });
+    SEOConfig.imageConfig?.height && this._meta.updateTag({
+      name: 'og:image:height',
+      content: SEOConfig.imageConfig.height
+    });
     SEOConfig.imageConfig?.alt && this._meta.updateTag({name: 'og:image:alt', content: SEOConfig.imageConfig.alt});
     // twitter
     this._meta.updateTag({name: 'twitter:title', content: `${SEOConfig.title} - ng4eb`});

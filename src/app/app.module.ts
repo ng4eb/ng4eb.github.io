@@ -13,6 +13,7 @@ import {
 } from './marked-options-factory';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,9 @@ import { environment } from '../environments/environment';
 		AppRoutingModule,
 		LayoutModule,
 		SharedModule,
+    HttpClientModule,
 		MarkdownModule.forRoot({
+        loader: HttpClient,
 				markedOptions: {
 					provide: MarkedOptions,
 					useFactory: MarkedOptionsFactory,

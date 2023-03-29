@@ -1,10 +1,10 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false; /* eslint-disable import/first */
-
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+
+config.autoAddCss = false;
 
 if (environment.production) {
   enableProdMode();
@@ -13,7 +13,7 @@ if (environment.production) {
 function bootstrap() {
   platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
-};
+}
 
 
 if (document.readyState === 'complete') {

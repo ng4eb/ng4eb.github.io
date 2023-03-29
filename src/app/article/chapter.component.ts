@@ -6,8 +6,7 @@ import {
   ChangeDetectorRef,
   OnDestroy
 } from '@angular/core';
-import {markdowns, mdKey} from './markdowns';
-import {seos} from './seos';
+import {seoConfigs, articleKey} from './seo';
 
 import {
   OnLoadMdService
@@ -17,7 +16,7 @@ import {ActivatedRoute} from '@angular/router';
 import {
   RoutingService
 } from '../service/routing.service';
-import {Subject, takeUntil} from 'rxjs';
+import {Subject, Subscription, takeUntil} from 'rxjs';
 import {
   IsPlatformBrowserService
 } from '../service/is-platform-browser.service';
@@ -25,9 +24,10 @@ import {
 @Component({
   selector: 'app-chapter',
   template: `
-    <markdown [data]="markdown"
-              (ready)="onLoad($event)"
-              #md>
+    <markdown
+            [src]="markdownPath"
+            (ready)="onLoad($event)"
+            #md>
     </markdown>
   `,
   styles: [],
@@ -35,9 +35,9 @@ import {
 })
 export class ChapterComponent implements OnInit, OnDestroy {
   @ViewChildren('md') md: any;
-  originalMd: any;
-  markdown = markdowns[this._route.snapshot.data['chapter'] as mdKey];
+  markdownPath = `assets/markdowns/${this._route.snapshot.data['chapter']}.md`;
   private _destroy$ = new Subject<boolean>();
+  private _routeDataSubscription?: Subscription;
 
   constructor(
     private _route: ActivatedRoute,
@@ -64,8 +64,11 @@ export class ChapterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const mdKeyPath: mdKey = this._route.snapshot.data['chapter'];
-    this._seoService.setSEO(seos[mdKeyPath]);
+    const seoKeyPath: articleKey = this._route.snapshot.data['chapter'];
+    this._seoService.setSEO(seoConfigs[seoKeyPath]);
+    this._routeDataSubscription = this._route.data.subscribe(data => {
+      this.markdownPath = `assets/markdowns/${data['chapter']}.md`;
+    });
     if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
       this._routingService.getPath$()
         .pipe(takeUntil(this._destroy$))
@@ -77,8 +80,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
             .replace('p', '')
             .split('?')[0]
             .split('#')[0];
-          this.markdown = markdowns[`ch${chapterNum}p${partNum}` as mdKey];
-          this._seoService.setSEO(seos[`ch${chapterNum}p${partNum}` as mdKey]);
+          this._seoService.setSEO(seoConfigs[`ch${chapterNum}p${partNum}` as articleKey]);
           this._cdr.detectChanges();
         })
     }
@@ -87,6 +89,9 @@ export class ChapterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._destroy$.next(true);
     this._destroy$.unsubscribe();
+    if (this._routeDataSubscription) {
+      this._routeDataSubscription.unsubscribe();
+    }
   }
 
 }
