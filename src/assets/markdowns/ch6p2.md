@@ -518,6 +518,20 @@ Now, the form will show the error message below the `dateOfBirth` field:
 
 Great! Now you have learned the basics of building reactive forms with `FormGroup` and `FormControl`. Check out the demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-reactive-form-demo).
 
+### Type-Safe Reactive Form From Angular 14
+
+The above demo also works in Angular 14 and 15. Here's the [Stackblitz demo](https://stackblitz.com/edit/ng4eb-reactive-form-demo-jcp7rr) which is the same codebase updated to Angular 15.
+
+Originally, our reactive form demo in Angular 13 is not type-safe as it doesn't support generics:
+
+![Angular 13 not type safe](assets/images/ch6/ng-13-not-type-safe.jpg)
+
+Now, the reactive form demo in Angular 14 and 15 is type-safe as it supports generics. For simple forms, the generics are automatically inferred. 
+
+![Angular 15 type safe](assets/images/ch6/ng-15-type-safe.jpg)
+
+For more complex forms, we may need to specify the type of the form model.
+
 ## Using FormBuilder
 
 Angular provides an even easier way to build a reactive form with the `FormBuilder` API. The `FormBuilder` provides syntactic sugar that shortens creating instances of a `FormControl`, `FormGroup`, or `FormArray`.
