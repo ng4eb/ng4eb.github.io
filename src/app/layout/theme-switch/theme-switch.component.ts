@@ -4,7 +4,7 @@ import {
 	OnInit
 } from '@angular/core';
 import {faSun, faMoon} from '@fortawesome/free-solid-svg-icons';
-import {LayoutService} from '../../service/layout.service';
+import {LayoutService} from '../../services/layout.service';
 
 @Component({
 	selector: 'app-theme-switch',

@@ -1,4 +1,4 @@
-## How pipes work
+## How Pipes Work
 A **pipe** is a special function used in the template that outputs a transformed input value. Below is a self-explanatory example of the `uppercase` pipe:
 
 ```html
@@ -21,7 +21,7 @@ Another benefit is clearer separation of concerns. Extracting the transformation
 
 Finally, a pipe is more performant than using a method in the template. That's because a pipe will only rerun when the input value has changed. In contrast, a method in the template runs on every change detection, regardless of whether the input value has actually changed.
 
-## Using the percent pipe
+## Using the Percent Pipe
 
 We will explore the built-in percent pipe in this section. Once we have learned how to use a pipe, we can look up other [built-in pipes](https://angular.io/guide/pipes) if we need them.
 
@@ -94,7 +94,7 @@ Great! You now have learned how to use a built-in pipe.
 
 You can check out the code for this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-percent-pipe-demo).
 
-## Creating our own custom pipe
+## Creating a Custom Pipe
 
 ### Project Setup
 

@@ -22,15 +22,15 @@ import {
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {
 	ChapterListingService
-} from '../../service/chapter-listing/chapter-listing.service';
-import {LayoutService} from '../../service/layout.service';
+} from '../../services/chapter-listing/chapter-listing.service';
+import {LayoutService} from '../../services/layout.service';
 import {Router} from '@angular/router';
 import {
 	RoutingService
-} from '../../service/routing.service';
+} from '../../services/routing.service';
 import {
 	IsPlatformBrowserService
-} from '../../service/is-platform-browser.service';
+} from '../../services/is-platform-browser.service';
 
 @Component({
 	selector: 'app-navbar',

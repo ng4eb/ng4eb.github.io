@@ -10,16 +10,16 @@ import {seoConfigs, articleKey} from './seo';
 
 import {
   OnLoadMdService
-} from '../service/on-load-md.service';
-import {SeoService} from '../service/seo.service';
+} from '../services/on-load-md.service';
+import {SeoService} from '../services/seo.service';
 import {ActivatedRoute} from '@angular/router';
 import {
   RoutingService
-} from '../service/routing.service';
+} from '../services/routing.service';
 import {Subject, Subscription, takeUntil} from 'rxjs';
 import {
   IsPlatformBrowserService
-} from '../service/is-platform-browser.service';
+} from '../services/is-platform-browser.service';
 
 @Component({
   selector: 'app-chapter',

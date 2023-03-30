@@ -30,7 +30,7 @@ Angular has up-to-date, comprehensive [documentation](https://angular.io/)  that
 
 Angular has a large community of developers, making it easy to find answers to questions about Angular.
 
-## Angular compared to other options
+## Angular Compared to Other Options
 
 ### Angular vs React
 [React](https://github.com/facebook/react)  is a UI library developed by Facebook that uses JSX and functional programming. It uses [JSX](https://en.wikipedia.org/wiki/JSX_(JavaScript)) and embraces [functional programming](https://en.wikipedia.org/wiki/Functional_programming). React has a huge ecosystem powered by its community. Also, React uses the [Virtual DOM](https://reactjs.org/docs/faq-internals.html), resulting in fast performance.

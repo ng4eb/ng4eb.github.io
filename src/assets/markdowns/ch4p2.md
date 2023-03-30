@@ -1,4 +1,4 @@
-## Lazy-loading a module
+## Lazy-Loading a Module
 
 In larger-scale applications with many routes and modules, deferring loading something until it's required is critical. This technique is known as lazy loading. It keeps the initial bundle sizes smaller, which in turn helps decrease load times, as explained in [the official documentation](https://angular.io/guide/lazy-loading-ngmodules).
 
@@ -66,7 +66,7 @@ Congratulations! Now you have learned how to lazy-load a module in Angular.
 
 You can also check out the code on [Stackblitz](https://stackblitz.com/edit/ng4eb-lazy-loading-demo).
 
-## Implementing an authentication router guard
+## Implementing an Authentication Router Guard
 In this section, we will learn how to block unauthenticated access to a route in Angular by implementing a guard. A guard is a boolean test that determines whether a visitor is authenticated or not. If the test returns true, the visitor is granted access to the route. Otherwise, the visitor is denied access and redirected to some other page.
 
 ![router guard concept](assets/images/ch4/router_guard_concept.jpg)
@@ -212,7 +212,7 @@ Awesome! Now you have learned how to create and use an authentication guard in A
 
 You can check out the code for this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-authentication-router-guard-demo).
 
-## Using resolvers
+## Using Resolvers
 
 When loading data from a server to display on a page, we might want to wait until the data is ready before showing the page. Instead of displaying a loading component, we can use a resolver in Angular. A resolver is a class that tells the router to defer routing until the data is ready. You can read more about it in [the documentation](https://angular.io/api/router/Resolve).
 

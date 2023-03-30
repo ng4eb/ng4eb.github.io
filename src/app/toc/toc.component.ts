@@ -8,8 +8,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
 	chapterListing
-} from '../service/chapter-listing/chapter-listing';
-import {LayoutService} from '../service/layout.service';
+} from '../services/chapter-listing/chapter-listing';
+import {LayoutService} from '../services/layout.service';
 
 @Component({
 	selector: 'app-toc',

@@ -142,7 +142,7 @@ Now, if we open the console, we should see the following logs:
 
 As we can see, all the Http methods of the `HttpClient` return an observable. That means we can subscribe to it for getting the server's response.
 
-## HTTP requests to external API
+## HTTP Requests to External API
 
 In this section, we will demonstrate the usage of the `get` method with a free external API - [https://catfact.ninja](https://catfact.ninja).
 

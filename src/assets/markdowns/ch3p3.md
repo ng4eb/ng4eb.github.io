@@ -1,4 +1,4 @@
-## Overview of lifecycles
+## Overview of Lifecycles
 *The concept of a lifecycle applies to all directives, including components. In this section, we will focus on the lifecycles of components, but the same concepts and techniques apply to all directives.*
 
 Just like every story has a beginning, a middle, and an end, a component instance has a lifecycle as it is being created, updated and destroyed. In Angular, there are eight lifecycle events in total:
@@ -44,7 +44,7 @@ Consider four components, A, B, C, and  X, where A is the parent of B and X, and
 1. View One
 
 ```
-A
+    A
 ----|----
 |       |
 X       B
@@ -103,7 +103,7 @@ Although the default change detection mechanism of Angular is made to be perform
 
 We will work on an example where we will use manual change detection later. Meanwhile, you can read more about it from [this free article](https://www.digitalocean.com/community/tutorials/angular-change-detection-strategy) on Digital Ocean.
 
-## Using lifecycles hooks
+## Using Lifecycles Hooks
 
 So how do we put our logic during a lifecycle event? No worries, Angular provides us with eight lifecycle hooks corresponding to the eight lifecycle events. Let's see how we can implement them.
 
@@ -141,19 +141,19 @@ First, let's edit `a.component.ts`:
 
 ```typescript
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-x></app-x>
-<app-b></app-b>
-`,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-x></app-x>
+    <app-b></app-b>
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit {
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
 }
 ```
@@ -162,18 +162,18 @@ Then `b.component.ts`:
 
 ```typescript
 @Component({  
-selector: 'app-b',  
-template: `  
-<app-c></app-c>
-`,  
-styles: []  
+  selector: 'app-b',  
+  template: `  
+    <app-c></app-c>
+  `,  
+  styles: []  
 })  
 export class BComponent implements OnInit {
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
 }
 ```
@@ -182,36 +182,36 @@ Both `c.component.ts` and `x.component.ts` with an empty div:
 
 ```typescript
 @Component({  
-selector: 'app-c',  
-template: `
-  <div></div> 
- `,  
- styles: []  
+  selector: 'app-c',  
+  template: `
+      <div></div> 
+   `,  
+   styles: []  
 })  
 export class CComponent implements OnInit {  
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
 }
 ```
 
 ```typescript
 @Component({  
-selector: 'app-x',  
-template: `
-  <div></div> 
- `,  
- styles: []  
+  selector: 'app-x',  
+  template: `
+      <div></div> 
+   `,  
+   styles: []  
 })  
 export class XComponent implements OnInit {  
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {  
-}
+  ngOnInit(): void {  
+  }
 
 }
 ```
@@ -250,7 +250,7 @@ This is for `a.component.ts`:
 
 ```typescript
 ngOnInit(): void {  
-console.log('OnInit - A component');  
+  console.log('OnInit - A component');  
 }
 ```
 
@@ -258,7 +258,7 @@ console.log('OnInit - A component');
 
 ```typescript
 ngOnInit(): void {  
-console.log('OnInit - B component');  
+  console.log('OnInit - B component');  
 }
 ```
 
@@ -266,7 +266,7 @@ console.log('OnInit - B component');
 
 ```typescript
 ngOnInit(): void {  
-console.log('OnInit - C component');  
+  console.log('OnInit - C component');  
 }
 ```
 
@@ -274,7 +274,7 @@ console.log('OnInit - C component');
 
 ```typescript
 ngOnInit(): void {  
-console.log('OnInit - X component');  
+  console.log('OnInit - X component');  
 }
 ```
 
@@ -288,19 +288,20 @@ What's interesting is if we switch the position of `X` and `B` components inside
 
 ```typescript
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-b></app-b>
-<app-x></app-x> `,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-b></app-b>
+    <app-x></app-x>
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit {
 
-constructor() { }
+  constructor() { }
 
-ngOnInit(): void {  
-console.log('OnInit - A component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - A component');  
+  }
 
 }
 ```
@@ -326,22 +327,23 @@ SimpleChanges
 } from '@angular/core';
 
 @Component({  
-selector: 'app-x',  
-template: `
-  <div></div> `,  
- styles: []  
+  selector: 'app-x',  
+  template: `
+    <div></div>
+  `,  
+   styles: []  
 })  
 export class XComponent implements OnChanges, OnInit {  
 
-constructor() { }
+  constructor() { }
 
-ngOnChanges(changes: SimpleChanges) {  
-console.log('OnChanges - X component, changes:', changes) ;  
-}
+  ngOnChanges(changes: SimpleChanges) {  
+    console.log('OnChanges - X component, changes:', changes) ;  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - X component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - X component');  
+  }
 
 }
 ```
@@ -352,17 +354,17 @@ If we check the console, we will see that this lifecycle hook is not fired. That
 
 ```typescript
 export class XComponent implements OnChanges, OnInit {  
-@Input() boundInput = 0;
+  @Input() boundInput = 0;
 
-constructor() { }
+  constructor() { }
 
-ngOnChanges(changes: SimpleChanges) {  
-console.log('OnChanges - X component, changes:', changes) ;  
-}
+  ngOnChanges(changes: SimpleChanges) {  
+    console.log('OnChanges - X component, changes:', changes) ;  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - X component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - X component');  
+  }
 
 }
 ```
@@ -371,26 +373,26 @@ We will also edit `a.component.ts` to provide the `boundInput` data:
 
 ```typescript
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-b></app-b>
-<app-x [boundInput]="boundInput"></app-x>  
-<button (click)="changeBoundInput()">Change Bound Input</button>
-`,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-b></app-b>
+    <app-x [boundInput]="boundInput"></app-x>  
+    <button (click)="changeBoundInput()">Change Bound Input</button>
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit {  
-boundInput = 1;
+  boundInput = 1;
 
-constructor() { }
+  constructor() { }
 
-changeBoundInput() {
-this.boundInput++;
-}
+  changeBoundInput() {
+    this.boundInput++;
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - A component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - A component');  
+  }
 
 }
 ```
@@ -409,30 +411,30 @@ We will include `ngDoCheck` hook in all components to see when it fires. First, 
 
 ```typescript
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-b></app-b>
-<app-x [boundInput]="boundInput"></app-x>  
-<button (click)="changeBoundInput()">Change Bound Input</button>  
-`,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-b></app-b>
+    <app-x [boundInput]="boundInput"></app-x>  
+    <button (click)="changeBoundInput()">Change Bound Input</button>  
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit, DoCheck {  
-boundInput = 1;
+  boundInput = 1;
 
-constructor() { }
+  constructor() { }
 
-changeBoundInput() {  
-this.boundInput++;  
-}
+  changeBoundInput() {  
+    this.boundInput++;  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - A component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - A component');  
+  }
 
-ngDoCheck() {  
-console.log('DoCheck - A Component')  
-}
+  ngDoCheck() {  
+    console.log('DoCheck - A Component')  
+  }
 
 }
 ```
@@ -453,24 +455,24 @@ For example, here's the updated `a.component.ts`:
 
 ```typescript
 import {  
-AfterContentChecked,  
-AfterContentInit,  
-AfterViewChecked,  
-AfterViewInit,  
-Component,  
-DoCheck,  
-OnInit  
+  AfterContentChecked,  
+  AfterContentInit,  
+  AfterViewChecked,  
+  AfterViewInit,  
+  Component,  
+  DoCheck,  
+  OnInit  
 } from '@angular/core';
 
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-b></app-b>
-<app-x [boundInput]="boundInput"></app-x>  
-<button (click)="changeBoundInput()">Change Bound Input
-</button>
-`,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-b></app-b>
+    <app-x [boundInput]="boundInput"></app-x>  
+    <button (click)="changeBoundInput()">Change Bound Input
+    </button>
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit,  
 DoCheck,  
@@ -479,38 +481,38 @@ AfterContentChecked,
 AfterViewInit,  
 AfterViewChecked {
 
-boundInput = 1;
+  boundInput = 1;
 
-constructor() {  
-}
+  constructor() {  
+  }
 
-changeBoundInput() {  
-this.boundInput++;  
-}
+  changeBoundInput() {  
+    this.boundInput++;  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - A component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - A component');  
+  }
 
-ngDoCheck() {  
-console.log('DoCheck - A Component')  
-}
+  ngDoCheck() {  
+    console.log('DoCheck - A Component')  
+  }
 
-ngAfterContentInit() {  
-console.log('AfterContentInit - A Component');  
-}
+  ngAfterContentInit() {  
+    console.log('AfterContentInit - A Component');  
+  }
 
-ngAfterContentChecked() {  
-console.log('AfterContentChecked - A Component');  
-}
+  ngAfterContentChecked() {  
+    console.log('AfterContentChecked - A Component');  
+  }
 
-ngAfterViewInit() {  
-console.log('AfterViewInit - A Component');  
-}
+  ngAfterViewInit() {  
+    console.log('AfterViewInit - A Component');  
+  }
 
-ngAfterViewChecked() {  
-console.log('AfterViewChecked - A Component');  
-}
+  ngAfterViewChecked() {  
+    console.log('AfterViewChecked - A Component');  
+  }
 
 }
 ```
@@ -527,9 +529,9 @@ The hook `ngOnDestroy` allows us to run code during the `OnDestroy` event of a c
 
 ```typescript
 @Component({  
-selector: 'app-x',  
-template: `
-   <div></div> 
+  selector: 'app-x',  
+  template: `
+     <div></div> 
   `,  
   styles: []  
 })  
@@ -542,40 +544,40 @@ export class XComponent implements OnChanges,
  OnDestroy {  
    @Input() boundInput = 0;  
 
-constructor() {  
-}
+  constructor() {  
+  }
 
-ngOnChanges(changes: SimpleChanges) {  
-console.log('OnChanges - X component, changes:', changes);  
-}
+  ngOnChanges(changes: SimpleChanges) {  
+    console.log('OnChanges - X component, changes:', changes);  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - X component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - X component');  
+  }
 
-ngDoCheck() {  
-console.log('DoCheck - X Component');  
-}
+  ngDoCheck() {  
+    console.log('DoCheck - X Component');  
+  }
 
-ngAfterContentInit() {  
-console.log('AfterContentInit - X Component');  
-}
+  ngAfterContentInit() {  
+    console.log('AfterContentInit - X Component');  
+  }
 
-ngAfterContentChecked() {  
-console.log('AfterContentChecked - X Component');  
-}
+  ngAfterContentChecked() {  
+    console.log('AfterContentChecked - X Component');  
+  }
 
-ngAfterViewInit() {  
-console.log('AfterViewInit - X Component');  
-}
+  ngAfterViewInit() {  
+    console.log('AfterViewInit - X Component');  
+  }
 
-ngAfterViewChecked() {  
-console.log('AfterViewChecked - X Component');  
-}
+  ngAfterViewChecked() {  
+    console.log('AfterViewChecked - X Component');  
+  }
 
-ngOnDestroy() {  
-console.log('OnDestroy - X Component');  
-}
+  ngOnDestroy() {  
+    console.log('OnDestroy - X Component');  
+  }
 
 }
 ```
@@ -584,18 +586,18 @@ The `OnDestory` event will not occur unless we have a way to remove `X` componen
 
 ```typescript
 @Component({  
-selector: 'app-a',  
-template: `  
-<app-b></app-b>
-<app-x *ngIf="renderX" [boundInput]="boundInput"></app-x>  
-<button (click)="changeBoundInput()">
-Change Bound Input
-</button>
-<button (click)="toggleXComponent()">
-Toggle X Component
-</button>  
-`,  
-styles: []  
+  selector: 'app-a',  
+  template: `  
+    <app-b></app-b>
+    <app-x *ngIf="renderX" [boundInput]="boundInput"></app-x>  
+    <button (click)="changeBoundInput()">
+      Change Bound Input
+    </button>
+    <button (click)="toggleXComponent()">
+      Toggle X Component
+    </button>  
+  `,  
+  styles: []  
 })  
 export class AComponent implements OnInit,  
 DoCheck,  
@@ -604,44 +606,44 @@ AfterContentChecked,
 AfterViewInit,  
 AfterViewChecked {
 
-boundInput = 1;
+  boundInput = 1;
 
-renderX = true;
+  renderX = true;
 
-constructor() {  
-}
+  constructor() {  
+  }
 
-changeBoundInput() {  
-this.boundInput++;  
-}
+  changeBoundInput() {  
+    this.boundInput++;  
+  }
 
-toggleXComponent() {  
-this.renderX = !this.renderX;  
-}
+  toggleXComponent() {  
+    this.renderX = !this.renderX;  
+  }
 
-ngOnInit(): void {  
-console.log('OnInit - A component');  
-}
+  ngOnInit(): void {  
+    console.log('OnInit - A component');  
+  }
 
-ngDoCheck() {  
-console.log('DoCheck - A Component')  
-}
+  ngDoCheck() {  
+    console.log('DoCheck - A Component')  
+  }
 
-ngAfterContentInit() {  
-console.log('AfterContentInit - A Component');  
-}
+  ngAfterContentInit() {  
+    console.log('AfterContentInit - A Component');  
+  }
 
-ngAfterContentChecked() {  
-console.log('AfterContentChecked - A Component');  
-}
+  ngAfterContentChecked() {  
+    console.log('AfterContentChecked - A Component');  
+  }
 
-ngAfterViewInit() {  
-console.log('AfterViewInit - A Component');  
-}
+  ngAfterViewInit() {  
+    console.log('AfterViewInit - A Component');  
+  }
 
-ngAfterViewChecked() {  
-console.log('AfterViewChecked - A Component');  
-}
+  ngAfterViewChecked() {  
+    console.log('AfterViewChecked - A Component');  
+  }
 
 }
 ```

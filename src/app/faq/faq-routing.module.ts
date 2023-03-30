@@ -17,16 +17,6 @@ const routes: Routes = [
 		component: FaqComponent
 	},
 	{
-		path: 'how-to-support',
-		pathMatch: 'full',
-		component: FaqComponent
-	},
-	{
-		path: 'contribution',
-		pathMatch: 'full',
-		component: FaqComponent
-	},
-	{
 		path: 'resources',
 		pathMatch: 'full',
 		component: FaqComponent

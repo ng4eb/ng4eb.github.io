@@ -8,10 +8,10 @@ import {
 	faEllipsisH,
 	faPrint
 } from '@fortawesome/free-solid-svg-icons';
-import {LayoutService} from '../../service/layout.service';
+import {LayoutService} from '../../services/layout.service';
 import {
 	RoutingService
-} from '../../service/routing.service';
+} from '../../services/routing.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 

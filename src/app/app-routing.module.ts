@@ -19,11 +19,6 @@ const routes: Routes = [
 		loadChildren: () => import('./toc/toc.module').then(m => m.TocModule)
 	},
 	{
-		path: 'roadmap',
-		pathMatch: 'full',
-		loadChildren: () => import('./roadmap/roadmap.module').then(m => m.RoadmapModule)
-	},
-	{
 		path: 'book',
 		loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
 	},

@@ -16,14 +16,14 @@ export const chapterListing: IChapter[] = [
 			{
 				title: "What is Angular",
 				sections: [
-					"Angular as a front-end framework"
+					"Angular: A Comprehensive Front-end Framework for SPAs"
 				]
 			},
 			{
 				title: "Why Angular",
 				sections: [
-					"Strengths of Angular",
-					"Angular compared to other options"
+					"Advantages of Angular",
+					"Angular Compared to Other Options"
 				]
 			}
 		]
@@ -37,14 +37,14 @@ export const chapterListing: IChapter[] = [
 				title: "Installation",
 				sections: [
 					"Prerequisites",
-					"Installation walkthrough"
+					"Installing Angular"
 				]
 			},
 			{
 				title: "CLI Commands",
 				sections: [
-					"Project creation walkthrough",
-					"Useful commands"
+					"Creating an Angular Project",
+					"Useful Commands"
 				]
 			},
 			{
@@ -60,33 +60,33 @@ export const chapterListing: IChapter[] = [
 			{
 				title: "Using Components & Modules",
 				sections: [
-					"How components & modules work",
-					"Creating a counter component",
-					"Nested components & two-way binding"
+					"How Components & Modules Work",
+					"Creating a Counter Component",
+					"Nested Components & Two-Way Binding"
 				]
 			},
 			{
 				title: "Using Directives",
 				sections: [
-					"How directives work",
+					"How Directives Work",
 					"Using ngIf, ngFor & ngStyle",
-					"Creating a random color directive"
+					"Creating a Random Color Directive"
 				]
 			},
 			{
 				title: "Lifecycles",
 				sections: [
-					"Overview of lifecycles",
+					"Overview of Lifecycles",
 					"Change Detection",
-					"Using lifecycle hooks"
+					"Using Lifecycle Hooks"
 				]
 			},
 			{
 				title: "Using Pipes",
 				sections: [
-					"How pipes work",
-					"Using percent pipe",
-					"Creating a custom pipe"
+					"How Pipes Work",
+					"Using the Percent Pipe",
+					"Creating a Custom Pipe"
 				]
 			}
 		]
@@ -99,18 +99,18 @@ export const chapterListing: IChapter[] = [
 			{
 				title: "Using Routing",
 				sections: [
-					"How routing works",
-					"Using routing module",
-					"Creating child routes"
+					"How Routing Works",
+					"Using the Routing Module",
+					"Creating Child Routes"
 				]
 			},
 			{
 				title: "Advanced Routing Techniques",
 				sections: [
-					"Lazy-loading a module",
-					"Implementing an authentication router guard",
-					"Using resolvers",
-					"Using url matcher"
+					"Lazy-Loading a Module",
+					"Implementing an Authentication Router Guard",
+					"Using Resolvers",
+					"Using Url Matcher"
 				]
 			}
 		]
@@ -123,16 +123,16 @@ export const chapterListing: IChapter[] = [
 			{
 				title: "Using Services",
 				sections: [
-					"How services work",
-					"Concept of dependency injection",
-					"Creating a counter service"
+					"How Services Work",
+					"Concept of Dependency Injection",
+					"Creating a Counter Service"
 				]
 			},
 			{
 				title: "RxJS Basics",
 				sections: [
-					"What is an observable",
-					"Creating a counter service using observables"
+					"What Is an Observable",
+					"Creating a Counter Service Using Observables"
 				]
 			}
 		]
@@ -145,14 +145,14 @@ export const chapterListing: IChapter[] = [
 			{
 				title: "Using Template-driven Forms",
 				sections: [
-					"How template-driven forms work",
+					"How Template-Driven Forms Work",
 					"Using ngModel"
 				]
 			},
 			{
 				title: "Using Reactive Forms",
 				sections: [
-					"How reactive forms work",
+					"How Reactive Forms Work",
 					"Using FormControl & FormGroup",
 					"Using FormBuilder"
 				]
@@ -161,7 +161,7 @@ export const chapterListing: IChapter[] = [
 				title: "HTTP Client",
 				sections: [
 					"What is HTTP Client",
-					"HTTP requests to external API"
+					"HTTP Requests to External API"
 				]
 			}
 		]

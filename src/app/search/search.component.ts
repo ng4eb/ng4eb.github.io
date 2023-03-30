@@ -7,11 +7,11 @@ import {ActivatedRoute} from '@angular/router';
 import {filter, map} from 'rxjs';
 import {
 	AdvancedSearchService
-} from '../service/advanced-search/advanced-search.service';
+} from '../services/advanced-search/advanced-search.service';
 
 import {faAngleLeft} from '@fortawesome/free-solid-svg-icons';
-import {LayoutService} from '../service/layout.service';
-import {SeoService} from '../service/seo.service';
+import {LayoutService} from '../services/layout.service';
+import {SeoService} from '../services/seo.service';
 
 @Component({
 	selector: 'app-search',

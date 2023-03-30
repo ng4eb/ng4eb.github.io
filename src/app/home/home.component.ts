@@ -3,8 +3,8 @@ import {
 	Component,
 	OnInit
 } from '@angular/core';
-import {LayoutService} from '../service/layout.service';
-import {SeoService} from '../service/seo.service';
+import {LayoutService} from '../services/layout.service';
+import {SeoService} from '../services/seo.service';
 
 @Component({
 	selector: 'app-home',

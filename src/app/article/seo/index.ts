@@ -1,4 +1,4 @@
-import {SeoConfig} from '../../service/seo.service';
+import {SeoConfig} from '../../services/seo.service';
 import {ch2P2Seo} from "./ch2p2.seo";
 import {ch5P1Seo} from "./ch5p1.seo";
 import {ch2P1Seo} from "./ch2p1.seo";

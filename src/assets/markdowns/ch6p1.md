@@ -1,4 +1,4 @@
-## How template-driven forms work
+## How Template-Driven Forms Work
 
 **Template-driven forms** use directives in the template for their core logic. The `ngModel` directive creates two-way bindings, allowing the form data to be shared between the template and the component class in TypeScript. Any updates made in either location will be reflected in the other.
 

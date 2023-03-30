@@ -1,4 +1,4 @@
-## How reactive forms work
+## How Reactive Forms Work
 
 A reactive form is built using TypeScript to create the form logic, making it model-driven in terms of both **view** (template) and **model** (component class). While template-driven forms are easier to set up for simple forms like login forms, reactive forms are more efficient for complex forms like surveys, as they provide many APIs to handle different scenarios and write custom logic.
 

@@ -1,4 +1,4 @@
-## How components & modules work
+## How Components & Modules Work
 
 ### Introduction to Components
 
@@ -24,7 +24,7 @@ Components are registered within modules, which are composed of components, serv
 
 ![component inside module](/assets/images/ch3/component_inside_module.jpg)
 
-## Creating a counter component
+## Creating a Counter Component
 
 ### Project Setup
 
@@ -147,7 +147,7 @@ Now, we should have a fully functional counter on our page. Congratulations!
 
 You can see the code for the counter demo app on [Stackblitz](https://stackblitz.com/edit/ng4eb-counter-demo).
 
-## Nested components & two-way binding
+## Nested Components & Two-Way Binding
 
 A nested component is a component that appears within the template of another component. For example, as we put the counter component inside the template of the app component, the counter component is a nested component within the app component.
 

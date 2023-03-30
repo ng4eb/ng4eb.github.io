@@ -5,10 +5,10 @@ import {
 	OnInit,
 	PLATFORM_ID
 } from '@angular/core';
-import {LayoutService} from './service/layout.service';
+import {LayoutService} from './services/layout.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, map} from 'rxjs';
-import {RoutingService} from './service/routing.service';
+import {RoutingService} from './services/routing.service';
 import {isPlatformBrowser} from '@angular/common';
 
 @Component({

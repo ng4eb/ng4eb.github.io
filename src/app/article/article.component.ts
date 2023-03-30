@@ -8,11 +8,11 @@ import {
   OnInit,
   ViewChildren
 } from '@angular/core';
-import {RoutingService} from '../service/routing.service';
+import {RoutingService} from '../services/routing.service';
 import {
   ChapterListingService,
   navigationPart
-} from '../service/chapter-listing/chapter-listing.service';
+} from '../services/chapter-listing/chapter-listing.service';
 import {BehaviorSubject, filter, Subject, takeUntil} from 'rxjs';
 import {
   faAngleLeft,
@@ -21,12 +21,12 @@ import {
 import {ActivatedRoute, Router} from '@angular/router';
 import {
   IsPlatformBrowserService
-} from '../service/is-platform-browser.service';
+} from '../services/is-platform-browser.service';
 import {
   OnLoadMdService
-} from '../service/on-load-md.service';
+} from '../services/on-load-md.service';
 import mediumZoom from 'medium-zoom';
-import {LayoutService} from '../service/layout.service';
+import {LayoutService} from '../services/layout.service';
 
 @Component({
   selector: 'app-article',
@@ -106,8 +106,10 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   clickNavigationLink(index: number | null) {
-    this._layoutService.scrollToTop(false);
     this.setToExpand(index);
+    setTimeout(() => {
+      this._layoutService.scrollToTop(false);
+    }, 50);
   }
 
   setToExpand(index: number | null) {
@@ -169,13 +171,16 @@ export class ArticleComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this._destroy$))
       .subscribe(() => {
         if (this._isPlatformBrowserService.getIsPlatformBrowser()) {
+          console.log('testing')
           if (!this._zoom) {
-            this._zoom = mediumZoom('.md-img', {background: '#222222'});
+            setTimeout(() => {
+              this._zoom = mediumZoom('.md-img', {background: '#222222'});
+            }, 100)
           } else {
             this._zoom.detach();
             setTimeout(() => {
               this._zoom = mediumZoom('.md-img', {background: '#222222'});
-            })
+            }, 100)
           }
         }
       })

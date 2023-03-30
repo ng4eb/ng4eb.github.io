@@ -1,4 +1,4 @@
-## How routing works
+## How Routing Works
 *Routing in Angular is used to render different components based on the requested page, which is determined by the URL path.*
 
 ![basic concept of routing](/assets/images/ch4/routing_concept.jpg)
@@ -227,7 +227,7 @@ Congratulations! Now you have learned the basics of routing in Angular.
 
 You can check out the code of this demo on [Stackblitz](https://stackblitz.com/edit/ng4eb-routing-demo).
 
-## Creating child routes
+## Creating Child Routes
 
 Child routes are routes that are nested inside other routes. They are commonly used in scenarios like e-commerce sites, where we have pages that are related to a product, like the product listing page and the product detail page. These pages are children of the product page.
 

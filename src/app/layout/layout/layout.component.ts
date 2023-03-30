@@ -4,10 +4,10 @@ import {
 	ElementRef,
 	OnInit,
 } from '@angular/core';
-import {LayoutService} from '../../service/layout.service';
+import {LayoutService} from '../../services/layout.service';
 import {
 	IsPlatformBrowserService
-} from '../../service/is-platform-browser.service';
+} from '../../services/is-platform-browser.service';
 import {
 	filter,
 	fromEvent,

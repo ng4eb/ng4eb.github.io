@@ -7,7 +7,7 @@ import {
 	faAngleLeft
 } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute} from '@angular/router';
-import {SeoService} from '../service/seo.service';
+import {SeoService} from '../services/seo.service';
 
 @Component({
 	selector: 'app-faq',
@@ -33,18 +33,6 @@ export class FaqComponent implements OnInit {
 			paragraphs: [
 				"This book aims to introduce Angular to an audience who already know the basics of HTML, CSS and TypeScript. It is written in simple English. It does not attempt to cover everything in Angular, but it strives to explain the underlying concepts in Angular in a concise manner.",
 				"If you would like to master the basics of Angular with a short and easy-to-understand book, then you are in the right place."
-			]
-		},
-		howToSupport: {
-			title: "How to support this project?",
-			paragraphs: [
-				"The best way to support this project is to contribute to the <a href=\"https://github.com/ng4eb/ng4eb\" target=\"_blank\">Github project</a>. In addition, you can star it on Github and share it with your friends who are interested in learning Angular!"
-			]
-		},
-		contribution: {
-			title: "How may I contribute?",
-			paragraphs: [
-				"To contribute to <a href=\"https://github.com/ng4eb/ng4eb\" target=\"_blank\">this project</a>, you can raise Github issues for problems, bugs, and feature requests. You are also welcome to open pull requests for any issues you find!"
 			]
 		},
 		resources: {
@@ -92,22 +80,6 @@ export class FaqComponent implements OnInit {
 					title: 'Why This Book',
 					description: 'Why this book? Because this book is written with simplicity in mind. It aims to cover the basic knowledge and skills you need to get started in Angular within a short time.',
 					keywords: 'Angular, eBook, free, online, faq, ng4eb, concise, basics, core knowledge, core skills',
-					path: this._route.snapshot.url[0].path
-				});
-				break;
-			case 'howToSupport':
-				this._seoService.setSEO({
-					title: 'How to Support',
-					description: 'To support this project, please star the Github repo and contribute anytime!',
-					keywords: 'Angular, eBook, free, online, faq, ng4eb, Github, support, contribute',
-					path: this._route.snapshot.url[0].path
-				});
-				break;
-			case 'contribution':
-				this._seoService.setSEO({
-					title: 'Contribution',
-					description: 'It is easy to contribute to this project. Raise any issues you find, or open pull requests.',
-					keywords: 'Angular, eBook, free, online, faq, ng4eb, Github, contribution, issues, pull requests',
 					path: this._route.snapshot.url[0].path
 				});
 				break;

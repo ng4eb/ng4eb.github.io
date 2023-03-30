@@ -9,7 +9,7 @@ import {
 	ViewChild
 } from '@angular/core';
 import {faSearch, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import {LayoutService} from '../../service/layout.service';
+import {LayoutService} from '../../services/layout.service';
 import {
 	debounceTime,
 	distinctUntilChanged,
@@ -21,7 +21,7 @@ import {
 } from 'rxjs';
 import {
 	AdvancedSearchService
-} from '../../service/advanced-search/advanced-search.service';
+} from '../../services/advanced-search/advanced-search.service';
 import {Router} from '@angular/router';
 
 @Component({

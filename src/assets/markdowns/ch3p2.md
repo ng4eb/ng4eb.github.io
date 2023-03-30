@@ -1,4 +1,4 @@
-## How directives work
+## How Directives Work
 
 In Angular, **directives** are used to modify the appearance or behaviour of existing DOM elements. There are three types of directives:
 
@@ -80,7 +80,7 @@ The above will render the below numbered list on the page:
 
 Now you have already learned about three built-in directives in Angular! You can look at the full code of this section on [Stackblitz](https://stackblitz.com/edit/ng4eb-built-in-directives-demo).
 
-## Creating a random color directive
+## Creating a Random Color Directive
 
 In this section, we will create a custom directive that applies random colors to the host elements. Before we do so, let's take a brief look at the code structure of a custom directive.
 

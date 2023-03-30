@@ -1,4 +1,4 @@
-## What is an observable
+## What Is an Observable
 
 *RxJS and observables are broad topics, but we will focus on the basics to get you ready for most day-to-day usages.*
 
@@ -55,7 +55,7 @@ In contrast, a promise is *eagerly evaluated*, meaning that it executes immediat
 
 Overall, observables are more feature-rich than promises and are great for complex asynchronous programming. We will demonstrate how to use them in Angular with a demo below.
 
-## Creating a counter service using observables
+## Creating a Counter Service Using Observables
 In this section, we will refactor the counter service created earlier to use observables. To access the project, you can fork it from [Stackblitz](https://stackblitz.com/edit/ng4eb-counter-service-demo).
 
 Open the file `pool.service.ts`:

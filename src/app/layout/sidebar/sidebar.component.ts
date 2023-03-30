@@ -8,11 +8,11 @@ import {
 	OnInit,
 	ViewChild
 } from '@angular/core';
-import {LayoutService} from '../../service/layout.service';
+import {LayoutService} from '../../services/layout.service';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {
 	ChapterListingService
-} from '../../service/chapter-listing/chapter-listing.service';
+} from '../../services/chapter-listing/chapter-listing.service';
 import {
 	debounceTime,
 	distinctUntilChanged,
@@ -24,7 +24,7 @@ import {
 } from 'rxjs';
 import {
 	RoutingService
-} from '../../service/routing.service';
+} from '../../services/routing.service';
 import {Router} from '@angular/router';
 
 @Component({

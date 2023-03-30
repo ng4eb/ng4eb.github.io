@@ -9,13 +9,13 @@ import {
 } from '@angular/core';
 import {
 	ChapterListingService
-} from '../../../service/chapter-listing/chapter-listing.service';
+} from '../../../services/chapter-listing/chapter-listing.service';
 import {
 	LayoutService
-} from '../../../service/layout.service';
+} from '../../../services/layout.service';
 import {
 	IChapter
-} from '../../../service/chapter-listing/chapter-listing';
+} from '../../../services/chapter-listing/chapter-listing';
 
 class AccordionEl {
 	private summary: HTMLElement | null;
@@ -107,7 +107,6 @@ export class AccordionComponent implements OnInit, AfterViewInit {
 	@Input() chapter!: IChapter;
 	@Input() i!: number;
 	@Input() url!: string;
-	chapterListing = this._chapterListingService.getListing();
 	toExpand$ = this._chapterListingService.getToExpand$();
 	currentPosition$ = this._chapterListingService.getCurrentPosition$();
 

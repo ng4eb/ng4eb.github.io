@@ -1,4 +1,4 @@
-## How services work
+## How Services Work
 
 In Angular, services are often considered as a solution to a common issue: keeping the code manageable as an application scales up. In small applications, it may be okay to have all the logic within a component. However, this approach becomes problematic as the application grows in complexity.
 
