@@ -1,7 +1,7 @@
 @use '/src/styles/size';
 @use '/src/styles/function';
 
-.faq {
+.quick-start {
   width: 100%;
   max-width: size.$page-max-width;
   padding-top: size.$space-32;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .faq {
+  .quick-start {
     padding-top: size.$space-64;
     font-size: function.rem(20px);
   }

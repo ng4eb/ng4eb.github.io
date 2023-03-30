@@ -1,0 +1,12 @@
+<section class="quick-start">
+    <div class="go-back">
+        <a routerLink="/">
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+            Go Back to Homepage
+        </a>
+    </div>
+    <div class="quick-start__content" *ngIf="path">
+        <h1>{{ quickStartContent[path].title }}</h1>
+        <p *ngFor="let p of quickStartContent[path].paragraphs" [innerHTML]="p"></p>
+    </div>
+</section>

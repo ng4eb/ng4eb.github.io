@@ -1,17 +1,7 @@
-import {Injectable} from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  RouterStateSnapshot
-} from '@angular/router';
-import {Observable, of} from 'rxjs';
+import { ResolveFn } from '@angular/router';
+import { of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ChapterResolver implements Resolve<string> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> {
+export const chapterResolver: ResolveFn<string> = (route, state) => {
     const key = state.url.split('/book/')[1].split('?')[0].split('#')[0].replace('/', '');
-    return of(key)
-  }
-}
+    return of(key);
+};
