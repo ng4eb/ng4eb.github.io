@@ -1,20 +1,12 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy, Input,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-logo',
-  templateUrl: './logo.component.svg',
-  styleUrls: ['./logo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-logo',
+    templateUrl: './logo.component.svg',
+    styleUrls: ['./logo.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LogoComponent implements OnInit {
-  @Input() width = '35px';
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class LogoComponent {
+    @Input() width = '35px';
+    constructor() {}
 }

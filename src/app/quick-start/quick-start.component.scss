@@ -1,0 +1,35 @@
+@use '/src/styles/size';
+@use '/src/styles/function';
+
+.quick-start {
+  width: 100%;
+  max-width: size.$page-max-width;
+  padding-top: size.$space-32;
+  padding-left: size.$space-16;
+  padding-right: size.$space-16;
+  margin-left: auto;
+  margin-right: auto;
+  &__content {
+    h1 {
+      margin-bottom: size.$space-12;
+    }
+    p:not(:last-child) {
+      margin-bottom: size.$space-8;
+    }
+  }
+}
+
+.go-back {
+  margin-bottom: size.$space-8;
+  a {
+    color: var(--grey-66-cc);
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .quick-start {
+    padding-top: size.$space-64;
+    font-size: function.rem(20px);
+  }
+}

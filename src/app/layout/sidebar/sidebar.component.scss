@@ -180,7 +180,7 @@ $search-bar-height: function.rem(46px);
 }
 
 .chapter-listing {
-  height: calc(100vh - #{size.$footer-height} - #{size.$collapse-sidebar-width} - #{$search-bar-height} - #{size.$space-48});
+  height: calc(100vh - #{size.$footer-height} - #{size.$collapse-sidebar-width} - #{$search-bar-height} - #{size.$space-64});
   overflow-y: auto;
   padding-bottom: size.$space-16;
   padding-right: size.$space-4;
