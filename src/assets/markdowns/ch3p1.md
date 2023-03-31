@@ -87,7 +87,7 @@ export class CounterComponent implements OnInit {
   
   constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -111,7 +111,7 @@ export class CounterComponent implements OnInit {
     this.count--;  
   }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -202,7 +202,7 @@ export class OuterCounterComponent implements OnInit {
     this.count2 = 0;  
   }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -219,7 +219,7 @@ export class InnerCounterComponent implements OnInit {
   @Input() count!: number;  
   constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -305,7 +305,7 @@ export class InnerCounterComponent implements OnInit {
     this.countUpdatedEvent.emit(this.count - 1);  
   }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }

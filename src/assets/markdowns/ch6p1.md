@@ -169,7 +169,7 @@ export class RegFormComponent implements OnInit {
      console.log('form values:', form.value);  
    }  
   
-   ngOnInit(): void {  
+   ngOnInit() {  
    }  
 }
 ```
@@ -299,7 +299,7 @@ export class RegFormComponent implements OnInit {
 	this.accountName = 'bob123';
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 }
 ```
 

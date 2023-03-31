@@ -175,7 +175,7 @@ export class CounterComponent implements OnInit {
     }  
   }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }

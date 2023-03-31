@@ -80,7 +80,7 @@ export class SurveyComponent implements OnInit {
   })
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
@@ -114,7 +114,7 @@ export class SurveyComponent implements OnInit {
   })
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
@@ -146,7 +146,7 @@ export class SurveyComponent implements OnInit {
   })
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
@@ -318,7 +318,7 @@ export class SurveyComponent implements OnInit {
     console.log(this.form);
  }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
@@ -572,7 +572,7 @@ export class SurveyComponent implements OnInit {
 
    checkAtLeastAge(age = 18): ValidatorFn {...}
 
-   ngOnInit(): void {
+   ngOnInit() {
    }
 
 }

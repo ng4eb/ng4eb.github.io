@@ -174,7 +174,7 @@ export class NavbarComponent implements OnInit {
   
   constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -277,7 +277,7 @@ export class NavbarComponent implements OnInit {
   
   constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -316,7 +316,7 @@ export class ProductListingComponent implements OnInit {
   
  constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -405,7 +405,7 @@ export class ProductPageComponent implements OnInit {
   
   constructor() { }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
   }  
   
 }
@@ -458,7 +458,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(private _route: ActivatedRoute) {  
   }  
   
-  ngOnInit(): void {
+  ngOnInit() {
   }  
 }
 ```

@@ -59,7 +59,7 @@ export class TryHttpClientComponent implements OnInit {
    constructor(private http: HttpClient) {  
    }  
   
-   ngOnInit(): void {  
+   ngOnInit() {  
      console.log('Http Client:', this.http);  
      // Read  
     console.log('Http Client Get:', this.http.get(  
@@ -162,7 +162,7 @@ export class TryHttpClientComponent implements OnInit {
    constructor(private http: HttpClient) {  
    }  
   
-   ngOnInit(): void {  
+   ngOnInit() {  
      console.log('Http Client:', this.http);  
      // Read  
      console.log('Http Client Get:', this.http.get(  

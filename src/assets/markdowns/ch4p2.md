@@ -352,7 +352,7 @@ export class BigdataPageComponent implements OnInit {
   constructor(private _route: ActivatedRoute) {  
   }  
   
-  ngOnInit(): void {  
+  ngOnInit() {  
     this.bigdata = this._route.snapshot.data['bigdata'];  
   }  
   

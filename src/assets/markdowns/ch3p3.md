@@ -152,7 +152,7 @@ export class AComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
   }
 
 }
@@ -172,7 +172,7 @@ export class BComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
   }
 
 }
@@ -192,7 +192,7 @@ export class CComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
   }
 
 }
@@ -210,7 +210,7 @@ export class XComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
   }
 
 }
@@ -249,7 +249,7 @@ Let's now add some `console.log` inside the `ngOnInit` hook for all four compone
 This is for `a.component.ts`:
 
 ```typescript
-ngOnInit(): void {  
+ngOnInit() {  
   console.log('OnInit - A component');  
 }
 ```
@@ -257,7 +257,7 @@ ngOnInit(): void {
 `b.component.ts`:
 
 ```typescript
-ngOnInit(): void {  
+ngOnInit() {  
   console.log('OnInit - B component');  
 }
 ```
@@ -265,7 +265,7 @@ ngOnInit(): void {
 `c.component.ts`:
 
 ```typescript
-ngOnInit(): void {  
+ngOnInit() {  
   console.log('OnInit - C component');  
 }
 ```
@@ -273,7 +273,7 @@ ngOnInit(): void {
 `x.component.ts`:
 
 ```typescript
-ngOnInit(): void {  
+ngOnInit() {  
   console.log('OnInit - X component');  
 }
 ```
@@ -299,7 +299,7 @@ export class AComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - A component');  
   }
 
@@ -341,7 +341,7 @@ export class XComponent implements OnChanges, OnInit {
     console.log('OnChanges - X component, changes:', changes) ;  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - X component');  
   }
 
@@ -362,7 +362,7 @@ export class XComponent implements OnChanges, OnInit {
     console.log('OnChanges - X component, changes:', changes) ;  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - X component');  
   }
 
@@ -390,7 +390,7 @@ export class AComponent implements OnInit {
     this.boundInput++;
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - A component');  
   }
 
@@ -428,7 +428,7 @@ export class AComponent implements OnInit, DoCheck {
     this.boundInput++;  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - A component');  
   }
 
@@ -490,7 +490,7 @@ AfterViewChecked {
     this.boundInput++;  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - A component');  
   }
 
@@ -551,7 +551,7 @@ export class XComponent implements OnChanges,
     console.log('OnChanges - X component, changes:', changes);  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - X component');  
   }
 
@@ -621,7 +621,7 @@ AfterViewChecked {
     this.renderX = !this.renderX;  
   }
 
-  ngOnInit(): void {  
+  ngOnInit() {  
     console.log('OnInit - A component');  
   }
 

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { ArticleComponent } from './article.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
-import { ChapterComponent } from './chapter.component';
-import { chapterResolver } from './chapter.resolver';
-import { chapters } from './chapters';
+import { ChapterComponent } from './chapter/chapter.component';
+import { chapterResolver } from './chapter/chapter.resolver';
+import { chapters } from './chapter/chapters';
 
 const chapterRouteMatcher = (url: UrlSegment[]) => {
     if (url.length === 2) {
